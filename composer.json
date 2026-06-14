@@ -12,7 +12,8 @@
     ],
     "require": {
         "php": ">=7.4",
-        "dompdf/dompdf": "^3.0"
+        "dompdf/dompdf": "^3.0",
+        "yahnis-elsts/plugin-update-checker": "^5.7"
     },
     "config": {
         "optimize-autoloader": true,

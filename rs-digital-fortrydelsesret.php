@@ -2,19 +2,37 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Kort info + link til digital fortrydelse i kundens ordremails, og auto-vedhæftning af de aktuelle handelsbetingelser (valgt i WooCommerce) som PDF på et varigt medie. Henter indhold korrekt fra både Gutenberg/klassisk og Elementor.
- * Version:     1.1.0
+ * Version:     1.2.0
  * Author:      ReneSejling.dk
+ * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Dompdf indlæses via composer i denne mappe (kør: composer require dompdf/dompdf).
+// Dompdf + Plugin Update Checker indlæses via composer i denne mappe (kør: composer install).
 $rs_fr_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $rs_fr_autoload ) ) {
 	require_once $rs_fr_autoload;
 }
+
+/* ------------------------------------------------------------------ *
+ * Automatiske opdateringer fra GitHub Releases                       *
+ * Viser "Opdatering tilgængelig" i WP-admin når der laves en ny      *
+ * release (tag vX.Y.Z) på GitHub. Henter release-zip'en med vendor/. *
+ * ------------------------------------------------------------------ */
+if ( class_exists( '\YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
+	$rs_fr_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+		'https://github.com/renesejling/rs-digital-fortrydelsesret/',
+		__FILE__,
+		'rs-digital-fortrydelsesret'
+	);
+
+	// Brug GitHub Releases (de zip-assets vores GitHub Action bygger med vendor/ inkluderet).
+	$rs_fr_update_checker->getVcsApi()->enableReleaseAssets();
+}
+
 
 // Slug til den digitale fortrydelsesside (pluginnets side).
 const RS_FR_PATH = '/fortrydelsesret/';

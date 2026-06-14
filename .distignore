@@ -1,0 +1,16 @@
+# Filer/mapper der IKKE skal med i den distribuerede plugin-zip.
+# vendor/ er IKKE listet her -> den kommer med i zip'en (Dompdf m.m.).
+.git
+.github
+.gitignore
+.distignore
+build
+*.zip
+.DS_Store
+composer.json
+composer.lock
+README.md
+CLAUDE.md
+*.code-workspace
+node_modules
+*.log

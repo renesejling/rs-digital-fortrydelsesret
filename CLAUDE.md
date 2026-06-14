@@ -10,7 +10,17 @@ Instruktioner til Claude (Cline) for arbejde i dette repo.
 - Regenererer PDF'en når betingelses-siden gemmes (Gutenberg/klassisk + Elementor).
 
 Hovedfil: `rs-digital-fortrydelsesret.php`
-Afhængighed: `dompdf/dompdf` (installeres via Composer i `vendor/`).
+Afhængigheder (via Composer i `vendor/`):
+- `dompdf/dompdf` – PDF-generering
+- `yahnis-elsts/plugin-update-checker` – automatiske opdateringer fra GitHub Releases
+
+## Distribution & opdateringer
+
+- Repo'et er **offentligt**: https://github.com/renesejling/rs-digital-fortrydelsesret
+- Pluginnet tjekker GitHub **Releases** for nye versioner og viser "Opdatering tilgængelig" i WP-admin på alle sites (ingen auto-opdatering – brugeren trykker selv "Opdater").
+- En **GitHub Action** (`.github/workflows/release.yml`) bygger automatisk en komplet plugin-zip **inkl. `vendor/`** (Dompdf m.m.) ved hvert version-tag, og vedhæfter den til en GitHub Release.
+- `vendor/` er ignoreret i git, men kommer MED i release-zip'en (styret af `.distignore`).
+
 
 ## Vigtige konventioner
 
@@ -51,7 +61,24 @@ Efter hver afsluttet ændring skal følgende gøres **automatisk**:
 
 4. **Push altid til `main`** (medmindre andet aftales).
 
+## Rutine: Udgiv en ny version (release)
+
+Når en funktionel ændring skal ud til alle sites:
+
+1. Bump version i plugin-headeren (`Version: x.y.z`).
+2. Commit + push til `main` (se ovenfor).
+3. Opret og push et version-tag der matcher headeren:
+   ```bash
+   git tag v<x.y.z>
+   git push origin v<x.y.z>
+   ```
+4. GitHub Action (`release.yml`) bygger automatisk en zip **inkl. `vendor/`** og opretter en **GitHub Release**.
+5. Sites ser opdateringen i WP-admin (typisk inden for få timer, eller straks ved "Søg efter opdateringer").
+
+> **Vigtigt:** Tag-versionen SKAL matche `Version:` i plugin-headeren, ellers opdager update-checkeren ikke opdateringen korrekt.
+
 ## Før commit – tjekliste
+
 
 - [ ] Kører `composer install` uden fejl (hvis afhængigheder er ændret).
 - [ ] PHP-syntaks er gyldig (`php -l rs-digital-fortrydelsesret.php`).

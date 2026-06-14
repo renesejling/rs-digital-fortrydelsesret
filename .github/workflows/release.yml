@@ -1,0 +1,55 @@
+name: Build & Release
+
+# Kører automatisk når du pusher et version-tag (fx v1.2.0)
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Opsæt PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer
+
+      - name: Installer produktions-afhængigheder (Dompdf m.m.)
+        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+      - name: Byg plugin-zip (inkl. vendor/)
+        run: |
+          PLUGIN_SLUG="rs-digital-fortrydelsesret"
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p build/"$PLUGIN_SLUG"
+
+          # Kopiér alt der skal med i pluginnet til en mappe med korrekt slug-navn.
+          rsync -a --exclude-from='.distignore' ./ build/"$PLUGIN_SLUG"/ 2>/dev/null || \
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='build' \
+            --exclude='.gitignore' \
+            --exclude='.distignore' \
+            --exclude='*.zip' \
+            ./ build/"$PLUGIN_SLUG"/
+
+          cd build
+          zip -r "../${PLUGIN_SLUG}.zip" "$PLUGIN_SLUG"
+          cd ..
+          echo "Bygget ${PLUGIN_SLUG}.zip (version ${VERSION})"
+
+      - name: Opret GitHub Release med zip vedhæftet
+        uses: softprops/action-gh-release@v2
+        with:
+          files: rs-digital-fortrydelsesret.zip
+          generate_release_notes: true
