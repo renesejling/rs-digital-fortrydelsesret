@@ -1,0 +1,21 @@
+{
+    "name": "renesejling/rs-digital-fortrydelsesret",
+    "description": "WooCommerce-plugin: digital fortrydelsesret i ordremails + auto-vedhæftning af handelsbetingelser som PDF.",
+    "type": "wordpress-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "René Sejling",
+            "email": "mig@renesejling.dk",
+            "homepage": "https://renesejling.dk"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "dompdf/dompdf": "^3.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

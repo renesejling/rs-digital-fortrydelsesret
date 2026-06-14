@@ -1,0 +1,23 @@
+# Composer dependencies (installeres med "composer install")
+/vendor/
+
+# Genererede filer
+*.pdf
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Node (hvis det senere bliver relevant)
+node_modules/
+
+# Editor / IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Midlertidige filer
+*.tmp
+*.bak
