@@ -84,8 +84,9 @@ GitHub Action bygger derefter zip'en og opretter releasen automatisk.
 
 ## Krav
 
-- PHP >= 7.4
+- PHP >= 8.1
 - WordPress + WooCommerce
+
 - [dompdf/dompdf](https://github.com/dompdf/dompdf) ^3.0 (installeres via Composer)
 
 ---
