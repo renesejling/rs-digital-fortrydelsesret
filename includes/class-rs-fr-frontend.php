@@ -64,8 +64,6 @@ final class RS_FR_Frontend
         ob_start();
         ?>
         <div class="digital-fortrydelse">
-            <h2><?php echo esc_html__('Fortryd aftale', 'rs-digital-fortrydelsesret'); ?></h2>
-
             <?php if ($success_reference) : ?>
                 <div class="digital-fortrydelse__notice digital-fortrydelse__notice--success" role="status">
                     <p>
@@ -92,7 +90,7 @@ final class RS_FR_Frontend
             <?php endif; ?>
 
             <p class="digital-fortrydelse__intro"><?php echo wp_kses_post(self::get_form_intro()); ?></p>
-            <p class="digital-fortrydelse__legal"><?php echo esc_html__('Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Den er ikke en endelig afgørelse af sagen.', 'rs-digital-fortrydelsesret'); ?></p>
+            <p class="digital-fortrydelse__legal"><?php echo esc_html__('Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse.', 'rs-digital-fortrydelsesret'); ?></p>
 
             <form class="digital-fortrydelse__form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <input type="hidden" name="action" value="<?php echo esc_attr(self::ACTION); ?>" />
