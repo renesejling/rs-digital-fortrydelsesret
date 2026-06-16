@@ -1,14 +1,36 @@
 # RS Digital Fortrydelsesret
 
-WordPress/WooCommerce-plugin der:
+Komplet WordPress/WooCommerce-plugin til digital fortrydelsesret. Pluginnet samler
+to ting: **kundens fortrydelses-flow** (offentlig formular + sagsbehandling) og
+**dokumentation/oplysning i ordremails** (info-boks + handelsbetingelser som PDF).
 
-1. Indsætter en kort info-boks med **link til digital fortrydelse** i kundens ordremails.
-2. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie".
-3. **Regenererer PDF'en automatisk**, når handelsbetingelses-siden gemmes/opdateres — uanset om siden er bygget med Gutenberg, klassisk editor eller **Elementor**.
-4. Er **WPML- og Polylang-kompatibel**: mail-boksens tekster er indbygget på fem sprog (da/en/de/sv/nb), linket peger automatisk på den oversatte fortrydelsesside, og den vedhæftede PDF tages fra den oversatte handelsbetingelses-side der matcher kundens sprog.
+### A) Fortrydelses-flow (formular + sagsbehandling)
 
-- **Version:** 1.6.0
+1. **Offentlig fortrydelsesformular** via shortcode `[digital_fortrydelse]`.
+   Kunden angiver navn, e-mail og ordrenummer og vælger hele ordren eller enkelte produkter.
+2. **Kvitteringsmail til kunden** og **intern notifikation til butikken** sendes
+   automatisk (via `wp_mail`) når formularen indsendes. Mail-tekster kan tilpasses i indstillingerne.
+3. **Validering mod WooCommerce-ordren**: ordrenummer + e-mail skal matche en rigtig
+   ordre, fristberegning (14 dage), og dubletter blokeres.
+4. **Sagsbehandling i admin** under *WooCommerce → Fortrydelser*: statusstyring,
+   intern note, friststatus-badges og CSV-eksport (regnearks-sikret).
+5. **Min Konto-visning**: kunden kan se sine egne fortrydelser under *Mine fortrydelser*.
+6. **GDPR-retention**: sager slettes automatisk efter et valgt antal år (daglig cron).
+
+### B) Ordremails (info-boks + PDF på varigt medie)
+
+7. Indsætter en kort info-boks med **link til digital fortrydelse** i kundens ordremails.
+8. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie".
+9. **Regenererer PDF'en automatisk**, når handelsbetingelses-siden gemmes/opdateres — uanset om siden er bygget med Gutenberg, klassisk editor eller **Elementor**.
+10. Er **WPML- og Polylang-kompatibel**: mail-boksens tekster er indbygget på fem sprog (da/en/de/sv/nb), linket peger automatisk på den oversatte fortrydelsesside, og den vedhæftede PDF tages fra den oversatte handelsbetingelses-side der matcher kundens sprog.
+
+> **Bemærk:** De to dele kolliderer ikke. Info-boks + PDF hænger på WooCommerce'
+> eksisterende ordremails, mens kvitterings-/notifikationsmails udløses af selve
+> formular-indsendelsen.
+
+- **Version:** 2.0.0
 - **Forfatter:** [ReneSejling.dk](https://renesejling.dk)
+
 
 
 
@@ -84,6 +106,12 @@ af betingelses-siden gemmes.
 2. WordPress-admin → Plugins → Tilføj nyt → Upload plugin → vælg zip → installer → aktivér.
 3. Sørg for at der er valgt en **handelsbetingelses-side** under
    WooCommerce → Indstillinger → Avanceret / juridiske sider.
+4. Opret en side (fx `/fortrydelsesret/`) med shortcoden `[digital_fortrydelse]`
+   til den offentlige fortrydelsesformular.
+5. Gennemgå indstillinger under **WooCommerce → Fortrydelse indstillinger**
+   (modtager, opbevaring/retention, formulartekst, mail-skabeloner og handelsbetingelser).
+6. Fortrydelsessager håndteres under **WooCommerce → Fortrydelser**.
+
 
 ### Til udvikling (fra git)
 

@@ -11,6 +11,9 @@ composer.json
 composer.lock
 README.md
 CLAUDE.md
+docs
+CHANGELOG.md
+
 *.code-workspace
 node_modules
 *.log

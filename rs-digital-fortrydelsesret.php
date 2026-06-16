@@ -1,22 +1,97 @@
 <?php
 /**
  * Plugin Name: RS Digital Fortrydelsesret
- * Description: Kort info + link til digital fortrydelse i kundens ordremails, og auto-vedhæftning af de aktuelle handelsbetingelser (valgt i WooCommerce) som PDF på et varigt medie. Henter indhold korrekt fra både Gutenberg/klassisk og Elementor.
- * Version:     1.6.0
+ * Description: Komplet digital fortrydelsesret til WooCommerce: offentlig fortrydelsesformular med kvitterings-/notifikationsmails, sagsbehandling i admin, GDPR-retention og Min Konto-visning – samt info-boks + link i kundens ordremails og auto-vedhæftning af de aktuelle handelsbetingelser som PDF på et varigt medie (Gutenberg/klassisk + Elementor). WPML/Polylang-klar.
+ * Version:     2.0.0
  * Author:      ReneSejling.dk
  * Author URI:  https://www.renesejling.dk
  * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
+ * Text Domain: rs-digital-fortrydelsesret
+ * Domain Path: /languages
+ * Requires PHP: 8.1
+ * WC requires at least: 7.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 // Dompdf + Plugin Update Checker indlæses via composer i denne mappe (kør: composer install).
 $rs_fr_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $rs_fr_autoload ) ) {
 	require_once $rs_fr_autoload;
 }
+
+/* ------------------------------------------------------------------ *
+ * Plugin-konstanter (bruges af klasserne i includes/)                *
+ * ------------------------------------------------------------------ */
+if ( ! defined( 'RS_FR_VERSION' ) ) {
+	define( 'RS_FR_VERSION', '2.0.0' );
+}
+if ( ! defined( 'RS_FR_DB_VERSION' ) ) {
+	define( 'RS_FR_DB_VERSION', '1' );
+}
+if ( ! defined( 'RS_FR_PLUGIN_FILE' ) ) {
+	define( 'RS_FR_PLUGIN_FILE', __FILE__ );
+}
+if ( ! defined( 'RS_FR_PLUGIN_PATH' ) ) {
+	define( 'RS_FR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'RS_FR_PLUGIN_URL' ) ) {
+	define( 'RS_FR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+// Navn på den brugerdefinerede DB-tabel (uden wpdb-prefix).
+if ( ! defined( 'RS_FR_TABLE' ) ) {
+	define( 'RS_FR_TABLE', 'digital_fortrydelser' );
+}
+
+/* ------------------------------------------------------------------ *
+ * Indlæs klasserne til fortrydelsesformular, sagsbehandling m.m.     *
+ * ------------------------------------------------------------------ */
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-schema.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-retention.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-account.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-repository.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-woocommerce.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-mailer.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-admin.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-settings.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-frontend.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-activator.php';
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-deactivator.php';
+
+// Aktivering/deaktivering (opret DB-tabel, capabilities, cron, rewrite-endpoint).
+register_activation_hook( __FILE__, array( 'RS_FR_Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'RS_FR_Deactivator', 'deactivate' ) );
+
+/**
+ * Initialisér fortrydelses-modulet (formular, mails, admin, retention, Min Konto).
+ *
+ * Kører på 'plugins_loaded', så WooCommerce er indlæst. Selve mail-boksen +
+ * PDF-vedhæftningen længere nede i filen hænger sig på WooCommerce-hooks og
+ * kører uafhængigt af dette.
+ */
+add_action( 'plugins_loaded', 'rs_fr_bootstrap_modules' );
+function rs_fr_bootstrap_modules() {
+	load_plugin_textdomain(
+		'rs-digital-fortrydelsesret',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
+
+	// Hold den gemte version i sync efter kode-opdateringer.
+	if ( get_option( 'digital_fortrydelse_version' ) !== RS_FR_VERSION ) {
+		update_option( 'digital_fortrydelse_version', RS_FR_VERSION, false );
+	}
+
+	RS_FR_Admin::init();
+	RS_FR_Account::init();
+	RS_FR_Retention::init();
+	RS_FR_Settings::init();
+	RS_FR_Frontend::init();
+}
+
 
 /* ------------------------------------------------------------------ *
  * Automatiske opdateringer fra GitHub Releases                       *

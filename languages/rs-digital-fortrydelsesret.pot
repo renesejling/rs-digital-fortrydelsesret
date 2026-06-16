@@ -1,0 +1,573 @@
+# Copyright (C) 2026 Awesometogi
+# This file is distributed under the same license as the Digital Fortrydelse plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Fortrydelse 0.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rs-digital-fortrydelsesret\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-08T11:35:18+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: rs-digital-fortrydelsesret\n"
+
+#. Plugin Name of the plugin
+#: rs-digital-fortrydelsesret.php
+#: includes/class-rs-digital-fortrydelsesret-settings.php:199
+msgid "Digital Fortrydelse"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: rs-digital-fortrydelsesret.php
+msgid "https://awesometogi.com"
+msgstr ""
+
+#. Description of the plugin
+#: rs-digital-fortrydelsesret.php
+msgid "Digital fortrydelsesfunktion til WooCommerce med kvittering, dokumentation og manuel behandling."
+msgstr ""
+
+#. Author of the plugin
+#: rs-digital-fortrydelsesret.php
+msgid "Awesometogi"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:67
+#: includes/class-rs-digital-fortrydelsesret-account.php:74
+#: includes/class-rs-digital-fortrydelsesret-account.php:116
+msgid "Mine fortrydelser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:127
+#: includes/class-rs-digital-fortrydelsesret-account.php:136
+#: includes/class-rs-digital-fortrydelsesret-account.php:171
+#: includes/class-rs-digital-fortrydelsesret-admin.php:131
+#: includes/class-rs-digital-fortrydelsesret-admin.php:190
+msgid "Reference"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:128
+#: includes/class-rs-digital-fortrydelsesret-account.php:139
+#: includes/class-rs-digital-fortrydelsesret-account.php:172
+#: includes/class-rs-digital-fortrydelsesret-admin.php:132
+msgid "Dato"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:129
+#: includes/class-rs-digital-fortrydelsesret-account.php:140
+#: includes/class-rs-digital-fortrydelsesret-admin.php:134
+#: includes/class-rs-digital-fortrydelsesret-admin.php:198
+msgid "Ordre"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:130
+#: includes/class-rs-digital-fortrydelsesret-account.php:141
+#: includes/class-rs-digital-fortrydelsesret-account.php:175
+#: includes/class-rs-digital-fortrydelsesret-admin.php:136
+#: includes/class-rs-digital-fortrydelsesret-admin.php:191
+#: includes/class-rs-digital-fortrydelsesret-admin.php:225
+msgid "Status"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr ""
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-digital-fortrydelsesret-account.php:165
+#: includes/class-rs-digital-fortrydelsesret-admin.php:182
+#, php-format
+msgid "Fortrydelse %s"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:173
+#: includes/class-rs-digital-fortrydelsesret-admin.php:197
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:118
+msgid "Ordrenummer"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:174
+#: includes/class-rs-digital-fortrydelsesret-admin.php:202
+msgid "Fortrydelse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:176
+#: includes/class-rs-digital-fortrydelsesret-admin.php:203
+msgid "Indsendt indhold"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:176
+#: includes/class-rs-digital-fortrydelsesret-account.php:248
+#: includes/class-rs-digital-fortrydelsesret-admin.php:203
+#: includes/class-rs-digital-fortrydelsesret-admin.php:471
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:126
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:316
+msgid "Hele ordren"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:228
+#: includes/class-rs-digital-fortrydelsesret-admin.php:407
+msgid "Modtaget"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:229
+#: includes/class-rs-digital-fortrydelsesret-admin.php:408
+msgid "Under behandling"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:230
+#: includes/class-rs-digital-fortrydelsesret-admin.php:409
+msgid "Godkendt"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:231
+#: includes/class-rs-digital-fortrydelsesret-admin.php:410
+msgid "Afvist"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:232
+#: includes/class-rs-digital-fortrydelsesret-admin.php:411
+msgid "Fuldført"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-account.php:247
+#: includes/class-rs-digital-fortrydelsesret-admin.php:470
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:130
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:313
+msgid "Enkelte produkter"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:43
+#: includes/class-rs-digital-fortrydelsesret-admin.php:44
+#: includes/class-rs-digital-fortrydelsesret-admin.php:114
+msgid "Fortrydelser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:80
+#: includes/class-rs-digital-fortrydelsesret-settings.php:194
+msgid "Du har ikke adgang til denne side."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:120
+msgid "Søg fortrydelser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:123
+msgid "Filtrer"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:124
+msgid "Eksporter CSV"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:133
+msgid "Kunde"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:135
+msgid "Type"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:137
+#: includes/class-rs-digital-fortrydelsesret-admin.php:200
+msgid "Frist"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:155
+msgid "Ingen fortrydelser fundet."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:174
+msgid "Fortrydelse ikke fundet"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:175
+#: includes/class-rs-digital-fortrydelsesret-admin.php:186
+msgid "Tilbage til oversigten"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:192
+msgid "Indsendt"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:193
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:108
+msgid "Navn"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:194
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:113
+msgid "Mailadresse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:195
+msgid "Ordre-mailadresse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:195
+#: includes/class-rs-digital-fortrydelsesret-admin.php:383
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:270
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:272
+msgid "Ikke fundet"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:196
+msgid "E-mailafvigelse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:196
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:271
+msgid "Ja"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:196
+#: includes/class-rs-digital-fortrydelsesret-admin.php:204
+#: includes/class-rs-digital-fortrydelsesret-admin.php:205
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:271
+msgid "Nej"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:199
+msgid "Ordredato"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:199
+#: includes/class-rs-digital-fortrydelsesret-admin.php:200
+#: includes/class-rs-digital-fortrydelsesret-admin.php:457
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:274
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:275
+msgid "Ukendt"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:201
+msgid "Friststatus"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:204
+msgid "Kundekvittering sendt"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:205
+msgid "Intern mail sendt"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:209
+msgid "Behandling"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:211
+msgid "Hvad sker der, når status ændres?"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:212
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:214
+msgid "Sagens status bliver gemt."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:215
+msgid "Den interne note bliver gemt."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:216
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:218
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:229
+msgid "Intern note"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:232
+msgid "Gem behandling"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:245
+#: includes/class-rs-digital-fortrydelsesret-admin.php:276
+msgid "Du har ikke adgang til denne handling."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:333
+msgid "Alle statusser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:368
+msgid "Sagen blev opdateret."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:369
+msgid "Sagen kunne ikke opdateres."
+msgstr ""
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-digital-fortrydelsesret-admin.php:394
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:455
+msgid "Inden for frist"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-admin.php:456
+msgid "Overskredet"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:67
+msgid "Fortryd aftale"
+msgstr ""
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:75
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:80
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:95
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Den er ikke en endelig afgørelse af sagen."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:103
+msgid "Website"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:123
+msgid "Hvad vil du fortryde?"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:135
+msgid "Produkter eller bemærkning"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:140
+msgid "Bekræft fortrydelse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:251
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:255
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:259
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:263
+msgid "Indtast dit navn."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:267
+msgid "Indtast en gyldig mailadresse."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:271
+msgid "Indtast ordrenummer."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:277
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:281
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:306
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:321
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:325
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-frontend.php:343
+msgid "Udfyld formularen herunder for at fortryde dit køb. Du modtager en kvittering for din anmodning pr. e-mail."
+msgstr ""
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr ""
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:298
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-mailer.php:301
+msgid "Ingen yderligere bemærkning angivet."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-repository.php:95
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:69
+msgid "Generelle indstillinger"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:76
+msgid "Intern modtager"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:84
+msgid "Sprog"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:92
+msgid "Opbevaring"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:100
+msgid "Formulartekst"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:108
+msgid "Kundekvittering"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:116
+msgid "Intern mail"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:124
+msgid "Afinstallering"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:132
+msgid "Handelsbetingelser"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:139
+msgid "Handelsbetingelsesside"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:147
+msgid "Automatisk indsættelse"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:155
+msgid "Tekstafsnit"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:225
+msgid "Brug WooCommerce standardmodtager"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:227
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:247
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:261
+msgid "Dansk"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:263
+msgid "Første version er dansk. Feltet er lagt ind, så flere sprog kan tilføjes senere."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:299
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:339
+msgid "Slet pluginets data ved afinstallering."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:352
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:370
+msgid "Vælg side"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:376
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:378
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:398
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:400
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:419
+msgid "Token:"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:515
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:520
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:524
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:576
+msgid "Digital fortrydelsesfunktion"
+msgstr ""
+
+#: includes/class-rs-digital-fortrydelsesret-settings.php:617
+msgid "Tilgængelige tokens:"
+msgstr ""

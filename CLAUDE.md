@@ -4,11 +4,26 @@ Instruktioner til Claude (Cline) for arbejde i dette repo.
 
 ## Om projektet
 
-**RS Digital Fortrydelsesret** er et WordPress/WooCommerce-plugin der:
+**RS Digital Fortrydelsesret** er et WordPress/WooCommerce-plugin med to dele:
+
+### Del A – Fortrydelses-flow (klasser i `includes/`, prefix `RS_FR_`)
+- Offentlig fortrydelsesformular via shortcode `[digital_fortrydelse]` (`RS_FR_Frontend`).
+- Kvitterings- og notifikationsmails via `wp_mail` (`RS_FR_Mailer`) ved indsendelse.
+- Sagsbehandling i admin under WooCommerce → Fortrydelser (`RS_FR_Admin`), CSV-eksport.
+- Min Konto-visning (`RS_FR_Account`), indstillinger (`RS_FR_Settings`).
+- Egen DB-tabel (`RS_FR_Schema` + `RS_FR_Repository`, tabel `{prefix}digital_fortrydelser`).
+- WooCommerce-ordreopslag/fristberegning (`RS_FR_WooCommerce`).
+- GDPR-retention via daglig cron (`RS_FR_Retention`).
+- Aktivering/deaktivering (`RS_FR_Activator` / `RS_FR_Deactivator`): opretter tabel,
+  capabilities (`manage_digital_fortrydelse`), cron og rewrite-endpoint.
+- Klasserne `require_once`'es i hovedfilen og initialiseres i `rs_fr_bootstrap_modules()`
+  på `plugins_loaded`.
+
+### Del B – Ordremails (funktioner i hovedfilen, prefix `rs_fr_`)
 - Indsætter info-boks + link til digital fortrydelse i kundens ordremails.
 - Vedhæfter handelsbetingelserne som auto-genereret PDF (varigt medie).
 - Regenererer PDF'en når betingelses-siden gemmes (Gutenberg/klassisk + Elementor).
-- Er WPML/Polylang-kompatibel:
+- WPML/Polylang-kompatibel:
   - Mail-tekster er indbygget på da/en/de/sv/nb (`rs_fr_translations()`), sproget
     bestemmes via `rs_fr_current_lang()`, og kan overrides via String Translation
     (gruppe `RS_FR_STRINGS_GROUP`). Helper til tekster: `rs_fr_t()`.
@@ -18,10 +33,18 @@ Instruktioner til Claude (Cline) for arbejde i dette repo.
     (`rs_fr_current_terms_id()`); cache pr. side-ID (`rs_fr_pdf_path( $terms_id )`),
     regenereres når original ELLER en oversættelse gemmes (`rs_fr_is_terms_page()`).
 
-Hovedfil: `rs-digital-fortrydelsesret.php`
+> De to dele kolliderer ikke: Del B hænger på WooCommerce' ordremails, Del A
+> sender egne mails ved formular-indsendelse.
+
+Hovedfil: `rs-digital-fortrydelsesret.php` (Del B + bootstrap af Del A)
+Klasser: `includes/class-rs-fr-*.php` (Del A)
 Afhængigheder (via Composer i `vendor/`):
 - `dompdf/dompdf` – PDF-generering
 - `yahnis-elsts/plugin-update-checker` – automatiske opdateringer fra GitHub Releases
+
+> **Oprindelse:** Del A er oprindeligt baseret på et indkøbt plugin og er
+> integreret/omdøbt (prefix `RS_FR_`) til rent intern brug på egne kunders sites.
+
 
 ## Distribution & opdateringer
 
