@@ -5,9 +5,11 @@ WordPress/WooCommerce-plugin der:
 1. Indsætter en kort info-boks med **link til digital fortrydelse** i kundens ordremails.
 2. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie".
 3. **Regenererer PDF'en automatisk**, når handelsbetingelses-siden gemmes/opdateres — uanset om siden er bygget med Gutenberg, klassisk editor eller **Elementor**.
+4. Er **WPML- og Polylang-kompatibel**: teksterne i mail-boksen kan oversættes via String Translation, og linket peger automatisk på den oversatte fortrydelsesside.
 
-- **Version:** 1.2.0
+- **Version:** 1.5.0
 - **Forfatter:** [ReneSejling.dk](https://renesejling.dk)
+
 
 
 ---
@@ -30,7 +32,34 @@ Stien til fortrydelsessiden styres af `RS_FR_PATH` (standard: `/fortrydelsesret/
 
 ---
 
+## Oversættelse (WPML & Polylang)
+
+Pluginnet er kompatibelt med både **WPML** og **Polylang** og kræver ingen ekstra opsætning.
+
+### Tekster i mail-boksen
+
+Teksterne registreres automatisk i **String Translation** under gruppen
+**"RS Digital Fortrydelsesret"**:
+
+- WPML: **WPML → String Translation** → filtrér på domænet/gruppen.
+- Polylang: **Sprog → Strings translations** → filtrér på gruppen.
+
+Følgende tekster kan oversættes: overskrift, intro-tekst, link-tekst og PDF-noten
+(både HTML- og plain-text-varianter).
+
+> Når WooCommerce sender mailen, sættes sproget automatisk til ordrens/kundens sprog,
+> så boksen kommer ud på det rigtige sprog.
+
+### Linket til fortrydelsessiden
+
+Linket findes **automatisk** på det rigtige sprog: pluginnet slår den oversatte side op,
+der er koblet til original-siden (`/fortrydelsesret/`) i WPML/Polylang, og bruger dens
+permalink. Findes der ingen oversættelse, falder det tilbage til original-siden.
+
+---
+
 ## Installation
+
 
 ### På et produktions-site (anbefalet)
 

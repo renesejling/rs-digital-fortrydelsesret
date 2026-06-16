@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Kort info + link til digital fortrydelse i kundens ordremails, og auto-vedhæftning af de aktuelle handelsbetingelser (valgt i WooCommerce) som PDF på et varigt medie. Henter indhold korrekt fra både Gutenberg/klassisk og Elementor.
- * Version:     1.4.0
+ * Version:     1.5.0
  * Author:      ReneSejling.dk
  * Author URI:  https://www.renesejling.dk
  * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
@@ -35,11 +35,130 @@ if ( class_exists( '\YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
 }
 
 
-// Slug til den digitale fortrydelsesside (pluginnets side).
+// Slug til den digitale fortrydelsesside (pluginnets side). Bruges som fallback,
+// hvis der ikke kan findes en rigtig WP-side (se rs_fr_get_withdrawal_url()).
 const RS_FR_PATH = '/fortrydelsesret/';
 
 // Hvilke kundemails skal have note + PDF.
 const RS_FR_MAILS = array( 'customer_processing_order', 'customer_completed_order' );
+
+// Gruppenavn der vises i WPML/Polylang's String Translation-modul.
+const RS_FR_STRINGS_GROUP = 'RS Digital Fortrydelsesret';
+
+/* ------------------------------------------------------------------ *
+ * 0) Oversættelse (WPML + Polylang String Translation)               *
+ * ------------------------------------------------------------------ *
+ * Alle brugervendte tekster i mail-boksen er samlet ét sted og kan   *
+ * oversættes via WPML eller Polylang's String Translation-modul.     *
+ * Når WooCommerce sender en mail, sætter både WPML og Polylang        *
+ * sproget til ordrens/kundens sprog, så boksen kommer ud korrekt.    *
+ * ------------------------------------------------------------------ */
+
+/**
+ * De oversætbare tekststrenge med deres danske standardværdier.
+ * Nøglen bruges som "name" i String Translation, værdien er originalteksten.
+ *
+ * @return array<string,string>
+ */
+function rs_fr_strings() {
+	return array(
+		'heading'       => 'Fortrydelsesret',
+		'intro'         => 'Du har 14 dages fortrydelsesret. Du kan fortryde dit køb direkte via vores digitale fortrydelsesfunktion:',
+		'link_text'     => 'Gå til fortrydelse',
+		'pdf_note'      => 'Dine handelsbetingelser er vedhæftet denne mail som PDF.',
+		// Plain-text-varianter (uden specialtegn, så de er e-mail-sikre).
+		'intro_plain'   => 'Du har 14 dages fortrydelsesret. Fortryd dit kob direkte her:',
+		'pdf_note_plain' => 'Dine handelsbetingelser er vedhaeftet denne mail som PDF.',
+	);
+}
+
+/**
+ * Registrér strengene til både Polylang og WPML, så de dukker op i
+ * String Translation. Helt ufarligt hvis ingen af plugins er aktive.
+ */
+add_action( 'init', 'rs_fr_register_strings' );
+function rs_fr_register_strings() {
+	$strings = rs_fr_strings();
+
+	// Polylang: pll_register_string( $name, $string, $group, $multiline ).
+	if ( function_exists( 'pll_register_string' ) ) {
+		foreach ( $strings as $name => $value ) {
+			pll_register_string( $name, $value, RS_FR_STRINGS_GROUP );
+		}
+	}
+
+	// WPML: registrér via action-hook (kræver String Translation-modulet).
+	if ( has_action( 'wpml_register_single_string' ) ) {
+		foreach ( $strings as $name => $value ) {
+			do_action( 'wpml_register_single_string', RS_FR_STRINGS_GROUP, $name, $value );
+		}
+	}
+}
+
+/**
+ * Oversæt en registreret streng til det aktuelle sprog.
+ * Rækkefølge: WPML → Polylang → dansk standard.
+ *
+ * @param string $name Nøglen fra rs_fr_strings().
+ * @return string Oversat tekst (eller den danske standard).
+ */
+function rs_fr_t( $name ) {
+	$strings = rs_fr_strings();
+	$default = isset( $strings[ $name ] ) ? $strings[ $name ] : '';
+
+	// WPML.
+	if ( has_filter( 'wpml_translate_single_string' ) ) {
+		return apply_filters( 'wpml_translate_single_string', $default, RS_FR_STRINGS_GROUP, $name );
+	}
+
+	// Polylang.
+	if ( function_exists( 'pll__' ) ) {
+		return pll__( $default );
+	}
+
+	return $default;
+}
+
+/**
+ * Find URL'en til fortrydelsessiden på det aktuelle sprog.
+ *
+ * Forsøger i rækkefølge:
+ *   1. Den oversatte WP-side koblet til original-siden (Polylang/WPML).
+ *   2. Original-siden fundet ud fra stien RS_FR_PATH.
+ *   3. home_url( RS_FR_PATH ) som ren fallback.
+ *
+ * @return string Færdig, escaped URL.
+ */
+function rs_fr_get_withdrawal_url() {
+	// Find original-sidens ID ud fra stien (fx /fortrydelsesret/).
+	$base_id = url_to_postid( home_url( RS_FR_PATH ) );
+
+	if ( $base_id ) {
+		$translated_id = $base_id;
+
+		// Polylang: hent oversat side-ID for det aktuelle sprog.
+		if ( function_exists( 'pll_get_post' ) ) {
+			$candidate = pll_get_post( $base_id );
+			if ( $candidate ) {
+				$translated_id = $candidate;
+			}
+		} elseif ( has_filter( 'wpml_object_id' ) ) {
+			// WPML: hent oversat side-ID (true = fald tilbage til original hvis ingen oversættelse).
+			$candidate = apply_filters( 'wpml_object_id', $base_id, 'page', true );
+			if ( $candidate ) {
+				$translated_id = $candidate;
+			}
+		}
+
+		$permalink = get_permalink( $translated_id );
+		if ( $permalink ) {
+			return esc_url( $permalink );
+		}
+	}
+
+	// Fallback: byg ud fra stien (WPML/Polylang tilføjer selv sprog-prefix hvis relevant).
+	return esc_url( home_url( RS_FR_PATH ) );
+}
 
 /* ------------------------------------------------------------------ *
  * 1) Kort info-boks + link + note om vedhæftning i kundens ordremails *
@@ -50,25 +169,26 @@ function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
 		return;
 	}
 
-	$url = esc_url( home_url( RS_FR_PATH ) );
+	$url = rs_fr_get_withdrawal_url();
 
 	if ( $plain_text ) {
 		echo "\n\n----------------------------------------\n";
-		echo "FORTRYDELSESRET\n";
-		echo "Du har 14 dages fortrydelsesret. Fortryd dit kob direkte her:\n" . $url . "\n";
-		echo "Dine handelsbetingelser er vedhaeftet denne mail som PDF.\n";
+		echo esc_html( rs_fr_t( 'heading' ) ) . "\n";
+		echo esc_html( rs_fr_t( 'intro_plain' ) ) . "\n" . $url . "\n";
+		echo esc_html( rs_fr_t( 'pdf_note_plain' ) ) . "\n";
 		echo "----------------------------------------\n";
 		return;
 	}
 	?>
 	<div style="margin-top:30px;padding:15px;border:1px solid #e5e5e5;background:#f9f9f9;border-radius:4px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#636363;line-height:150%;">
-		<h4 style="margin:0 0 8px;color:#333;">Fortrydelsesret</h4>
-		<p style="margin:0 0 8px;">Du har 14 dages fortrydelsesret. Du kan fortryde dit køb direkte via vores digitale fortrydelsesfunktion:</p>
-		<p style="margin:0 0 8px;"><a href="<?php echo $url; ?>" style="color:#111;text-decoration:underline;font-weight:bold;">Gå til fortrydelse</a></p>
-		<p style="margin:0;">Dine handelsbetingelser er vedhæftet denne mail som PDF.</p>
+		<h4 style="margin:0 0 8px;color:#333;"><?php echo esc_html( rs_fr_t( 'heading' ) ); ?></h4>
+		<p style="margin:0 0 8px;"><?php echo esc_html( rs_fr_t( 'intro' ) ); ?></p>
+		<p style="margin:0 0 8px;"><a href="<?php echo $url; ?>" style="color:#111;text-decoration:underline;font-weight:bold;"><?php echo esc_html( rs_fr_t( 'link_text' ) ); ?></a></p>
+		<p style="margin:0;"><?php echo esc_html( rs_fr_t( 'pdf_note' ) ); ?></p>
 	</div>
 	<?php
 }
+
 
 /* ------------------------------------------------------- *
  * 2) Vedhæft den cachede handelsbetingelses-PDF til mailen *
