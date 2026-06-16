@@ -8,9 +8,15 @@ Instruktioner til Claude (Cline) for arbejde i dette repo.
 - Indsætter info-boks + link til digital fortrydelse i kundens ordremails.
 - Vedhæfter handelsbetingelserne som auto-genereret PDF (varigt medie).
 - Regenererer PDF'en når betingelses-siden gemmes (Gutenberg/klassisk + Elementor).
-- Er WPML/Polylang-kompatibel: mail-tekster oversættes via String Translation
-  (gruppe `RS_FR_STRINGS_GROUP`), og linket slår den oversatte fortrydelsesside op
-  automatisk (`rs_fr_get_withdrawal_url()`). Helper til tekster: `rs_fr_t()`.
+- Er WPML/Polylang-kompatibel:
+  - Mail-tekster er indbygget på da/en/de/sv/nb (`rs_fr_translations()`), sproget
+    bestemmes via `rs_fr_current_lang()`, og kan overrides via String Translation
+    (gruppe `RS_FR_STRINGS_GROUP`). Helper til tekster: `rs_fr_t()`.
+  - Linket slår den oversatte fortrydelsesside op automatisk
+    (`rs_fr_get_withdrawal_url()` + `rs_fr_translated_post_id()`).
+  - Den vedhæftede PDF tages fra den oversatte betingelses-side der matcher sproget
+    (`rs_fr_current_terms_id()`); cache pr. side-ID (`rs_fr_pdf_path( $terms_id )`),
+    regenereres når original ELLER en oversættelse gemmes (`rs_fr_is_terms_page()`).
 
 Hovedfil: `rs-digital-fortrydelsesret.php`
 Afhængigheder (via Composer i `vendor/`):

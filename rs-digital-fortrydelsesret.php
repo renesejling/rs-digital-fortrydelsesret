@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Kort info + link til digital fortrydelse i kundens ordremails, og auto-vedhæftning af de aktuelle handelsbetingelser (valgt i WooCommerce) som PDF på et varigt medie. Henter indhold korrekt fra både Gutenberg/klassisk og Elementor.
- * Version:     1.5.0
+ * Version:     1.6.0
  * Author:      ReneSejling.dk
  * Author URI:  https://www.renesejling.dk
  * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
@@ -46,30 +46,105 @@ const RS_FR_MAILS = array( 'customer_processing_order', 'customer_completed_orde
 const RS_FR_STRINGS_GROUP = 'RS Digital Fortrydelsesret';
 
 /* ------------------------------------------------------------------ *
- * 0) Oversættelse (WPML + Polylang String Translation)               *
+ * 0) Oversættelse (indbygget + WPML/Polylang String Translation)     *
  * ------------------------------------------------------------------ *
- * Alle brugervendte tekster i mail-boksen er samlet ét sted og kan   *
- * oversættes via WPML eller Polylang's String Translation-modul.     *
- * Når WooCommerce sender en mail, sætter både WPML og Polylang        *
- * sproget til ordrens/kundens sprog, så boksen kommer ud korrekt.    *
+ * Mail-boksens tekster er indbygget på dansk, engelsk, tysk, svensk  *
+ * og norsk (bokmål), så det virker out-of-the-box uden opsætning.    *
+ * Sproget bestemmes ud fra Polylang/WPML/WordPress ved afsendelse.   *
+ *                                                                    *
+ * Derudover registreres de danske strenge i WPML/Polylang's String   *
+ * Translation, så man kan tilføje flere sprog eller finjustere       *
+ * teksterne dér (override). Rækkefølge i rs_fr_t():                   *
+ *   String Translation-oversættelse → indbygget sprog → dansk.       *
  * ------------------------------------------------------------------ */
 
 /**
- * De oversætbare tekststrenge med deres danske standardværdier.
- * Nøglen bruges som "name" i String Translation, værdien er originalteksten.
+ * Indbyggede oversættelser pr. sprogkode.
+ *
+ * @return array<string,array<string,string>>
+ */
+function rs_fr_translations() {
+	return array(
+		'da' => array(
+			'heading'        => 'Fortrydelsesret',
+			'intro'          => 'Du har 14 dages fortrydelsesret. Du kan fortryde dit køb direkte via vores digitale fortrydelsesfunktion:',
+			'link_text'      => 'Gå til fortrydelse',
+			'pdf_note'       => 'Dine handelsbetingelser er vedhæftet denne mail som PDF.',
+			'intro_plain'    => 'Du har 14 dages fortrydelsesret. Fortryd dit kob direkte her:',
+			'pdf_note_plain' => 'Dine handelsbetingelser er vedhaeftet denne mail som PDF.',
+		),
+		'en' => array(
+			'heading'        => 'Right of withdrawal',
+			'intro'          => 'You have a 14-day right of withdrawal. You can cancel your purchase directly via our digital withdrawal function:',
+			'link_text'      => 'Go to withdrawal',
+			'pdf_note'       => 'Your terms and conditions are attached to this email as a PDF.',
+			'intro_plain'    => 'You have a 14-day right of withdrawal. Cancel your purchase directly here:',
+			'pdf_note_plain' => 'Your terms and conditions are attached to this email as a PDF.',
+		),
+		'de' => array(
+			'heading'        => 'Widerrufsrecht',
+			'intro'          => 'Sie haben ein 14-tägiges Widerrufsrecht. Sie können Ihren Kauf direkt über unsere digitale Widerrufsfunktion widerrufen:',
+			'link_text'      => 'Zum Widerruf',
+			'pdf_note'       => 'Ihre Allgemeinen Geschäftsbedingungen sind dieser E-Mail als PDF beigefügt.',
+			'intro_plain'    => 'Sie haben ein 14-tägiges Widerrufsrecht. Widerrufen Sie Ihren Kauf direkt hier:',
+			'pdf_note_plain' => 'Ihre Allgemeinen Geschaeftsbedingungen sind dieser E-Mail als PDF beigefuegt.',
+		),
+		'sv' => array(
+			'heading'        => 'Ångerrätt',
+			'intro'          => 'Du har 14 dagars ångerrätt. Du kan ångra ditt köp direkt via vår digitala ångerfunktion:',
+			'link_text'      => 'Gå till ångerrätt',
+			'pdf_note'       => 'Dina köpvillkor bifogas detta mejl som PDF.',
+			'intro_plain'    => 'Du har 14 dagars angerratt. Angra ditt kop direkt har:',
+			'pdf_note_plain' => 'Dina kopvillkor bifogas detta mejl som PDF.',
+		),
+		'nb' => array(
+			'heading'        => 'Angrerett',
+			'intro'          => 'Du har 14 dagers angrerett. Du kan angre kjøpet ditt direkte via vår digitale angrefunksjon:',
+			'link_text'      => 'Gå til angrerett',
+			'pdf_note'       => 'Dine kjøpsvilkår er vedlagt denne e-posten som PDF.',
+			'intro_plain'    => 'Du har 14 dagers angrerett. Angre kjopet ditt direkte her:',
+			'pdf_note_plain' => 'Dine kjopsvilkar er vedlagt denne e-posten som PDF.',
+		),
+	);
+}
+
+/**
+ * Bestem det aktuelle sprog som en 2-bogstavs kode (fx 'da', 'en', 'de').
+ * Rækkefølge: Polylang → WPML → WordPress determine_locale() → 'da'.
+ *
+ * @return string Sprogkode (lowercase, 2 tegn).
+ */
+function rs_fr_current_lang() {
+	// Polylang.
+	if ( function_exists( 'pll_current_language' ) ) {
+		$lang = pll_current_language( 'slug' );
+		if ( $lang ) {
+			return strtolower( substr( $lang, 0, 2 ) );
+		}
+	}
+
+	// WPML.
+	if ( defined( 'ICL_LANGUAGE_CODE' ) && ICL_LANGUAGE_CODE ) {
+		return strtolower( substr( ICL_LANGUAGE_CODE, 0, 2 ) );
+	}
+
+	// WordPress-locale (fx 'en_US' → 'en', 'nb_NO' → 'nb').
+	$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
+	if ( $locale ) {
+		return strtolower( substr( $locale, 0, 2 ) );
+	}
+
+	return 'da';
+}
+
+/**
+ * De danske standardstrenge (bruges som "name"/originaltekst i String Translation).
  *
  * @return array<string,string>
  */
 function rs_fr_strings() {
-	return array(
-		'heading'       => 'Fortrydelsesret',
-		'intro'         => 'Du har 14 dages fortrydelsesret. Du kan fortryde dit køb direkte via vores digitale fortrydelsesfunktion:',
-		'link_text'     => 'Gå til fortrydelse',
-		'pdf_note'      => 'Dine handelsbetingelser er vedhæftet denne mail som PDF.',
-		// Plain-text-varianter (uden specialtegn, så de er e-mail-sikre).
-		'intro_plain'   => 'Du har 14 dages fortrydelsesret. Fortryd dit kob direkte her:',
-		'pdf_note_plain' => 'Dine handelsbetingelser er vedhaeftet denne mail som PDF.',
-	);
+	$translations = rs_fr_translations();
+	return $translations['da'];
 }
 
 /**
@@ -96,27 +171,76 @@ function rs_fr_register_strings() {
 }
 
 /**
- * Oversæt en registreret streng til det aktuelle sprog.
- * Rækkefølge: WPML → Polylang → dansk standard.
+ * Oversæt en streng til det aktuelle sprog.
  *
- * @param string $name Nøglen fra rs_fr_strings().
- * @return string Oversat tekst (eller den danske standard).
+ * Rækkefølge:
+ *   1. String Translation-oversættelse (hvis udfyldt i WPML/Polylang).
+ *   2. Indbygget oversættelse for det aktuelle sprog (da/en/de/sv/nb).
+ *   3. Dansk standard.
+ *
+ * @param string $name Nøglen fra rs_fr_translations().
+ * @return string Oversat tekst.
  */
 function rs_fr_t( $name ) {
-	$strings = rs_fr_strings();
-	$default = isset( $strings[ $name ] ) ? $strings[ $name ] : '';
+	$translations = rs_fr_translations();
+	$danish       = isset( $translations['da'][ $name ] ) ? $translations['da'][ $name ] : '';
 
-	// WPML.
+	// Indbygget oversættelse for det aktuelle sprog (fallback til dansk).
+	$lang     = rs_fr_current_lang();
+	$built_in = ( isset( $translations[ $lang ][ $name ] ) && '' !== $translations[ $lang ][ $name ] )
+		? $translations[ $lang ][ $name ]
+		: $danish;
+
+	// 1) WPML String Translation – brug kun hvis der faktisk findes en oversættelse
+	//    (ellers returnerer den bare originalen, og så foretrækker vi vores indbyggede).
 	if ( has_filter( 'wpml_translate_single_string' ) ) {
-		return apply_filters( 'wpml_translate_single_string', $default, RS_FR_STRINGS_GROUP, $name );
+		$translated = apply_filters( 'wpml_translate_single_string', $danish, RS_FR_STRINGS_GROUP, $name );
+		if ( $translated && $translated !== $danish ) {
+			return $translated;
+		}
+	}
+
+	// 2) Polylang String Translation – samme princip.
+	if ( function_exists( 'pll__' ) && function_exists( 'pll_current_language' ) ) {
+		$translated = pll__( $danish );
+		if ( $translated && $translated !== $danish ) {
+			return $translated;
+		}
+	}
+
+	// 3) Indbygget oversættelse / dansk standard.
+	return $built_in;
+}
+
+/**
+ * Find side-ID'et for fortrydelsessiden / en valgt side på det aktuelle sprog.
+ * Bruger Polylang/WPML's kobling mellem original og oversættelse.
+ *
+ * @param int    $base_id   Original-sidens ID.
+ * @param string $post_type Posttype (bruges af WPML), standard 'page'.
+ * @return int Det oversatte side-ID (eller originalen hvis ingen oversættelse).
+ */
+function rs_fr_translated_post_id( $base_id, $post_type = 'page' ) {
+	$base_id = (int) $base_id;
+	if ( ! $base_id ) {
+		return 0;
 	}
 
 	// Polylang.
-	if ( function_exists( 'pll__' ) ) {
-		return pll__( $default );
+	if ( function_exists( 'pll_get_post' ) ) {
+		$candidate = pll_get_post( $base_id );
+		if ( $candidate ) {
+			return (int) $candidate;
+		}
+	} elseif ( has_filter( 'wpml_object_id' ) ) {
+		// WPML (true = fald tilbage til original hvis ingen oversættelse).
+		$candidate = apply_filters( 'wpml_object_id', $base_id, $post_type, true );
+		if ( $candidate ) {
+			return (int) $candidate;
+		}
 	}
 
-	return $default;
+	return $base_id;
 }
 
 /**
@@ -134,21 +258,7 @@ function rs_fr_get_withdrawal_url() {
 	$base_id = url_to_postid( home_url( RS_FR_PATH ) );
 
 	if ( $base_id ) {
-		$translated_id = $base_id;
-
-		// Polylang: hent oversat side-ID for det aktuelle sprog.
-		if ( function_exists( 'pll_get_post' ) ) {
-			$candidate = pll_get_post( $base_id );
-			if ( $candidate ) {
-				$translated_id = $candidate;
-			}
-		} elseif ( has_filter( 'wpml_object_id' ) ) {
-			// WPML: hent oversat side-ID (true = fald tilbage til original hvis ingen oversættelse).
-			$candidate = apply_filters( 'wpml_object_id', $base_id, 'page', true );
-			if ( $candidate ) {
-				$translated_id = $candidate;
-			}
-		}
+		$translated_id = rs_fr_translated_post_id( $base_id );
 
 		$permalink = get_permalink( $translated_id );
 		if ( $permalink ) {
@@ -192,6 +302,9 @@ function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
 
 /* ------------------------------------------------------- *
  * 2) Vedhæft den cachede handelsbetingelses-PDF til mailen *
+ * ------------------------------------------------------- *
+ * Vedhæfter PDF'en for den oversatte betingelses-side der  *
+ * matcher kundens sprog (falder tilbage til originalen).   *
  * ------------------------------------------------------- */
 add_filter( 'woocommerce_email_attachments', 'rs_fr_attach_pdf', 10, 3 );
 function rs_fr_attach_pdf( $attachments, $email_id, $order ) {
@@ -199,9 +312,15 @@ function rs_fr_attach_pdf( $attachments, $email_id, $order ) {
 		return $attachments;
 	}
 
-	$pdf = rs_fr_pdf_path();
+	// Find den betingelses-side der passer til det aktuelle sprog.
+	$terms_id = rs_fr_current_terms_id();
+	if ( ! $terms_id ) {
+		return $attachments;
+	}
+
+	$pdf = rs_fr_pdf_path( $terms_id );
 	if ( ! file_exists( $pdf ) ) {
-		rs_fr_generate_pdf(); // Lazy generation hvis filen endnu ikke findes.
+		rs_fr_generate_pdf( $terms_id ); // Lazy generation hvis filen endnu ikke findes.
 	}
 	if ( file_exists( $pdf ) ) {
 		$attachments[] = $pdf;
@@ -212,6 +331,7 @@ function rs_fr_attach_pdf( $attachments, $email_id, $order ) {
 /* --------------------------------------------------------------- *
  * 3) Regenerér PDF når handelsbetingelses-siden gemmes/opdateres   *
  *    => kunden får altid den nyeste version automatisk.            *
+ *    Virker både for original-siden og dens oversættelser.         *
  * --------------------------------------------------------------- */
 
 // Standard WordPress-gem (Gutenberg/klassisk redigering).
@@ -220,27 +340,95 @@ function rs_fr_maybe_regenerate( $post_id ) {
 	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || wp_is_post_revision( $post_id ) ) {
 		return;
 	}
-	$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
-	if ( $terms_id && (int) $post_id === $terms_id ) {
-		rs_fr_generate_pdf();
+	if ( rs_fr_is_terms_page( $post_id ) ) {
+		rs_fr_generate_pdf( (int) $post_id );
 	}
 }
 
 // Elementor-gem (redigering via Elementor-editoren rammer ikke altid save_post rent).
 add_action( 'elementor/document/after_save', 'rs_fr_after_elementor_save', 10, 2 );
 function rs_fr_after_elementor_save( $document, $data ) {
-	$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
-	if ( $terms_id && method_exists( $document, 'get_main_id' ) && (int) $document->get_main_id() === $terms_id ) {
-		rs_fr_generate_pdf();
+	if ( method_exists( $document, 'get_main_id' ) ) {
+		$post_id = (int) $document->get_main_id();
+		if ( rs_fr_is_terms_page( $post_id ) ) {
+			rs_fr_generate_pdf( $post_id );
+		}
 	}
 }
 
 /* ----------------- *
  * Hjælpefunktioner   *
  * ----------------- */
-function rs_fr_pdf_path() {
-	$up = wp_upload_dir();
-	return trailingslashit( $up['basedir'] ) . 'rs-fortrydelsesret/handelsbetingelser.pdf';
+
+/**
+ * Sti til den cachede PDF for en given betingelses-side.
+ * Filen navngives efter side-ID'et, så hvert sprog/side får sin egen.
+ *
+ * @param int $terms_id Side-ID. 0 = den i WooCommerce valgte original.
+ * @return string Absolut filsti.
+ */
+function rs_fr_pdf_path( $terms_id = 0 ) {
+	$up   = wp_upload_dir();
+	$base = trailingslashit( $up['basedir'] ) . 'rs-fortrydelsesret/';
+
+	$terms_id = (int) $terms_id;
+	if ( $terms_id ) {
+		return $base . 'handelsbetingelser-' . $terms_id . '.pdf';
+	}
+
+	// Bagudkompatibel standardsti (original).
+	return $base . 'handelsbetingelser.pdf';
+}
+
+/**
+ * Find betingelses-sidens ID for det aktuelle sprog.
+ * Tager WooCommerce-original-siden og slår dens oversættelse op.
+ *
+ * @return int Side-ID (0 hvis ingen betingelses-side er valgt).
+ */
+function rs_fr_current_terms_id() {
+	$base_id = (int) get_option( 'woocommerce_terms_page_id' );
+	if ( ! $base_id ) {
+		return 0;
+	}
+	return rs_fr_translated_post_id( $base_id );
+}
+
+/**
+ * Afgør om et givet side-ID er WooCommerce-betingelses-siden ELLER en
+ * af dens oversættelser (Polylang/WPML).
+ *
+ * @param int $post_id Side-ID der skal tjekkes.
+ * @return bool
+ */
+function rs_fr_is_terms_page( $post_id ) {
+	$post_id = (int) $post_id;
+	$base_id = (int) get_option( 'woocommerce_terms_page_id' );
+	if ( ! $base_id || ! $post_id ) {
+		return false;
+	}
+
+	if ( $post_id === $base_id ) {
+		return true;
+	}
+
+	// Polylang: sammenlign på tværs af alle oversættelser af original-siden.
+	if ( function_exists( 'pll_get_post_translations' ) ) {
+		$translations = pll_get_post_translations( $base_id );
+		if ( is_array( $translations ) && in_array( $post_id, array_map( 'intval', $translations ), true ) ) {
+			return true;
+		}
+	}
+
+	// WPML: slå original-ID'et op ud fra det gemte ID og sammenlign.
+	if ( has_filter( 'wpml_object_id' ) ) {
+		$original = apply_filters( 'wpml_object_id', $post_id, 'page', true );
+		if ( (int) $original === $base_id ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**
@@ -270,17 +458,21 @@ function rs_fr_get_terms_html( $terms_id ) {
 }
 
 /**
- * Byg den rå PDF-binær ud fra den i WooCommerce valgte handelsbetingelses-side.
+ * Byg den rå PDF-binær ud fra en handelsbetingelses-side.
  * Genbruges af både cache-generering (mail-vedhæftning) og test-download.
  *
+ * @param int $terms_id Side-ID. 0 = den i WooCommerce valgte original-side.
  * @return string|WP_Error PDF-binær ved succes, ellers WP_Error med årsag.
  */
-function rs_fr_build_pdf_output() {
+function rs_fr_build_pdf_output( $terms_id = 0 ) {
 	if ( ! class_exists( '\Dompdf\Dompdf' ) ) {
 		return new WP_Error( 'rs_fr_no_dompdf', 'Dompdf er ikke installeret (kør "composer install").' );
 	}
 
-	$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
+	$terms_id = (int) $terms_id;
+	if ( ! $terms_id ) {
+		$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
+	}
 	if ( ! $terms_id ) {
 		return new WP_Error( 'rs_fr_no_terms_page', 'Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration).' );
 	}
@@ -313,20 +505,30 @@ function rs_fr_build_pdf_output() {
 }
 
 /**
- * Generér PDF ud fra den i WooCommerce valgte handelsbetingelses-side
- * og gem den som cachet fil (den der vedhæftes kundens mails).
+ * Generér PDF ud fra en handelsbetingelses-side og gem den som cachet fil
+ * (den der vedhæftes kundens mails). Filnavnet følger side-ID'et, så hvert
+ * sprog/side får sin egen cachede PDF.
+ *
+ * @param int $terms_id Side-ID. 0 = den i WooCommerce valgte original-side.
+ * @return bool
  */
-function rs_fr_generate_pdf() {
-	$output = rs_fr_build_pdf_output();
+function rs_fr_generate_pdf( $terms_id = 0 ) {
+	$terms_id = (int) $terms_id;
+	if ( ! $terms_id ) {
+		$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
+	}
+
+	$output = rs_fr_build_pdf_output( $terms_id );
 	if ( is_wp_error( $output ) ) {
 		return false;
 	}
 
-	$dir = dirname( rs_fr_pdf_path() );
+	$path = rs_fr_pdf_path( $terms_id );
+	$dir  = dirname( $path );
 	if ( ! file_exists( $dir ) ) {
 		wp_mkdir_p( $dir );
 	}
-	return (bool) file_put_contents( rs_fr_pdf_path(), $output );
+	return (bool) file_put_contents( $path, $output );
 }
 
 /* ------------------------------------------------------------------ *

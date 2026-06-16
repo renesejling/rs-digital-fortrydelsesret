@@ -5,10 +5,11 @@ WordPress/WooCommerce-plugin der:
 1. Indsætter en kort info-boks med **link til digital fortrydelse** i kundens ordremails.
 2. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie".
 3. **Regenererer PDF'en automatisk**, når handelsbetingelses-siden gemmes/opdateres — uanset om siden er bygget med Gutenberg, klassisk editor eller **Elementor**.
-4. Er **WPML- og Polylang-kompatibel**: teksterne i mail-boksen kan oversættes via String Translation, og linket peger automatisk på den oversatte fortrydelsesside.
+4. Er **WPML- og Polylang-kompatibel**: mail-boksens tekster er indbygget på fem sprog (da/en/de/sv/nb), linket peger automatisk på den oversatte fortrydelsesside, og den vedhæftede PDF tages fra den oversatte handelsbetingelses-side der matcher kundens sprog.
 
-- **Version:** 1.5.0
+- **Version:** 1.6.0
 - **Forfatter:** [ReneSejling.dk](https://renesejling.dk)
+
 
 
 
@@ -23,7 +24,10 @@ WordPress/WooCommerce-plugin der:
 | Auto-regenerering (klassisk/Gutenberg) | `save_post` | Genererer PDF når betingelses-siden gemmes |
 | Auto-regenerering (Elementor) | `elementor/document/after_save` | Genererer PDF efter Elementor-gem |
 
-PDF'en gemmes i: `wp-content/uploads/rs-fortrydelsesret/handelsbetingelser.pdf`
+PDF'en gemmes i: `wp-content/uploads/rs-fortrydelsesret/` — én fil pr.
+betingelses-side/sprog, navngivet efter side-ID'et (fx
+`handelsbetingelser-123.pdf`).
+
 
 De mails der får note + PDF styres af konstanten `RS_FR_MAILS`
 (standard: `customer_processing_order`, `customer_completed_order`).
@@ -34,27 +38,38 @@ Stien til fortrydelsessiden styres af `RS_FR_PATH` (standard: `/fortrydelsesret/
 
 ## Oversættelse (WPML & Polylang)
 
-Pluginnet er kompatibelt med både **WPML** og **Polylang** og kræver ingen ekstra opsætning.
+Pluginnet er kompatibelt med både **WPML** og **Polylang** og virker
+**out-of-the-box** uden ekstra opsætning.
 
 ### Tekster i mail-boksen
 
-Teksterne registreres automatisk i **String Translation** under gruppen
-**"RS Digital Fortrydelsesret"**:
+Teksterne er **indbygget på fem sprog**: dansk, engelsk, tysk, svensk og norsk
+(bokmål). Pluginnet vælger automatisk sproget ud fra ordrens/kundens sprog
+(Polylang/WPML) eller WordPress' locale. Er sproget ikke et af de fem, bruges dansk.
 
-- WPML: **WPML → String Translation** → filtrér på domænet/gruppen.
+**Override / flere sprog:** strengene registreres også i **String Translation**
+under gruppen **"RS Digital Fortrydelsesret"**, så du kan tilføje yderligere sprog
+eller finjustere teksterne dér:
+
+- WPML: **WPML → String Translation** → filtrér på gruppen.
 - Polylang: **Sprog → Strings translations** → filtrér på gruppen.
 
-Følgende tekster kan oversættes: overskrift, intro-tekst, link-tekst og PDF-noten
-(både HTML- og plain-text-varianter).
-
-> Når WooCommerce sender mailen, sættes sproget automatisk til ordrens/kundens sprog,
-> så boksen kommer ud på det rigtige sprog.
+Rækkefølgen er: *String Translation-oversættelse (hvis udfyldt) → indbygget sprog → dansk.*
 
 ### Linket til fortrydelsessiden
 
 Linket findes **automatisk** på det rigtige sprog: pluginnet slår den oversatte side op,
 der er koblet til original-siden (`/fortrydelsesret/`) i WPML/Polylang, og bruger dens
 permalink. Findes der ingen oversættelse, falder det tilbage til original-siden.
+
+### Vedhæftet handelsbetingelses-PDF
+
+PDF'en tages **automatisk fra den oversatte handelsbetingelses-side** der matcher
+kundens sprog. Pluginnet finder den WooCommerce-valgte betingelses-sides oversættelse
+(Polylang/WPML), genererer PDF'en ud fra dens indhold (titel + tekst på det rigtige
+sprog) og cacher en separat fil pr. side. Findes der ingen oversættelse, bruges den
+originale side. PDF'en regenereres automatisk når en hvilken som helst oversættelse
+af betingelses-siden gemmes.
 
 ---
 
