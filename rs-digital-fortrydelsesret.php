@@ -2,8 +2,9 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Kort info + link til digital fortrydelse i kundens ordremails, og auto-vedhæftning af de aktuelle handelsbetingelser (valgt i WooCommerce) som PDF på et varigt medie. Henter indhold korrekt fra både Gutenberg/klassisk og Elementor.
- * Version:     1.3.0
+ * Version:     1.4.0
  * Author:      ReneSejling.dk
+ * Author URI:  https://www.renesejling.dk
  * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
  */
 
