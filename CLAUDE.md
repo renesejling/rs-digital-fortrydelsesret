@@ -61,6 +61,18 @@ Efter hver afsluttet ændring skal følgende gøres **automatisk**:
 
 4. **Push altid til `main`** (medmindre andet aftales).
 
+5. **Opret ALTID et release-tag ved funktionelle ændringer** (feat/fix), så
+   opdateringen kan hentes via WordPress (GitHub Releases). Tagget SKAL matche
+   `Version:` i plugin-headeren:
+   ```bash
+   git tag v<x.y.z>
+   git push origin v<x.y.z>
+   ```
+   Dette gøres **automatisk** umiddelbart efter commit + push – uden at vente på
+   at brugeren beder om det. (Rene opdaterer via Git i WordPress, så et nyt tag
+   er nødvendigt for at opdateringen bliver synlig.)
+   Spring kun tagget over ved rene `docs:`/`chore:`-ændringer uden versionsbump.
+
 ## Rutine: Udgiv en ny version (release)
 
 Når en funktionel ændring skal ud til alle sites:
