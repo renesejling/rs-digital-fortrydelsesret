@@ -46,20 +46,25 @@ final class RS_FR_Activator
     /**
      * Add custom capabilities to common shop roles.
      *
+     * Public + statisk så den også kan kaldes fra bootstrap ved version-bump
+     * (ikke kun ved aktivering), så opdaterede installationer også får
+     * capability'en og dermed admin-menuerne.
+     *
      * @return void
      */
-    private static function add_capabilities()
+    public static function add_capabilities()
     {
         $roles = array('administrator', 'shop_manager');
 
         foreach ($roles as $role_name) {
             $role = get_role($role_name);
 
-            if ($role) {
+            if ($role && ! $role->has_cap('manage_digital_fortrydelse')) {
                 $role->add_cap('manage_digital_fortrydelse');
             }
         }
     }
+
 
     /**
      * Add default options without overwriting existing settings.

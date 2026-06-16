@@ -2,9 +2,10 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Komplet digital fortrydelsesret til WooCommerce: offentlig fortrydelsesformular med kvitterings-/notifikationsmails, sagsbehandling i admin, GDPR-retention og Min Konto-visning – samt info-boks + link i kundens ordremails og auto-vedhæftning af de aktuelle handelsbetingelser som PDF på et varigt medie (Gutenberg/klassisk + Elementor). WPML/Polylang-klar.
- * Version:     2.0.0
+ * Version:     2.0.1
  * Author:      ReneSejling.dk
  * Author URI:  https://www.renesejling.dk
+
  * Update URI:  https://github.com/renesejling/rs-digital-fortrydelsesret
  * Text Domain: rs-digital-fortrydelsesret
  * Domain Path: /languages
@@ -27,8 +28,9 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.0.0' );
+	define( 'RS_FR_VERSION', '2.0.1' );
 }
+
 if ( ! defined( 'RS_FR_DB_VERSION' ) ) {
 	define( 'RS_FR_DB_VERSION', '1' );
 }
@@ -80,12 +82,16 @@ function rs_fr_bootstrap_modules() {
 		dirname( plugin_basename( __FILE__ ) ) . '/languages'
 	);
 
-	// Hold den gemte version i sync efter kode-opdateringer.
+	// Hold den gemte version i sync efter kode-opdateringer. Ved en ny version
+	// sikrer vi også capabilities, så admin-menuerne dukker op efter en
+	// opdatering (hvor aktiverings-hooket ikke kører igen).
 	if ( get_option( 'digital_fortrydelse_version' ) !== RS_FR_VERSION ) {
 		update_option( 'digital_fortrydelse_version', RS_FR_VERSION, false );
+		RS_FR_Activator::add_capabilities();
 	}
 
 	RS_FR_Admin::init();
+
 	RS_FR_Account::init();
 	RS_FR_Retention::init();
 	RS_FR_Settings::init();

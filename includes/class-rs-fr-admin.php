@@ -42,14 +42,40 @@ final class RS_FR_Admin
             'woocommerce',
             __('Fortrydelser', 'rs-digital-fortrydelsesret'),
             __('Fortrydelser', 'rs-digital-fortrydelsesret'),
-            'manage_digital_fortrydelse',
+            self::menu_capability(),
             self::PAGE,
             array(__CLASS__, 'render_page')
         );
     }
 
     /**
+     * Capability der bruges til at vise menupunktet.
+     *
+     * Bruger den brugerdefinerede capability hvis den aktuelle bruger har den,
+     * ellers falder vi tilbage til 'manage_woocommerce', så menuen altid er
+     * synlig for WooCommerce-administratorer (også hvis capability'en mangler).
+     *
+     * @return string
+     */
+    private static function menu_capability()
+    {
+        return current_user_can('manage_digital_fortrydelse') ? 'manage_digital_fortrydelse' : 'manage_woocommerce';
+    }
+
+    /**
+     * Må den aktuelle bruger administrere fortrydelser?
+     *
+     * @return bool
+     */
+    private static function current_user_can_manage()
+    {
+        return current_user_can('manage_digital_fortrydelse') || current_user_can('manage_woocommerce');
+    }
+
+
+    /**
      * Enqueue admin styles for the plugin pages.
+
      *
      * @return void
      */
@@ -76,9 +102,10 @@ final class RS_FR_Admin
      */
     public static function render_page()
     {
-        if (!current_user_can('manage_digital_fortrydelse')) {
+        if (!self::current_user_can_manage()) {
             wp_die(esc_html__('Du har ikke adgang til denne side.', 'rs-digital-fortrydelsesret'));
         }
+
 
         $case_id = isset($_GET['digital_fortrydelse_case']) ? absint($_GET['digital_fortrydelse_case']) : 0;
 
@@ -241,9 +268,10 @@ final class RS_FR_Admin
      */
     public static function handle_status_update()
     {
-        if (!current_user_can('manage_digital_fortrydelse')) {
+        if (!self::current_user_can_manage()) {
             wp_die(esc_html__('Du har ikke adgang til denne handling.', 'rs-digital-fortrydelsesret'));
         }
+
 
         $case_id = isset($_POST['case_id']) ? absint($_POST['case_id']) : 0;
 
@@ -272,9 +300,10 @@ final class RS_FR_Admin
      */
     public static function handle_export()
     {
-        if (!current_user_can('manage_digital_fortrydelse')) {
+        if (!self::current_user_can_manage()) {
             wp_die(esc_html__('Du har ikke adgang til denne handling.', 'rs-digital-fortrydelsesret'));
         }
+
 
         check_admin_referer(self::EXPORT_ACTION);
 

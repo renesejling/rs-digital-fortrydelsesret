@@ -41,11 +41,22 @@ final class RS_FR_Settings
             'woocommerce',
             __('Digital Fortrydelse indstillinger', 'rs-digital-fortrydelsesret'),
             __('Fortrydelse indstillinger', 'rs-digital-fortrydelsesret'),
-            'manage_digital_fortrydelse',
+            self::menu_capability(),
             'digital-fortrydelse-settings',
             array(__CLASS__, 'render_settings_page')
         );
     }
+
+    /**
+     * Capability til at vise indstillings-menupunktet (med manage_woocommerce-fallback).
+     *
+     * @return string
+     */
+    private static function menu_capability()
+    {
+        return current_user_can('manage_digital_fortrydelse') ? 'manage_digital_fortrydelse' : 'manage_woocommerce';
+    }
+
 
     /**
      * Register settings and fields.
@@ -190,9 +201,10 @@ final class RS_FR_Settings
      */
     public static function render_settings_page()
     {
-        if (!current_user_can('manage_digital_fortrydelse')) {
+        if (!current_user_can('manage_digital_fortrydelse') && !current_user_can('manage_woocommerce')) {
             wp_die(esc_html__('Du har ikke adgang til denne side.', 'rs-digital-fortrydelsesret'));
         }
+
 
         ?>
         <div class="wrap">
