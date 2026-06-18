@@ -134,6 +134,13 @@ final class RS_FR_Frontend
                     <textarea id="digital_fortrydelse_requested_items" name="digital_fortrydelse_requested_items" rows="4"></textarea>
                 </p>
 
+                <?php $form_outro = self::get_form_outro(); ?>
+                <?php if ('' !== $form_outro) : ?>
+                    <div class="digital-fortrydelse__outro" role="note">
+                        <?php echo wp_kses_post(wpautop($form_outro)); ?>
+                    </div>
+                <?php endif; ?>
+
                 <p>
                     <button type="submit" class="digital-fortrydelse__button"><?php echo esc_html__('Bekræft fortrydelse', 'rs-digital-fortrydelsesret'); ?></button>
                 </p>
@@ -382,6 +389,18 @@ final class RS_FR_Frontend
         }
 
         return __('Udfyld formularen herunder for at fortryde dit køb. Du modtager en kvittering for din anmodning pr. e-mail.', 'rs-digital-fortrydelsesret');
+    }
+
+    /**
+     * Get optional outro text shown just before the submit button.
+     *
+     * @return string
+     */
+    private static function get_form_outro()
+    {
+        $settings = RS_FR_Settings::get_settings();
+
+        return !empty($settings['form_outro']) ? $settings['form_outro'] : '';
     }
 
     /**

@@ -115,6 +115,14 @@ final class RS_FR_Settings
         );
 
         add_settings_field(
+            'form_outro',
+            __('Tekst før knap', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_form_outro_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_general'
+        );
+
+        add_settings_field(
             'customer_mail_template',
             __('Kundekvittering', 'rs-digital-fortrydelsesret'),
             array(__CLASS__, 'render_customer_mail_template_field'),
@@ -186,6 +194,7 @@ final class RS_FR_Settings
             'retention_years' => isset($input['retention_years']) ? min(5, max(1, absint($input['retention_years']))) : 5,
             'delete_data_on_uninstall' => !empty($input['delete_data_on_uninstall']) ? 1 : 0,
             'form_intro' => isset($input['form_intro']) ? wp_kses_post($input['form_intro']) : '',
+            'form_outro' => isset($input['form_outro']) ? wp_kses_post($input['form_outro']) : '',
             'customer_mail_template' => isset($input['customer_mail_template']) ? sanitize_textarea_field($input['customer_mail_template']) : '',
             'internal_mail_template' => isset($input['internal_mail_template']) ? sanitize_textarea_field($input['internal_mail_template']) : '',
             'terms_page_id' => isset($input['terms_page_id']) ? absint($input['terms_page_id']) : 0,
@@ -290,6 +299,24 @@ final class RS_FR_Settings
             rows="4"
             name="digital_fortrydelse_settings[form_intro]"
         ><?php echo esc_textarea($settings['form_intro']); ?></textarea>
+        <?php
+    }
+
+    /**
+     * Render form outro field (vises lige før knappen på formularen).
+     *
+     * @return void
+     */
+    public static function render_form_outro_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <textarea
+            class="large-text"
+            rows="4"
+            name="digital_fortrydelse_settings[form_outro]"
+        ><?php echo esc_textarea($settings['form_outro']); ?></textarea>
+        <p class="description"><?php echo esc_html__('Valgfri tekst der vises i en infoboks lige før "Bekræft fortrydelse"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt.', 'rs-digital-fortrydelsesret'); ?></p>
         <?php
     }
 
@@ -447,6 +474,7 @@ final class RS_FR_Settings
             'retention_years' => 5,
             'delete_data_on_uninstall' => 0,
             'form_intro' => '',
+            'form_outro' => '',
             'customer_mail_template' => '',
             'internal_mail_template' => '',
             'terms_page_id' => 0,

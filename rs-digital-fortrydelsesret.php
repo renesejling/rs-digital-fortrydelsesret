@@ -28,7 +28,7 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.0.1' );
+	define( 'RS_FR_VERSION', '2.0.2' );
 }
 
 if ( ! defined( 'RS_FR_DB_VERSION' ) ) {
