@@ -32,8 +32,9 @@ if ( ! defined( 'RS_FR_VERSION' ) ) {
 }
 
 if ( ! defined( 'RS_FR_DB_VERSION' ) ) {
-	define( 'RS_FR_DB_VERSION', '1' );
+	define( 'RS_FR_DB_VERSION', '2' );
 }
+
 if ( ! defined( 'RS_FR_PLUGIN_FILE' ) ) {
 	define( 'RS_FR_PLUGIN_FILE', __FILE__ );
 }
@@ -90,7 +91,16 @@ function rs_fr_bootstrap_modules() {
 		RS_FR_Activator::add_capabilities();
 	}
 
+	// Selvhelende DB-skema: hvis DB-versionen ikke matcher (fx fordi pluginnet
+	// er kommet ind via en auto-opdatering, hvor aktiverings-hooket ikke kører),
+	// så opretter/opdaterer vi den brugerdefinerede tabel via dbDelta. Det sikrer
+	// at fortrydelses-indsendelser kan gemmes, også uden manuel re-aktivering.
+	if ( (string) get_option( 'digital_fortrydelse_db_version' ) !== (string) RS_FR_DB_VERSION ) {
+		RS_FR_Activator::maybe_upgrade();
+	}
+
 	RS_FR_Admin::init();
+
 
 	RS_FR_Account::init();
 	RS_FR_Retention::init();

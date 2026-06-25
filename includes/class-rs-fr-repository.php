@@ -90,11 +90,18 @@ final class RS_FR_Repository
         );
 
         if (false === $inserted) {
+            // Log den præcise DB-fejl (kun ved aktiveret debug-logging), så en
+            // fremtidig insert-fejl kan diagnosticeres uden gætteri.
+            if (defined('WP_DEBUG') && WP_DEBUG && !empty($wpdb->last_error)) {
+                error_log('RS_FR insert failed: ' . $wpdb->last_error);
+            }
+
             return new WP_Error(
                 'digital_fortrydelse_insert_failed',
                 __('Fortrydelsen kunne ikke gemmes. Prøv igen senere.', 'rs-digital-fortrydelsesret')
             );
         }
+
 
         return (int) $wpdb->insert_id;
     }

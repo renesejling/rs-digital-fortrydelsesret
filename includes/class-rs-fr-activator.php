@@ -32,6 +32,22 @@ final class RS_FR_Activator
     }
 
     /**
+     * Ensure the custom table exists and matches the current schema.
+     *
+     * Kaldes både ved aktivering og fra bootstrap (ved en DB-version-bump),
+     * så installationer der er opdateret via auto-opdatering – hvor
+     * aktiverings-hooket ikke kører – også får oprettet/opdateret tabellen.
+     *
+     * @return void
+     */
+    public static function maybe_upgrade()
+    {
+        self::create_tables();
+
+        update_option('digital_fortrydelse_db_version', RS_FR_DB_VERSION, false);
+    }
+
+    /**
      * Create the initial custom table for withdrawal requests.
      *
      * @return void
@@ -42,6 +58,7 @@ final class RS_FR_Activator
 
         dbDelta(RS_FR_Schema::withdrawals_table_sql());
     }
+
 
     /**
      * Add custom capabilities to common shop roles.
