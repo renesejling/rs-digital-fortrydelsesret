@@ -2,7 +2,8 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Digital fortrydelsesret til WooCommerce: fortrydelsesformular (shortcode [digital_fortrydelse]), kvitterings-/notifikationsmails, admin-sagsbehandling, GDPR-retention, Min Konto-visning og handelsbetingelser som PDF. WPML/Polylang-klar.
- * Version:     2.1.1
+ * Version:     2.2.0
+
  * Author:      ReneSejling.dk
 
  * Author URI:  https://www.renesejling.dk
@@ -29,7 +30,8 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.1.1' );
+	define( 'RS_FR_VERSION', '2.2.0' );
+
 }
 
 
@@ -363,6 +365,38 @@ function rs_fr_get_withdrawal_url() {
 	return esc_url( home_url( RS_FR_PATH ) );
 }
 
+/**
+ * Hent teksten til info-boksen i ordremailen.
+ *
+ * Bruger den brugerdefinerede tekst fra plugin-indstillingerne hvis den er
+ * udfyldt, ellers falder vi tilbage til den indbyggede/oversatte standardtekst
+ * via rs_fr_t(). På den måde kan fx en shop, der også sælger specialfremstillede
+ * varer uden fortrydelsesret, tilpasse teksten uden at røre koden.
+ *
+ * @param string $name Nøglen (heading|intro|link_text|pdf_note).
+ * @return string Teksten der skal vises.
+ */
+function rs_fr_email_note_text( $name ) {
+	$map = array(
+		'heading'   => 'order_email_heading',
+		'intro'     => 'order_email_intro',
+		'link_text' => 'order_email_link_text',
+		'pdf_note'  => 'order_email_pdf_note',
+	);
+
+	if ( isset( $map[ $name ] ) && class_exists( 'RS_FR_Settings' ) ) {
+		$settings = RS_FR_Settings::get_settings();
+		$custom   = isset( $settings[ $map[ $name ] ] ) ? trim( (string) $settings[ $map[ $name ] ] ) : '';
+
+		if ( '' !== $custom ) {
+			return $custom;
+		}
+	}
+
+	// Fald tilbage til indbygget/oversat standardtekst.
+	return rs_fr_t( $name );
+}
+
 /* ------------------------------------------------------------------ *
  * 1) Kort info-boks + link + note om vedhæftning i kundens ordremails *
  * ------------------------------------------------------------------ */
@@ -374,23 +408,36 @@ function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
 
 	$url = rs_fr_get_withdrawal_url();
 
+	// Brug den brugerdefinerede intro/pdf-note også i plain-text-versionen hvis
+	// den er udfyldt; ellers den indbyggede plain-text-standard.
+	$intro_plain    = rs_fr_email_note_text( 'intro' );
+	$pdf_note_plain = rs_fr_email_note_text( 'pdf_note' );
+
+	if ( $intro_plain === rs_fr_t( 'intro' ) ) {
+		$intro_plain = rs_fr_t( 'intro_plain' );
+	}
+	if ( $pdf_note_plain === rs_fr_t( 'pdf_note' ) ) {
+		$pdf_note_plain = rs_fr_t( 'pdf_note_plain' );
+	}
+
 	if ( $plain_text ) {
 		echo "\n\n----------------------------------------\n";
-		echo esc_html( rs_fr_t( 'heading' ) ) . "\n";
-		echo esc_html( rs_fr_t( 'intro_plain' ) ) . "\n" . $url . "\n";
-		echo esc_html( rs_fr_t( 'pdf_note_plain' ) ) . "\n";
+		echo esc_html( rs_fr_email_note_text( 'heading' ) ) . "\n";
+		echo esc_html( $intro_plain ) . "\n" . $url . "\n";
+		echo esc_html( $pdf_note_plain ) . "\n";
 		echo "----------------------------------------\n";
 		return;
 	}
 	?>
 	<div style="margin-top:30px;padding:15px;border:1px solid #e5e5e5;background:#f9f9f9;border-radius:4px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#636363;line-height:150%;">
-		<h4 style="margin:0 0 8px;color:#333;"><?php echo esc_html( rs_fr_t( 'heading' ) ); ?></h4>
-		<p style="margin:0 0 8px;"><?php echo esc_html( rs_fr_t( 'intro' ) ); ?></p>
-		<p style="margin:0 0 8px;"><a href="<?php echo $url; ?>" style="color:#111;text-decoration:underline;font-weight:bold;"><?php echo esc_html( rs_fr_t( 'link_text' ) ); ?></a></p>
-		<p style="margin:0;"><?php echo esc_html( rs_fr_t( 'pdf_note' ) ); ?></p>
+		<h4 style="margin:0 0 8px;color:#333;"><?php echo esc_html( rs_fr_email_note_text( 'heading' ) ); ?></h4>
+		<p style="margin:0 0 8px;"><?php echo nl2br( esc_html( rs_fr_email_note_text( 'intro' ) ) ); ?></p>
+		<p style="margin:0 0 8px;"><a href="<?php echo $url; ?>" style="color:#111;text-decoration:underline;font-weight:bold;"><?php echo esc_html( rs_fr_email_note_text( 'link_text' ) ); ?></a></p>
+		<p style="margin:0;"><?php echo nl2br( esc_html( rs_fr_email_note_text( 'pdf_note' ) ) ); ?></p>
 	</div>
 	<?php
 }
+
 
 
 /* ------------------------------------------------------- *

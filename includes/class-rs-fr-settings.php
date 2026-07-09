@@ -147,6 +147,46 @@ final class RS_FR_Settings
         );
 
         add_settings_section(
+            'digital_fortrydelse_order_email',
+            __('Ordremail (fortrydelsestekst)', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_section_intro'),
+            'digital-fortrydelse-settings'
+        );
+
+        add_settings_field(
+            'order_email_heading',
+            __('Overskrift', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_heading_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_order_email'
+        );
+
+        add_settings_field(
+            'order_email_intro',
+            __('Introtekst', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_intro_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_order_email'
+        );
+
+        add_settings_field(
+            'order_email_link_text',
+            __('Link-tekst', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_link_text_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_order_email'
+        );
+
+        add_settings_field(
+            'order_email_pdf_note',
+            __('PDF-note', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_pdf_note_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_order_email'
+        );
+
+
+        add_settings_section(
             'digital_fortrydelse_terms',
             __('Handelsbetingelser', 'rs-digital-fortrydelsesret'),
             array(__CLASS__, 'render_terms_section_intro'),
@@ -197,7 +237,12 @@ final class RS_FR_Settings
             'form_outro' => isset($input['form_outro']) ? wp_kses_post($input['form_outro']) : '',
             'customer_mail_template' => isset($input['customer_mail_template']) ? sanitize_textarea_field($input['customer_mail_template']) : '',
             'internal_mail_template' => isset($input['internal_mail_template']) ? sanitize_textarea_field($input['internal_mail_template']) : '',
+            'order_email_heading' => isset($input['order_email_heading']) ? sanitize_text_field($input['order_email_heading']) : '',
+            'order_email_intro' => isset($input['order_email_intro']) ? sanitize_textarea_field($input['order_email_intro']) : '',
+            'order_email_link_text' => isset($input['order_email_link_text']) ? sanitize_text_field($input['order_email_link_text']) : '',
+            'order_email_pdf_note' => isset($input['order_email_pdf_note']) ? sanitize_textarea_field($input['order_email_pdf_note']) : '',
             'terms_page_id' => isset($input['terms_page_id']) ? absint($input['terms_page_id']) : 0,
+
             'terms_auto_sync' => !empty($input['terms_auto_sync']) ? 1 : 0,
             'terms_section_text' => isset($input['terms_section_text']) ? wp_kses_post($input['terms_section_text']) : self::default_terms_section_text(),
         );
@@ -381,11 +426,102 @@ final class RS_FR_Settings
     }
 
     /**
+     * Render intro text for order email settings.
+     *
+     * @return void
+     */
+    public static function render_order_email_section_intro()
+    {
+        ?>
+        <p><?php echo esc_html__('Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten.', 'rs-digital-fortrydelsesret'); ?></p>
+        <?php
+    }
+
+    /**
+     * Render order email heading field.
+     *
+     * @return void
+     */
+    public static function render_order_email_heading_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <input
+            type="text"
+            class="regular-text"
+            name="digital_fortrydelse_settings[order_email_heading]"
+            value="<?php echo esc_attr($settings['order_email_heading']); ?>"
+            placeholder="<?php echo esc_attr(rs_fr_t('heading')); ?>"
+        />
+        <p class="description"><?php echo esc_html__('Overskriften på info-boksen i ordremailen. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('heading')); ?></code></p>
+        <?php
+    }
+
+    /**
+     * Render order email intro field.
+     *
+     * @return void
+     */
+    public static function render_order_email_intro_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <textarea
+            class="large-text"
+            rows="4"
+            name="digital_fortrydelse_settings[order_email_intro]"
+            placeholder="<?php echo esc_attr(rs_fr_t('intro')); ?>"
+        ><?php echo esc_textarea($settings['order_email_intro']); ?></textarea>
+        <p class="description"><?php echo esc_html__('Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('intro')); ?></code></p>
+        <?php
+    }
+
+    /**
+     * Render order email link text field.
+     *
+     * @return void
+     */
+    public static function render_order_email_link_text_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <input
+            type="text"
+            class="regular-text"
+            name="digital_fortrydelse_settings[order_email_link_text]"
+            value="<?php echo esc_attr($settings['order_email_link_text']); ?>"
+            placeholder="<?php echo esc_attr(rs_fr_t('link_text')); ?>"
+        />
+        <p class="description"><?php echo esc_html__('Teksten på linket til fortrydelsesfunktionen. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('link_text')); ?></code></p>
+        <?php
+    }
+
+    /**
+     * Render order email PDF note field.
+     *
+     * @return void
+     */
+    public static function render_order_email_pdf_note_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <textarea
+            class="large-text"
+            rows="3"
+            name="digital_fortrydelse_settings[order_email_pdf_note]"
+            placeholder="<?php echo esc_attr(rs_fr_t('pdf_note')); ?>"
+        ><?php echo esc_textarea($settings['order_email_pdf_note']); ?></textarea>
+        <p class="description"><?php echo esc_html__('Noten om, at handelsbetingelserne er vedhæftet som PDF. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('pdf_note')); ?></code></p>
+        <?php
+    }
+
+    /**
      * Render intro text for terms settings.
      *
      * @return void
      */
     public static function render_terms_section_intro()
+
     {
         ?>
         <p><?php echo esc_html__('Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes.', 'rs-digital-fortrydelsesret'); ?></p>
@@ -477,7 +613,12 @@ final class RS_FR_Settings
             'form_outro' => '',
             'customer_mail_template' => '',
             'internal_mail_template' => '',
+            'order_email_heading' => '',
+            'order_email_intro' => '',
+            'order_email_link_text' => '',
+            'order_email_pdf_note' => '',
             'terms_page_id' => 0,
+
             'terms_auto_sync' => 0,
             'terms_section_text' => self::default_terms_section_text(),
         );
