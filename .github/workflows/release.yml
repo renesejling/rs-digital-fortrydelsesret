@@ -34,20 +34,67 @@ jobs:
           mkdir -p build/"$PLUGIN_SLUG"
 
           # Kopiér alt der skal med i pluginnet til en mappe med korrekt slug-navn.
-          rsync -a --exclude-from='.distignore' ./ build/"$PLUGIN_SLUG"/ 2>/dev/null || \
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='build' \
-            --exclude='.gitignore' \
-            --exclude='.distignore' \
-            --exclude='*.zip' \
-            ./ build/"$PLUGIN_SLUG"/
+          # .distignore er committet i repoet og derfor altid tilgængelig.
+          # Ingen fallback: fejler dette, skal builden fejle højt frem for at
+          # producere en zip med interne filer (README.md, CLAUDE.md, docs/ ...).
+          rsync -a --exclude-from='.distignore' ./ build/"$PLUGIN_SLUG"/
 
           cd build
           zip -r "../${PLUGIN_SLUG}.zip" "$PLUGIN_SLUG"
           cd ..
           echo "Bygget ${PLUGIN_SLUG}.zip (version ${VERSION})"
+
+      - name: Verificér zip-indhold (ingen interne filer)
+        run: |
+          PLUGIN_SLUG="rs-digital-fortrydelsesret"
+          DIR="build/${PLUGIN_SLUG}"
+          FAIL=0
+
+          # Disse må IKKE være med i det kunden installerer.
+          for ENTRY in \
+            "CLAUDE.md" \
+            "README.md" \
+            "CHANGELOG.md" \
+            "docs" \
+            "composer.json" \
+            "composer.lock" \
+            ".gitignore" \
+            ".distignore" \
+            ".github" \
+            ".git"
+          do
+            if [ -e "${DIR}/${ENTRY}" ]; then
+              echo "::error::'${ENTRY}' må ikke være med i plugin-zip'en (tjek .distignore)"
+              FAIL=1
+            fi
+          done
+
+          if find "$DIR" \
+               \( -name '.DS_Store' -o -name '*.code-workspace' -o -name '*.log' \) \
+               -print -quit | grep -q .; then
+            echo "::error::Fandt .DS_Store / *.code-workspace / *.log i plugin-zip'en"
+            FAIL=1
+          fi
+
+          # Sanity check: disse SKAL være med.
+          for ENTRY in \
+            "${PLUGIN_SLUG}.php" \
+            "uninstall.php" \
+            "includes" \
+            "assets" \
+            "languages" \
+            "vendor/autoload.php"
+          do
+            if [ ! -e "${DIR}/${ENTRY}" ]; then
+              echo "::error::'${ENTRY}' mangler i plugin-zip'en"
+              FAIL=1
+            fi
+          done
+
+          [ "$FAIL" -eq 0 ] || exit 1
+
+          echo "OK — zip-indholdet ser rigtigt ud:"
+          ls -a "$DIR"
 
       - name: Opret GitHub Release med zip vedhæftet
         uses: softprops/action-gh-release@v2

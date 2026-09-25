@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Digital fortrydelsesret til WooCommerce: fortrydelsesformular (shortcode [digital_fortrydelse]), kvitterings-/notifikationsmails, admin-sagsbehandling, GDPR-retention, Min Konto-visning og handelsbetingelser som PDF. WPML/Polylang-klar.
- * Version:     2.2.0
+ * Version:     2.3.0
 
  * Author:      ReneSejling.dk
 
@@ -30,7 +30,7 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.2.0' );
+	define( 'RS_FR_VERSION', '2.3.0' );
 
 }
 
@@ -366,6 +366,26 @@ function rs_fr_get_withdrawal_url() {
 }
 
 /**
+ * Skal info-boksen med link til digital fortrydelse vises i ordremails?
+ *
+ * Styres af indstillingen "Link til fortrydelse" (standard: til). Er den slået
+ * fra, viser vi i stedet kun en kort note om, at handelsbetingelserne er
+ * vedhæftet som PDF (se rs_fr_email_note()) — selve PDF-vedhæftningen berøres
+ * ikke af denne indstilling.
+ *
+ * @return bool
+ */
+function rs_fr_show_withdrawal_link() {
+	if ( ! class_exists( 'RS_FR_Settings' ) ) {
+		return true;
+	}
+
+	$settings = RS_FR_Settings::get_settings();
+
+	return ! isset( $settings['order_email_show_link'] ) || (bool) $settings['order_email_show_link'];
+}
+
+/**
  * Hent teksten til info-boksen i ordremailen.
  *
  * Bruger den brugerdefinerede tekst fra plugin-indstillingerne hvis den er
@@ -403,6 +423,32 @@ function rs_fr_email_note_text( $name ) {
 add_action( 'woocommerce_email_after_order_table', 'rs_fr_email_note', 20, 4 );
 function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
 	if ( $sent_to_admin || ! in_array( $email->id, RS_FR_MAILS, true ) ) {
+		return;
+	}
+
+	// Er linket til fortrydelse slået fra, viser vi kun PDF-noten (hvis der
+	// overhovedet vedhæftes en PDF) — uden overskrift, introtekst eller link.
+	if ( ! rs_fr_show_withdrawal_link() ) {
+		if ( ! rs_fr_current_terms_id() ) {
+			return;
+		}
+
+		$pdf_note_plain = rs_fr_email_note_text( 'pdf_note' );
+		if ( $pdf_note_plain === rs_fr_t( 'pdf_note' ) ) {
+			$pdf_note_plain = rs_fr_t( 'pdf_note_plain' );
+		}
+
+		if ( $plain_text ) {
+			echo "\n\n----------------------------------------\n";
+			echo esc_html( $pdf_note_plain ) . "\n";
+			echo "----------------------------------------\n";
+			return;
+		}
+		?>
+		<div style="margin-top:30px;padding:15px;border:1px solid #e5e5e5;background:#f9f9f9;border-radius:4px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#636363;line-height:150%;">
+			<p style="margin:0;"><?php echo nl2br( esc_html( rs_fr_email_note_text( 'pdf_note' ) ) ); ?></p>
+		</div>
+		<?php
 		return;
 	}
 

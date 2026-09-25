@@ -154,6 +154,14 @@ final class RS_FR_Settings
         );
 
         add_settings_field(
+            'order_email_show_link',
+            __('Link til fortrydelse', 'rs-digital-fortrydelsesret'),
+            array(__CLASS__, 'render_order_email_show_link_field'),
+            'digital-fortrydelse-settings',
+            'digital_fortrydelse_order_email'
+        );
+
+        add_settings_field(
             'order_email_heading',
             __('Overskrift', 'rs-digital-fortrydelsesret'),
             array(__CLASS__, 'render_order_email_heading_field'),
@@ -237,6 +245,7 @@ final class RS_FR_Settings
             'form_outro' => isset($input['form_outro']) ? wp_kses_post($input['form_outro']) : '',
             'customer_mail_template' => isset($input['customer_mail_template']) ? sanitize_textarea_field($input['customer_mail_template']) : '',
             'internal_mail_template' => isset($input['internal_mail_template']) ? sanitize_textarea_field($input['internal_mail_template']) : '',
+            'order_email_show_link' => !empty($input['order_email_show_link']) ? 1 : 0,
             'order_email_heading' => isset($input['order_email_heading']) ? sanitize_text_field($input['order_email_heading']) : '',
             'order_email_intro' => isset($input['order_email_intro']) ? sanitize_textarea_field($input['order_email_intro']) : '',
             'order_email_link_text' => isset($input['order_email_link_text']) ? sanitize_text_field($input['order_email_link_text']) : '',
@@ -434,6 +443,29 @@ final class RS_FR_Settings
     {
         ?>
         <p><?php echo esc_html__('Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten.', 'rs-digital-fortrydelsesret'); ?></p>
+        <p><?php echo esc_html__('Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen).', 'rs-digital-fortrydelsesret'); ?></p>
+        <?php
+    }
+
+    /**
+     * Render order email show-link field.
+     *
+     * @return void
+     */
+    public static function render_order_email_show_link_field()
+    {
+        $settings = self::get_settings();
+        ?>
+        <label>
+            <input
+                type="checkbox"
+                name="digital_fortrydelse_settings[order_email_show_link]"
+                value="1"
+                <?php checked($settings['order_email_show_link'], 1); ?>
+            />
+            <?php echo esc_html__('Vis info-boks med link til digital fortrydelse i kundens ordremails.', 'rs-digital-fortrydelsesret'); ?>
+        </label>
+        <p class="description"><?php echo esc_html__('Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling.', 'rs-digital-fortrydelsesret'); ?></p>
         <?php
     }
 
@@ -453,7 +485,7 @@ final class RS_FR_Settings
             value="<?php echo esc_attr($settings['order_email_heading']); ?>"
             placeholder="<?php echo esc_attr(rs_fr_t('heading')); ?>"
         />
-        <p class="description"><?php echo esc_html__('Overskriften på info-boksen i ordremailen. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('heading')); ?></code></p>
+        <p class="description"><?php echo esc_html__('Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('heading')); ?></code></p>
         <?php
     }
 
@@ -472,7 +504,7 @@ final class RS_FR_Settings
             name="digital_fortrydelse_settings[order_email_intro]"
             placeholder="<?php echo esc_attr(rs_fr_t('intro')); ?>"
         ><?php echo esc_textarea($settings['order_email_intro']); ?></textarea>
-        <p class="description"><?php echo esc_html__('Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('intro')); ?></code></p>
+        <p class="description"><?php echo esc_html__('Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('intro')); ?></code></p>
         <?php
     }
 
@@ -492,7 +524,7 @@ final class RS_FR_Settings
             value="<?php echo esc_attr($settings['order_email_link_text']); ?>"
             placeholder="<?php echo esc_attr(rs_fr_t('link_text')); ?>"
         />
-        <p class="description"><?php echo esc_html__('Teksten på linket til fortrydelsesfunktionen. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('link_text')); ?></code></p>
+        <p class="description"><?php echo esc_html__('Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('link_text')); ?></code></p>
         <?php
     }
 
@@ -511,7 +543,7 @@ final class RS_FR_Settings
             name="digital_fortrydelse_settings[order_email_pdf_note]"
             placeholder="<?php echo esc_attr(rs_fr_t('pdf_note')); ?>"
         ><?php echo esc_textarea($settings['order_email_pdf_note']); ?></textarea>
-        <p class="description"><?php echo esc_html__('Noten om, at handelsbetingelserne er vedhæftet som PDF. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('pdf_note')); ?></code></p>
+        <p class="description"><?php echo esc_html__('Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:', 'rs-digital-fortrydelsesret'); ?> <code><?php echo esc_html(rs_fr_t('pdf_note')); ?></code></p>
         <?php
     }
 
@@ -525,6 +557,7 @@ final class RS_FR_Settings
     {
         ?>
         <p><?php echo esc_html__('Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes.', 'rs-digital-fortrydelsesret'); ?></p>
+        <p><?php echo esc_html__('Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på.', 'rs-digital-fortrydelsesret'); ?></p>
         <?php
     }
 
@@ -591,8 +624,24 @@ final class RS_FR_Settings
             name="digital_fortrydelse_settings[terms_section_text]"
         ><?php echo esc_textarea($settings['terms_section_text']); ?></textarea>
         <p class="description">
-            <?php echo esc_html__('Token:', 'rs-digital-fortrydelsesret'); ?>
-            <code>{fortryd_aftale_url}</code>
+            <?php echo esc_html__('Tokens:', 'rs-digital-fortrydelsesret'); ?>
+            <code>{fortrydelse_link}</code> (<?php echo esc_html__('klikbart link', 'rs-digital-fortrydelsesret'); ?>),
+            <code>{fortrydelse_url}</code> (<?php echo esc_html__('ren URL', 'rs-digital-fortrydelsesret'); ?>).
+            <?php echo esc_html__('De ældre tokens', 'rs-digital-fortrydelsesret'); ?>
+            <code>{fortryd_aftale_link}</code> <?php echo esc_html__('og', 'rs-digital-fortrydelsesret'); ?> <code>{fortryd_aftale_url}</code>
+            <?php echo esc_html__('virker stadig som alias.', 'rs-digital-fortrydelsesret'); ?>
+        </p>
+        <p class="description">
+            <?php
+            printf(
+                /* translators: %s: resolved withdrawal page URL. */
+                esc_html__('Tokenet peger i øjeblikket på: %s', 'rs-digital-fortrydelsesret'),
+                '<code>' . esc_html(self::withdrawal_page_url()) . '</code>'
+            );
+            ?>
+        </p>
+        <p class="description">
+            <?php echo esc_html__('Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der.', 'rs-digital-fortrydelsesret'); ?>
         </p>
         <?php
     }
@@ -613,6 +662,7 @@ final class RS_FR_Settings
             'form_outro' => '',
             'customer_mail_template' => '',
             'internal_mail_template' => '',
+            'order_email_show_link' => 1,
             'order_email_heading' => '',
             'order_email_intro' => '',
             'order_email_link_text' => '',
@@ -639,7 +689,7 @@ final class RS_FR_Settings
             "\n\n",
             array(
                 'Du kan fortryde dit køb ved at bruge vores digitale fortrydelsesfunktion på webshoppen.',
-                'Funktionen findes på siden Fortryd aftale: {fortryd_aftale_url}',
+                'Funktionen findes på siden {fortrydelse_link}.',
                 'Når du udfylder og sender formularen, skal du oplyse navn, e-mailadresse og ordrenummer. Du kan vælge, om du ønsker at fortryde hele ordren eller enkelte produkter.',
                 'Når formularen er sendt, modtager du uden unødig forsinkelse en kvittering pr. e-mail. Kvitteringen bekræfter, at vi har modtaget din anmodning om fortrydelse, og indeholder det indsendte indhold samt dato og tidspunkt for indsendelsen.',
                 'Kvitteringen er alene en bekræftelse på modtagelse af din anmodning om fortrydelse. Den er ikke en endelig afgørelse af sagen.',
@@ -750,7 +800,13 @@ final class RS_FR_Settings
     private static function render_terms_section($settings)
     {
         $text = !empty($settings['terms_section_text']) ? $settings['terms_section_text'] : self::default_terms_section_text();
-        $text = str_replace('{fortryd_aftale_url}', self::withdrawal_page_url(), $text);
+        $url = self::withdrawal_page_url();
+        $link = '<a href="' . esc_url($url) . '">' . esc_html__('Fortryd aftale', 'rs-digital-fortrydelsesret') . '</a>';
+
+        // {fortrydelse_link}/{fortrydelse_url} er de aktuelle tokens.
+        // {fortryd_aftale_link}/{fortryd_aftale_url} bevares som alias for bagudkompatibilitet.
+        $text = str_replace(array('{fortrydelse_link}', '{fortryd_aftale_link}'), $link, $text);
+        $text = str_replace(array('{fortrydelse_url}', '{fortryd_aftale_url}'), $url, $text);
 
         return self::TERMS_START_MARKER . "\n"
             . '<section class="digital-fortrydelse-terms">' . "\n"
@@ -777,6 +833,10 @@ final class RS_FR_Settings
      */
     private static function withdrawal_page_url()
     {
+        if (function_exists('rs_fr_get_withdrawal_url')) {
+            return rs_fr_get_withdrawal_url();
+        }
+
         $page = get_page_by_path('fortryd-aftale');
 
         if ($page) {

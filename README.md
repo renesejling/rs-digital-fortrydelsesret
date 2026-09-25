@@ -20,7 +20,9 @@ to ting: **kundens fortrydelses-flow** (offentlig formular + sagsbehandling) og
 ### B) Ordremails (info-boks + PDF på varigt medie)
 
 7. Indsætter en kort info-boks med **link til digital fortrydelse** i kundens ordremails.
-8. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie".
+   Linket kan slås fra i indstillingerne (**Link til fortrydelse**) — er det slået
+   fra, vises i stedet kun en kort PDF-note, uden overskrift, introtekst eller link.
+8. **Vedhæfter de aktuelle handelsbetingelser** (den side der er valgt i WooCommerce) automatisk som **PDF** til kundens ordremails — et "varigt medie". PDF'en vedhæftes altid, uanset om linket ovenfor er slået til eller fra.
 9. **Regenererer PDF'en automatisk**, når handelsbetingelses-siden gemmes/opdateres — uanset om siden er bygget med Gutenberg, klassisk editor eller **Elementor**.
 10. Er **WPML- og Polylang-kompatibel**: mail-boksens tekster er indbygget på fem sprog (da/en/de/sv/nb), linket peger automatisk på den oversatte fortrydelsesside, og den vedhæftede PDF tages fra den oversatte handelsbetingelses-side der matcher kundens sprog.
 
@@ -28,7 +30,7 @@ to ting: **kundens fortrydelses-flow** (offentlig formular + sagsbehandling) og
 > eksisterende ordremails, mens kvitterings-/notifikationsmails udløses af selve
 > formular-indsendelsen.
 
-- **Version:** 2.0.0
+- **Version:** 2.3.0
 - **Forfatter:** [ReneSejling.dk](https://renesejling.dk)
 
 
@@ -110,6 +112,14 @@ af betingelses-siden gemmes.
    til den offentlige fortrydelsesformular.
 5. Gennemgå indstillinger under **WooCommerce → Fortrydelse indstillinger**
    (modtager, opbevaring/retention, formulartekst, mail-skabeloner og handelsbetingelser).
+   Under **Ordremail (fortrydelsestekst) → Link til fortrydelse** kan du slå
+   linket til den digitale fortrydelsesfunktion fra i kundens ordremails — er
+   det slået fra, vises kun en kort note om, at handelsbetingelserne er
+   vedhæftet som PDF (PDF'en vedhæftes uanset denne indstilling).
+   Under **Handelsbetingelser → Tekstafsnit** kan du bruge tokenet `{fortrydelse_link}`
+   (klikbart link) eller `{fortrydelse_url}` (ren URL) — begge peger automatisk på
+   den side, der er sat op i punkt 4. Selve formularen vises kun, hvis den side
+   indeholder shortcoden `[digital_fortrydelse]`.
 6. Fortrydelsessager håndteres under **WooCommerce → Fortrydelser**.
 
 
