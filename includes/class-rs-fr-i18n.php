@@ -118,15 +118,49 @@ final class RS_FR_I18n
                 continue;
             }
 
+            $known = array();
+
             foreach (array_keys(self::locales()) as $candidate) {
-                if (self::normalize(self::default_text($key, $candidate)) === $current) {
-                    $settings[$key] = self::default_text($key, $locale);
-                    break;
-                }
+                $known[] = self::normalize(self::default_text($key, $candidate));
+            }
+
+            foreach (self::legacy_defaults($key) as $legacy) {
+                $known[] = self::normalize($legacy);
+            }
+
+            if (in_array($current, $known, true)) {
+                $settings[$key] = self::default_text($key, $locale);
             }
         }
 
         return $settings;
+    }
+
+    /**
+     * Tidligere standardtekster (før v2.4.0), så gemte uændrede tekster også skiftes sprog.
+     *
+     * @param string $key Tekstnøgle.
+     * @return string[]
+     */
+    private static function legacy_defaults($key)
+    {
+        if ('terms_section_text' !== $key) {
+            return array();
+        }
+
+        $paragraphs = array(
+            'Du kan fortryde dit køb ved at bruge vores digitale fortrydelsesfunktion på webshoppen.',
+            'Funktionen findes på siden Fortryd aftale: {fortryd_aftale_url}',
+            'Når du udfylder og sender formularen, skal du oplyse navn, e-mailadresse og ordrenummer. Du kan vælge, om du ønsker at fortryde hele ordren eller enkelte produkter.',
+            'Når formularen er sendt, modtager du uden unødig forsinkelse en kvittering pr. e-mail. Kvitteringen bekræfter, at vi har modtaget din anmodning om fortrydelse, og indeholder det indsendte indhold samt dato og tidspunkt for indsendelsen.',
+            'Kvitteringen er alene en bekræftelse på modtagelse af din anmodning om fortrydelse. Den er ikke en endelig afgørelse af sagen.',
+            'Du anses for at have fortrudt rettidigt, hvis du sender fortrydelsen via den digitale fortrydelsesfunktion inden fortrydelsesfristen udløber.',
+        );
+
+        return array(
+            implode("\n\n", $paragraphs),
+            implode("\n\n", array_slice($paragraphs, 0, 5)),
+        );
     }
 
     /**
