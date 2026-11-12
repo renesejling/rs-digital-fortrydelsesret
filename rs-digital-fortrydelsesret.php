@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Digital fortrydelsesret til WooCommerce: fortrydelsesformular (shortcode [digital_fortrydelse]), kvitterings-/notifikationsmails, admin-sagsbehandling, GDPR-retention, Min Konto-visning og handelsbetingelser som PDF. WPML/Polylang-klar.
- * Version:     2.3.0
+ * Version:     2.4.0
 
  * Author:      ReneSejling.dk
 
@@ -30,7 +30,7 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.3.0' );
+	define( 'RS_FR_VERSION', '2.4.0' );
 
 }
 
@@ -56,6 +56,7 @@ if ( ! defined( 'RS_FR_TABLE' ) ) {
 /* ------------------------------------------------------------------ *
  * Indlæs klasserne til fortrydelsesformular, sagsbehandling m.m.     *
  * ------------------------------------------------------------------ */
+require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-i18n.php';
 require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-schema.php';
 require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-retention.php';
 require_once RS_FR_PLUGIN_PATH . 'includes/class-rs-fr-account.php';
@@ -81,11 +82,9 @@ register_deactivation_hook( __FILE__, array( 'RS_FR_Deactivator', 'deactivate' )
  */
 add_action( 'plugins_loaded', 'rs_fr_bootstrap_modules' );
 function rs_fr_bootstrap_modules() {
-	load_plugin_textdomain(
-		'rs-digital-fortrydelsesret',
-		false,
-		dirname( plugin_basename( __FILE__ ) ) . '/languages'
-	);
+	// Pluginnets eget sprogvalg (dansk/engelsk) fra indstillingerne. Indlæses
+	// på 'init' (prioritet 0) for at undgå "too early"-advarslen i WP 6.7+.
+	add_action( 'init', array( 'RS_FR_I18n', 'load_textdomain' ), 0 );
 
 	// Hold den gemte version i sync efter kode-opdateringer. Ved en ny version
 	// sikrer vi også capabilities, så admin-menuerne dukker op efter en
@@ -221,6 +220,11 @@ function rs_fr_current_lang() {
 	// WPML.
 	if ( defined( 'ICL_LANGUAGE_CODE' ) && ICL_LANGUAGE_CODE ) {
 		return strtolower( substr( ICL_LANGUAGE_CODE, 0, 2 ) );
+	}
+
+	// Pluginnets eget sprogvalg: er engelsk valgt i indstillingerne, bruges 'en'.
+	if ( class_exists( 'RS_FR_I18n' ) && 'en_US' === RS_FR_I18n::current_locale() ) {
+		return 'en';
 	}
 
 	// WordPress-locale (fx 'en_US' → 'en', 'nb_NO' → 'nb').
@@ -652,7 +656,7 @@ function rs_fr_get_terms_html( $terms_id ) {
  */
 function rs_fr_build_pdf_output( $terms_id = 0 ) {
 	if ( ! class_exists( '\Dompdf\Dompdf' ) ) {
-		return new WP_Error( 'rs_fr_no_dompdf', 'Dompdf er ikke installeret (kør "composer install").' );
+		return new WP_Error( 'rs_fr_no_dompdf', __( 'Dompdf er ikke installeret (kør "composer install").', 'rs-digital-fortrydelsesret' ) );
 	}
 
 	$terms_id = (int) $terms_id;
@@ -660,12 +664,12 @@ function rs_fr_build_pdf_output( $terms_id = 0 ) {
 		$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
 	}
 	if ( ! $terms_id ) {
-		return new WP_Error( 'rs_fr_no_terms_page', 'Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration).' );
+		return new WP_Error( 'rs_fr_no_terms_page', __( 'Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration).', 'rs-digital-fortrydelsesret' ) );
 	}
 
 	$page = get_post( $terms_id );
 	if ( ! $page ) {
-		return new WP_Error( 'rs_fr_missing_page', 'Den valgte handelsbetingelses-side findes ikke længere.' );
+		return new WP_Error( 'rs_fr_missing_page', __( 'Den valgte handelsbetingelses-side findes ikke længere.', 'rs-digital-fortrydelsesret' ) );
 	}
 
 	$title   = get_the_title( $terms_id );
@@ -678,7 +682,7 @@ function rs_fr_build_pdf_output( $terms_id = 0 ) {
 		. 'h1{font-size:18px;margin:0 0 4px;} small{color:#888;} hr{border:none;border-top:1px solid #ddd;margin:10px 0;}'
 		. '</style></head><body>';
 	$html .= '<h1>' . esc_html( $title ) . '</h1>';
-	$html .= '<small>' . esc_html( $shop ) . ' &middot; Version pr. ' . esc_html( $date ) . '</small><hr>';
+	$html .= '<small>' . esc_html( $shop ) . ' &middot; ' . esc_html__( 'Version pr.', 'rs-digital-fortrydelsesret' ) . ' ' . esc_html( $date ) . '</small><hr>';
 	$html .= $content;
 	$html .= '</body></html>';
 
@@ -733,21 +737,21 @@ function rs_fr_action_links( $links ) {
 		'rs_fr_test_pdf'
 	);
 
-	$links[] = '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">Test PDF</a>';
+	$links[] = '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Test PDF', 'rs-digital-fortrydelsesret' ) . '</a>';
 	return $links;
 }
 
 add_action( 'admin_post_rs_fr_test_pdf', 'rs_fr_handle_test_pdf' );
 function rs_fr_handle_test_pdf() {
 	if ( ! current_user_can( 'manage_woocommerce' ) ) {
-		wp_die( 'Du har ikke rettigheder til at se denne side.', 'Adgang nægtet', array( 'response' => 403 ) );
+		wp_die( esc_html__( 'Du har ikke rettigheder til at se denne side.', 'rs-digital-fortrydelsesret' ), esc_html__( 'Adgang nægtet', 'rs-digital-fortrydelsesret' ), array( 'response' => 403 ) );
 	}
 
 	check_admin_referer( 'rs_fr_test_pdf' );
 
 	$output = rs_fr_build_pdf_output();
 	if ( is_wp_error( $output ) ) {
-		wp_die( esc_html( $output->get_error_message() ), 'Kunne ikke generere PDF', array( 'response' => 500 ) );
+		wp_die( esc_html( $output->get_error_message() ), esc_html__( 'Kunne ikke generere PDF', 'rs-digital-fortrydelsesret' ), array( 'response' => 500 ) );
 	}
 
 	// Stream PDF'en inline i browseren.

@@ -131,29 +131,9 @@ final class RS_FR_Mailer
      *
      * @return string
      */
-    public static function default_customer_template()
+    public static function default_customer_template($locale = null)
     {
-        return implode(
-            "\n",
-            array(
-                'Vi har modtaget din anmodning om fortrydelse.',
-                '',
-                'Denne kvittering bekræfter kun, at vi har modtaget din anmodning. Den er ikke en endelig afgørelse af sagen.',
-                '',
-                'Reference: {reference}',
-                'Dato og tidspunkt: {submitted_at}',
-                'Navn: {customer_name}',
-                'Mailadresse: {customer_email}',
-                'Ordrenummer: {order_number}',
-                'Fortrydelse: {request_type}',
-                '',
-                'Indhold af din indsendelse:',
-                '{submitted_content}',
-                '',
-                'Venlig hilsen',
-                '{site_name}',
-            )
-        );
+        return RS_FR_I18n::default_text('customer_mail_template', $locale);
     }
 
     /**
@@ -161,31 +141,9 @@ final class RS_FR_Mailer
      *
      * @return string
      */
-    public static function default_internal_template()
+    public static function default_internal_template($locale = null)
     {
-        return implode(
-            "\n",
-            array(
-                'Der er modtaget en ny digital fortrydelse.',
-                '',
-                'Reference: {reference}',
-                'Dato og tidspunkt: {submitted_at}',
-                'Status: {status}',
-                'Navn: {customer_name}',
-                'Indsendt mailadresse: {customer_email}',
-                'Ordre-mailadresse: {order_email}',
-                'E-mailafvigelse: {email_mismatch}',
-                'Ordre-ID: {order_id}',
-                'Ordrenummer: {order_number}',
-                'Ordredato: {order_date}',
-                'Frist: {deadline_at}',
-                'Friststatus: {deadline_status}',
-                'Fortrydelse: {request_type}',
-                '',
-                'Indhold af indsendelsen:',
-                '{submitted_content}',
-            )
-        );
+        return RS_FR_I18n::default_text('internal_mail_template', $locale);
     }
 
     /**

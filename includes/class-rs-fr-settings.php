@@ -236,9 +236,9 @@ final class RS_FR_Settings
     {
         $input = is_array($input) ? $input : array();
 
-        return array(
+        $sanitized = array(
             'internal_recipient_email' => isset($input['internal_recipient_email']) ? sanitize_email($input['internal_recipient_email']) : '',
-            'locale' => isset($input['locale']) && 'da_DK' === $input['locale'] ? 'da_DK' : 'da_DK',
+            'locale' => isset($input['locale']) ? RS_FR_I18n::sanitize_locale(sanitize_text_field($input['locale'])) : RS_FR_I18n::DEFAULT_LOCALE,
             'retention_years' => isset($input['retention_years']) ? min(5, max(1, absint($input['retention_years']))) : 5,
             'delete_data_on_uninstall' => !empty($input['delete_data_on_uninstall']) ? 1 : 0,
             'form_intro' => isset($input['form_intro']) ? wp_kses_post($input['form_intro']) : '',
@@ -255,6 +255,9 @@ final class RS_FR_Settings
             'terms_auto_sync' => !empty($input['terms_auto_sync']) ? 1 : 0,
             'terms_section_text' => isset($input['terms_section_text']) ? wp_kses_post($input['terms_section_text']) : self::default_terms_section_text(),
         );
+
+        // Skift uændrede standardtekster til det valgte sprog (egne tekster røres ikke).
+        return RS_FR_I18n::localize_defaults($sanitized, $sanitized['locale']);
     }
 
     /**
@@ -333,9 +336,11 @@ final class RS_FR_Settings
         $settings = self::get_settings();
         ?>
         <select name="digital_fortrydelse_settings[locale]">
-            <option value="da_DK" <?php selected($settings['locale'], 'da_DK'); ?>><?php echo esc_html__('Dansk', 'rs-digital-fortrydelsesret'); ?></option>
+            <?php foreach (RS_FR_I18n::locales() as $code => $label) : ?>
+                <option value="<?php echo esc_attr($code); ?>" <?php selected(RS_FR_I18n::sanitize_locale($settings['locale']), $code); ?>><?php echo esc_html($label); ?></option>
+            <?php endforeach; ?>
         </select>
-        <p class="description"><?php echo esc_html__('Første version er dansk. Feltet er lagt ind, så flere sprog kan tilføjes senere.', 'rs-digital-fortrydelsesret'); ?></p>
+        <p class="description"><?php echo esc_html__('Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke.', 'rs-digital-fortrydelsesret'); ?></p>
         <?php
     }
 
@@ -675,7 +680,9 @@ final class RS_FR_Settings
 
         $settings = get_option('digital_fortrydelse_settings', array());
 
-        return wp_parse_args(is_array($settings) ? $settings : array(), $defaults);
+        $settings = wp_parse_args(is_array($settings) ? $settings : array(), $defaults);
+
+        return RS_FR_I18n::localize_defaults($settings, RS_FR_I18n::sanitize_locale($settings['locale']));
     }
 
     /**
@@ -683,19 +690,9 @@ final class RS_FR_Settings
      *
      * @return string
      */
-    public static function default_terms_section_text()
+    public static function default_terms_section_text($locale = null)
     {
-        return implode(
-            "\n\n",
-            array(
-                'Du kan fortryde dit køb ved at bruge vores digitale fortrydelsesfunktion på webshoppen.',
-                'Funktionen findes på siden {fortrydelse_link}.',
-                'Når du udfylder og sender formularen, skal du oplyse navn, e-mailadresse og ordrenummer. Du kan vælge, om du ønsker at fortryde hele ordren eller enkelte produkter.',
-                'Når formularen er sendt, modtager du uden unødig forsinkelse en kvittering pr. e-mail. Kvitteringen bekræfter, at vi har modtaget din anmodning om fortrydelse, og indeholder det indsendte indhold samt dato og tidspunkt for indsendelsen.',
-                'Kvitteringen er alene en bekræftelse på modtagelse af din anmodning om fortrydelse. Den er ikke en endelig afgørelse af sagen.',
-                'Du anses for at have fortrudt rettidigt, hvis du sender fortrydelsen via den digitale fortrydelsesfunktion inden fortrydelsesfristen udløber.',
-            )
-        );
+        return RS_FR_I18n::default_text('terms_section_text', $locale);
     }
 
     /**
@@ -801,7 +798,7 @@ final class RS_FR_Settings
     {
         $text = !empty($settings['terms_section_text']) ? $settings['terms_section_text'] : self::default_terms_section_text();
         $url = self::withdrawal_page_url();
-        $link = '<a href="' . esc_url($url) . '">' . esc_html__('Fortryd aftale', 'rs-digital-fortrydelsesret') . '</a>';
+        $link = '<a href="' . esc_url($url) . '">' . esc_html(RS_FR_I18n::default_text('terms_link_text', isset($settings['locale']) ? $settings['locale'] : null)) . '</a>';
 
         // {fortrydelse_link}/{fortrydelse_url} er de aktuelle tokens.
         // {fortryd_aftale_link}/{fortryd_aftale_url} bevares som alias for bagudkompatibilitet.
@@ -810,7 +807,7 @@ final class RS_FR_Settings
 
         return self::TERMS_START_MARKER . "\n"
             . '<section class="digital-fortrydelse-terms">' . "\n"
-            . '<h2>' . esc_html__('Digital fortrydelsesfunktion', 'rs-digital-fortrydelsesret') . '</h2>' . "\n"
+            . '<h2>' . esc_html(RS_FR_I18n::default_text('terms_heading', isset($settings['locale']) ? $settings['locale'] : null)) . '</h2>' . "\n"
             . wpautop(wp_kses_post($text)) . "\n"
             . '</section>' . "\n"
             . self::TERMS_END_MARKER;

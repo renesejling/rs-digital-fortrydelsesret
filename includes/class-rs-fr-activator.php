@@ -101,7 +101,7 @@ final class RS_FR_Activator
                 'locale' => 'da_DK',
                 'retention_years' => 5,
                 'delete_data_on_uninstall' => 0,
-                'form_intro' => 'Udfyld formularen herunder for at fortryde dit køb. Du modtager en kvittering for din anmodning pr. e-mail.',
+                'form_intro' => RS_FR_I18n::default_text('form_intro', 'da_DK'),
                 'customer_mail_template' => '',
                 'internal_mail_template' => '',
                 'terms_page_id' => 0,

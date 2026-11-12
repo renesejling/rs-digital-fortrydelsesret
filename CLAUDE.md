@@ -46,6 +46,12 @@ Afhængigheder (via Composer i `vendor/`):
 > integreret/omdøbt (prefix `RS_FR_`) til rent intern brug på egne kunders sites.
 
 
+### Pluginsprog (da_DK / en_US)
+- Valgt i indstillingen `locale`. `RS_FR_I18n` (`includes/class-rs-fr-i18n.php`) indlæser `.mo` på `init` (dansk = ingen fil, msgid'er er danske) og rummer standardtekster pr. sprog (`default_text()`).
+- Ved sprogskift kører `localize_defaults()` og bytter kun tekster, der er identiske med en indbygget standard.
+- **Nye brugervendte strenge:** pak i `__()` med domænet, kør `xgettext` (se nøgleord `__ _e esc_html__ esc_attr__ esc_html_e`, `--from-code=UTF-8`) til `languages/rs-digital-fortrydelsesret.pot`, opdatér `-en_US.po`, og byg `.mo` med `msgfmt --check`. Commit `.mo`.
+- URL-slugs (`fortrydelser`, `/fortrydelsesret/`) og tokenet `{fortrydelse_link}` oversættes ikke.
+
 ## Distribution & opdateringer
 
 - Repo'et er **offentligt**: https://github.com/renesejling/rs-digital-fortrydelsesret

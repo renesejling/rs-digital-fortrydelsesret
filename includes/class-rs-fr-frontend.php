@@ -388,7 +388,7 @@ final class RS_FR_Frontend
             return $settings['form_intro'];
         }
 
-        return __('Udfyld formularen herunder for at fortryde dit køb. Du modtager en kvittering for din anmodning pr. e-mail.', 'rs-digital-fortrydelsesret');
+        return RS_FR_I18n::default_text('form_intro');
     }
 
     /**

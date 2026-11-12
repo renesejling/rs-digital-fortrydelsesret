@@ -30,7 +30,7 @@ to ting: **kundens fortrydelses-flow** (offentlig formular + sagsbehandling) og
 > eksisterende ordremails, mens kvitterings-/notifikationsmails udløses af selve
 > formular-indsendelsen.
 
-- **Version:** 2.3.0
+- **Version:** 2.4.0
 - **Forfatter:** [ReneSejling.dk](https://renesejling.dk)
 
 
@@ -59,6 +59,12 @@ De mails der får note + PDF styres af konstanten `RS_FR_MAILS`
 Stien til fortrydelsessiden styres af `RS_FR_PATH` (standard: `/fortrydelsesret/`).
 
 ---
+
+## Pluginsprog (Dansk / English)
+
+Under **WooCommerce → Fortrydelse indstillinger → Sprog** kan du vælge **Dansk** eller **English**. Valget skifter formular, fejlbeskeder, kvitteringsmails, Min Konto, admin-sider og standardteksten til handelsbetingelserne. Uændrede standardtekster (formularintro og handelsbetingelsesafsnit) skifter sprog, når du gemmer; tekster du selv har rettet, røres ikke. Mailboksen i WooCommerce-ordremails følger fortsat WPML/Polylang, hvis et af dem er aktivt.
+
+Oversættelser ligger i `languages/` (`rs-digital-fortrydelsesret-en_US.po/.mo`). Standardtekster pr. sprog ligger i `includes/class-rs-fr-i18n.php`.
 
 ## Oversættelse (WPML & Polylang)
 
