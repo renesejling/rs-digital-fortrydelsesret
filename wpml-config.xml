@@ -1,0 +1,14 @@
+<wpml-config>
+  <admin-texts>
+    <key name="digital_fortrydelse_settings">
+      <key name="form_intro"/>
+      <key name="form_outro"/>
+      <key name="customer_mail_template"/>
+      <key name="order_email_heading"/>
+      <key name="order_email_intro"/>
+      <key name="order_email_link_text"/>
+      <key name="order_email_pdf_note"/>
+      <key name="terms_section_text"/>
+    </key>
+  </admin-texts>
+</wpml-config>

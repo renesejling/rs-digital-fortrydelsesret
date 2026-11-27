@@ -31,8 +31,25 @@ final class RS_FR_Mailer
             );
         }
 
-        $customer_sent = self::send_customer_receipt($case);
-        $internal_sent = self::send_internal_notification($case);
+        // Kvitteringen sendes på kundens sprog, den interne mail på butikkens sprog.
+        $metadata = json_decode((string) $case->metadata, true);
+        $customer_locale = is_array($metadata) && !empty($metadata['locale'])
+            ? RS_FR_I18n::sanitize_locale($metadata['locale'])
+            : RS_FR_I18n::setting_locale();
+
+        RS_FR_I18n::switch_to($customer_locale);
+        try {
+            $customer_sent = self::send_customer_receipt($case);
+        } finally {
+            RS_FR_I18n::restore();
+        }
+
+        RS_FR_I18n::switch_to(RS_FR_I18n::setting_locale());
+        try {
+            $internal_sent = self::send_internal_notification($case);
+        } finally {
+            RS_FR_I18n::restore();
+        }
 
         if ($customer_sent) {
             RS_FR_Repository::mark_mail_sent($case_id, 'receipt_sent_at');

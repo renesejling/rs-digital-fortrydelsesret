@@ -1,0 +1,633 @@
+# Italian translation of RS Digital Fortrydelsesret.
+# Copyright (C) ReneSejling.dk
+# This file is distributed under the same license as the RS Digital Fortrydelsesret package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RS Digital Fortrydelsesret\n"
+"Report-Msgid-Bugs-To: https://github.com/renesejling/rs-digital-fortrydelsesret\n"
+"POT-Creation-Date: 2026-11-12 09:02+0100\n"
+"PO-Revision-Date: 2026-11-27 12:00+0100\n"
+"Last-Translator: ReneSejling.dk\n"
+"Language-Team: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: rs-digital-fortrydelsesret.php:659
+msgid "Dompdf er ikke installeret (kør \"composer install\")."
+msgstr "Dompdf non è installato (eseguire \"composer install\")."
+
+#: rs-digital-fortrydelsesret.php:667
+msgid "Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration)."
+msgstr "In WooCommerce non è stata selezionata una pagina dei termini e condizioni (WooCommerce → Impostazioni → Avanzate → Configurazione pagine)."
+
+#: rs-digital-fortrydelsesret.php:672
+msgid "Den valgte handelsbetingelses-side findes ikke længere."
+msgstr "La pagina dei termini e condizioni selezionata non esiste più."
+
+#: rs-digital-fortrydelsesret.php:685
+msgid "Version pr."
+msgstr "Versione del"
+
+#: rs-digital-fortrydelsesret.php:740
+msgid "Test PDF"
+msgstr "Testa PDF"
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Du har ikke rettigheder til at se denne side."
+msgstr "Non hai i permessi per visualizzare questa pagina."
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Adgang nægtet"
+msgstr "Accesso negato"
+
+#: rs-digital-fortrydelsesret.php:754
+msgid "Kunne ikke generere PDF"
+msgstr "Impossibile generare il PDF"
+
+#: includes/class-rs-fr-account.php:67 includes/class-rs-fr-account.php:74
+#: includes/class-rs-fr-account.php:116
+msgid "Mine fortrydelser"
+msgstr "I miei recessi"
+
+#: includes/class-rs-fr-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr "Accedi per vedere i tuoi recessi."
+
+#: includes/class-rs-fr-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr "Non hai recessi registrati."
+
+#: includes/class-rs-fr-account.php:127 includes/class-rs-fr-account.php:136
+#: includes/class-rs-fr-account.php:171 includes/class-rs-fr-admin.php:158
+#: includes/class-rs-fr-admin.php:217
+msgid "Reference"
+msgstr "Riferimento"
+
+#: includes/class-rs-fr-account.php:128 includes/class-rs-fr-account.php:139
+#: includes/class-rs-fr-account.php:172 includes/class-rs-fr-admin.php:159
+msgid "Dato"
+msgstr "Data"
+
+#: includes/class-rs-fr-account.php:129 includes/class-rs-fr-account.php:140
+#: includes/class-rs-fr-admin.php:161 includes/class-rs-fr-admin.php:225
+msgid "Ordre"
+msgstr "Ordine"
+
+#: includes/class-rs-fr-account.php:130 includes/class-rs-fr-account.php:141
+#: includes/class-rs-fr-account.php:175 includes/class-rs-fr-admin.php:163
+#: includes/class-rs-fr-admin.php:218 includes/class-rs-fr-admin.php:252
+msgid "Status"
+msgstr "Stato"
+
+#: includes/class-rs-fr-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr "Il recesso non è stato trovato."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-account.php:165 includes/class-rs-fr-admin.php:209
+#, php-format
+msgid "Fortrydelse %s"
+msgstr "Recesso %s"
+
+#: includes/class-rs-fr-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr "Torna ai miei recessi"
+
+#: includes/class-rs-fr-account.php:173 includes/class-rs-fr-admin.php:224
+#: includes/class-rs-fr-frontend.php:116
+msgid "Ordrenummer"
+msgstr "Numero d'ordine"
+
+#: includes/class-rs-fr-account.php:174 includes/class-rs-fr-admin.php:229
+msgid "Fortrydelse"
+msgstr "Recesso"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-admin.php:230
+msgid "Indsendt indhold"
+msgstr "Contenuto inviato"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-account.php:248
+#: includes/class-rs-fr-admin.php:230 includes/class-rs-fr-admin.php:545
+#: includes/class-rs-fr-frontend.php:124 includes/class-rs-fr-mailer.php:274
+msgid "Hele ordren"
+msgstr "Intero ordine"
+
+#: includes/class-rs-fr-account.php:228 includes/class-rs-fr-admin.php:481
+msgid "Modtaget"
+msgstr "Ricevuto"
+
+#: includes/class-rs-fr-account.php:229 includes/class-rs-fr-admin.php:482
+msgid "Under behandling"
+msgstr "In lavorazione"
+
+#: includes/class-rs-fr-account.php:230 includes/class-rs-fr-admin.php:483
+msgid "Godkendt"
+msgstr "Approvato"
+
+#: includes/class-rs-fr-account.php:231 includes/class-rs-fr-admin.php:484
+msgid "Afvist"
+msgstr "Rifiutato"
+
+#: includes/class-rs-fr-account.php:232 includes/class-rs-fr-admin.php:485
+msgid "Fuldført"
+msgstr "Completato"
+
+#: includes/class-rs-fr-account.php:247 includes/class-rs-fr-admin.php:544
+#: includes/class-rs-fr-frontend.php:128 includes/class-rs-fr-mailer.php:271
+msgid "Enkelte produkter"
+msgstr "Singoli prodotti"
+
+#: includes/class-rs-fr-admin.php:43 includes/class-rs-fr-admin.php:44
+#: includes/class-rs-fr-admin.php:141
+msgid "Fortrydelser"
+msgstr "Recessi"
+
+#: includes/class-rs-fr-admin.php:106 includes/class-rs-fr-settings.php:271
+msgid "Du har ikke adgang til denne side."
+msgstr "Non hai accesso a questa pagina."
+
+#: includes/class-rs-fr-admin.php:147
+msgid "Søg fortrydelser"
+msgstr "Cerca recessi"
+
+#: includes/class-rs-fr-admin.php:150
+msgid "Filtrer"
+msgstr "Filtra"
+
+#: includes/class-rs-fr-admin.php:151
+msgid "Eksporter CSV"
+msgstr "Esporta CSV"
+
+#: includes/class-rs-fr-admin.php:160
+msgid "Kunde"
+msgstr "Cliente"
+
+#: includes/class-rs-fr-admin.php:162
+msgid "Type"
+msgstr "Tipo"
+
+#: includes/class-rs-fr-admin.php:164 includes/class-rs-fr-admin.php:227
+msgid "Frist"
+msgstr "Termine"
+
+#: includes/class-rs-fr-admin.php:182
+msgid "Ingen fortrydelser fundet."
+msgstr "Nessun recesso trovato."
+
+#: includes/class-rs-fr-admin.php:201
+msgid "Fortrydelse ikke fundet"
+msgstr "Recesso non trovato"
+
+#: includes/class-rs-fr-admin.php:202 includes/class-rs-fr-admin.php:213
+msgid "Tilbage til oversigten"
+msgstr "Torna alla panoramica"
+
+#: includes/class-rs-fr-admin.php:219
+msgid "Indsendt"
+msgstr "Inviato"
+
+#: includes/class-rs-fr-admin.php:220 includes/class-rs-fr-frontend.php:106
+msgid "Navn"
+msgstr "Nome"
+
+#: includes/class-rs-fr-admin.php:221 includes/class-rs-fr-frontend.php:111
+msgid "Mailadresse"
+msgstr "Indirizzo e-mail"
+
+#: includes/class-rs-fr-admin.php:222
+msgid "Ordre-mailadresse"
+msgstr "Indirizzo e-mail dell'ordine"
+
+#: includes/class-rs-fr-admin.php:222 includes/class-rs-fr-admin.php:457
+#: includes/class-rs-fr-mailer.php:228 includes/class-rs-fr-mailer.php:230
+msgid "Ikke fundet"
+msgstr "Non trovato"
+
+#: includes/class-rs-fr-admin.php:223
+msgid "E-mailafvigelse"
+msgstr "E-mail difforme"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-mailer.php:229
+msgid "Ja"
+msgstr "Sì"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-admin.php:231
+#: includes/class-rs-fr-admin.php:232 includes/class-rs-fr-mailer.php:229
+msgid "Nej"
+msgstr "No"
+
+#: includes/class-rs-fr-admin.php:226
+msgid "Ordredato"
+msgstr "Data dell'ordine"
+
+#: includes/class-rs-fr-admin.php:226 includes/class-rs-fr-admin.php:227
+#: includes/class-rs-fr-admin.php:531 includes/class-rs-fr-mailer.php:232
+#: includes/class-rs-fr-mailer.php:233
+msgid "Ukendt"
+msgstr "Sconosciuto"
+
+#: includes/class-rs-fr-admin.php:228
+msgid "Friststatus"
+msgstr "Stato del termine"
+
+#: includes/class-rs-fr-admin.php:231
+msgid "Kundekvittering sendt"
+msgstr "Conferma al cliente inviata"
+
+#: includes/class-rs-fr-admin.php:232
+msgid "Intern mail sendt"
+msgstr "E-mail interna inviata"
+
+#: includes/class-rs-fr-admin.php:236
+msgid "Behandling"
+msgstr "Gestione"
+
+#: includes/class-rs-fr-admin.php:238
+msgid "Hvad sker der, når status ændres?"
+msgstr "Cosa succede quando lo stato cambia?"
+
+#: includes/class-rs-fr-admin.php:239
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr "Quando modifichi lo stato e clicchi su «Salva gestione», viene aggiornata solo la pratica interna di recesso."
+
+#: includes/class-rs-fr-admin.php:241
+msgid "Sagens status bliver gemt."
+msgstr "Lo stato della pratica viene salvato."
+
+#: includes/class-rs-fr-admin.php:242
+msgid "Den interne note bliver gemt."
+msgstr "La nota interna viene salvata."
+
+#: includes/class-rs-fr-admin.php:243
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr "L'orario dell'ultimo aggiornamento viene salvato."
+
+#: includes/class-rs-fr-admin.php:245
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr "L'ordine WooCommerce non viene modificato automaticamente: stato dell'ordine, rimborso, magazzino ed e-mail ai clienti restano gestiti manualmente in questa versione."
+
+#: includes/class-rs-fr-admin.php:256
+msgid "Intern note"
+msgstr "Nota interna"
+
+#: includes/class-rs-fr-admin.php:259
+msgid "Gem behandling"
+msgstr "Salva gestione"
+
+#: includes/class-rs-fr-admin.php:272 includes/class-rs-fr-admin.php:304
+msgid "Du har ikke adgang til denne handling."
+msgstr "Non hai accesso a questa azione."
+
+#: includes/class-rs-fr-admin.php:379
+msgid "Alle statusser"
+msgstr "Tutti gli stati"
+
+#: includes/class-rs-fr-admin.php:442
+msgid "Sagen blev opdateret."
+msgstr "La pratica è stata aggiornata."
+
+#: includes/class-rs-fr-admin.php:443
+msgid "Sagen kunne ikke opdateres."
+msgstr "Non è stato possibile aggiornare la pratica."
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-fr-admin.php:468
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr "Apri ordine #%s"
+
+#: includes/class-rs-fr-admin.php:529
+msgid "Inden for frist"
+msgstr "Entro il termine"
+
+#: includes/class-rs-fr-admin.php:530
+msgid "Overskredet"
+msgstr "Scaduto"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-frontend.php:73
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr "La tua richiesta di recesso è stata ricevuta. Il tuo riferimento è %s."
+
+#: includes/class-rs-fr-frontend.php:78
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr "Una conferma è stata inviata all'indirizzo e-mail che hai indicato."
+
+#: includes/class-rs-fr-frontend.php:93
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse."
+msgstr "La conferma attesta soltanto che abbiamo ricevuto la tua richiesta di recesso. Riceverai poi una nostra decisione definitiva."
+
+#: includes/class-rs-fr-frontend.php:101
+msgid "Website"
+msgstr "Sito web"
+
+#: includes/class-rs-fr-frontend.php:121
+msgid "Hvad vil du fortryde?"
+msgstr "Da cosa vuoi recedere?"
+
+#: includes/class-rs-fr-frontend.php:133
+msgid "Produkter eller bemærkning"
+msgstr "Prodotti o nota"
+
+#: includes/class-rs-fr-frontend.php:145
+msgid "Bekræft fortrydelse"
+msgstr "Conferma il recesso"
+
+#: includes/class-rs-fr-frontend.php:262
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr "Non è stato possibile convalidare il modulo. Ricarica la pagina e riprova."
+
+#: includes/class-rs-fr-frontend.php:266
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr "Non è stato possibile inviare il recesso."
+
+#: includes/class-rs-fr-frontend.php:270
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr "Dalla stessa connessione sono state inviate troppe richieste. Riprova più tardi."
+
+#: includes/class-rs-fr-frontend.php:274
+msgid "Indtast dit navn."
+msgstr "Inserisci il tuo nome."
+
+#: includes/class-rs-fr-frontend.php:278
+msgid "Indtast en gyldig mailadresse."
+msgstr "Inserisci un indirizzo e-mail valido."
+
+#: includes/class-rs-fr-frontend.php:282
+msgid "Indtast ordrenummer."
+msgstr "Inserisci il numero d'ordine."
+
+#: includes/class-rs-fr-frontend.php:288
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr "Scegli se vuoi recedere dall'intero ordine o solo da singoli prodotti."
+
+#: includes/class-rs-fr-frontend.php:292
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr "Indica da quali prodotti vuoi recedere."
+
+#: includes/class-rs-fr-frontend.php:311
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr "Il numero d'ordine e l'indirizzo e-mail non corrispondono. Controlla i dati e riprova."
+
+#: includes/class-rs-fr-frontend.php:326
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr "Esiste già una pratica di recesso per i prodotti indicati in questo ordine. Indica altre righe d'ordine solo se vuoi creare un nuovo recesso parziale."
+
+#: includes/class-rs-fr-frontend.php:330
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr "Esiste già una pratica di recesso per questo ordine."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr "Conferma di recesso - %s"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr "Nuovo recesso ricevuto - %s"
+
+#: includes/class-rs-fr-mailer.php:256
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr "Il cliente desidera recedere dall'intero ordine."
+
+#: includes/class-rs-fr-mailer.php:259
+msgid "Ingen yderligere bemærkning angivet."
+msgstr "Nessuna ulteriore nota indicata."
+
+#: includes/class-rs-fr-repository.php:101
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr "Non è stato possibile salvare il recesso. Riprova più tardi."
+
+#: includes/class-rs-fr-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr "Impostazioni del recesso digitale"
+
+#: includes/class-rs-fr-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr "Impostazioni recesso"
+
+#: includes/class-rs-fr-settings.php:80
+msgid "Generelle indstillinger"
+msgstr "Impostazioni generali"
+
+#: includes/class-rs-fr-settings.php:87
+msgid "Intern modtager"
+msgstr "Destinatario interno"
+
+#: includes/class-rs-fr-settings.php:95
+msgid "Sprog"
+msgstr "Lingua"
+
+#: includes/class-rs-fr-settings.php:103
+msgid "Opbevaring"
+msgstr "Conservazione"
+
+#: includes/class-rs-fr-settings.php:111
+msgid "Formulartekst"
+msgstr "Testo del modulo"
+
+#: includes/class-rs-fr-settings.php:119
+msgid "Tekst før knap"
+msgstr "Testo prima del pulsante"
+
+#: includes/class-rs-fr-settings.php:127
+msgid "Kundekvittering"
+msgstr "Conferma al cliente"
+
+#: includes/class-rs-fr-settings.php:135
+msgid "Intern mail"
+msgstr "E-mail interna"
+
+#: includes/class-rs-fr-settings.php:143
+msgid "Afinstallering"
+msgstr "Disinstallazione"
+
+#: includes/class-rs-fr-settings.php:151
+msgid "Ordremail (fortrydelsestekst)"
+msgstr "E-mail dell'ordine (testo sul recesso)"
+
+#: includes/class-rs-fr-settings.php:158
+msgid "Link til fortrydelse"
+msgstr "Link al recesso"
+
+#: includes/class-rs-fr-settings.php:166
+msgid "Overskrift"
+msgstr "Titolo"
+
+#: includes/class-rs-fr-settings.php:174
+msgid "Introtekst"
+msgstr "Testo introduttivo"
+
+#: includes/class-rs-fr-settings.php:182
+msgid "Link-tekst"
+msgstr "Testo del link"
+
+#: includes/class-rs-fr-settings.php:190
+msgid "PDF-note"
+msgstr "Nota PDF"
+
+#: includes/class-rs-fr-settings.php:199
+msgid "Handelsbetingelser"
+msgstr "Termini e condizioni"
+
+#: includes/class-rs-fr-settings.php:206
+msgid "Handelsbetingelsesside"
+msgstr "Pagina dei termini e condizioni"
+
+#: includes/class-rs-fr-settings.php:214
+msgid "Automatisk indsættelse"
+msgstr "Inserimento automatico"
+
+#: includes/class-rs-fr-settings.php:222
+msgid "Tekstafsnit"
+msgstr "Sezione di testo"
+
+#: includes/class-rs-fr-settings.php:277
+msgid "Digital Fortrydelse"
+msgstr "Recesso digitale"
+
+#: includes/class-rs-fr-settings.php:303
+msgid "Brug WooCommerce standardmodtager"
+msgstr "Usa il destinatario predefinito di WooCommerce"
+
+#: includes/class-rs-fr-settings.php:305
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr "Lascia vuoto per usare il destinatario delle e-mail di nuovo ordine di WooCommerce."
+
+#: includes/class-rs-fr-settings.php:325
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr "Numero di anni di conservazione delle pratiche di recesso. Il massimo è 5 anni."
+
+#: includes/class-rs-fr-settings.php:343
+msgid "Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke."
+msgstr "Controlla la lingua del modulo, delle e-mail, della sezione dei termini e condizioni e delle pagine di amministrazione del plugin. I testi predefiniti non modificati cambiano lingua automaticamente al salvataggio. I testi che hai personalizzato non vengono modificati."
+
+#: includes/class-rs-fr-settings.php:378
+msgid "Valgfri tekst der vises i en infoboks lige før \"Bekræft fortrydelse\"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt."
+msgstr "Testo facoltativo mostrato in un riquadro informativo subito prima del pulsante «Conferma il recesso». Utile ad esempio per informazioni sui prodotti su misura. Lascia vuoto per nascondere il riquadro. È consentito HTML semplice, come link e grassetto."
+
+#: includes/class-rs-fr-settings.php:397
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr "La conferma al cliente deve solo attestare la ricezione della richiesta. Non deve essere formulata come approvazione definitiva o rimborso."
+
+#: includes/class-rs-fr-settings.php:437
+msgid "Slet pluginets data ved afinstallering."
+msgstr "Elimina i dati del plugin alla disinstallazione."
+
+#: includes/class-rs-fr-settings.php:450
+msgid "Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten."
+msgstr "Qui puoi personalizzare il testo inserito nelle e-mail d'ordine di WooCommerce (e-mail «in lavorazione» e «completato»). Lascia un campo vuoto per usare il testo predefinito del plugin (tradotto automaticamente anche tramite WPML/Polylang). Compila i campi se vendi ad esempio anche prodotti su misura non coperti dal diritto di recesso."
+
+#: includes/class-rs-fr-settings.php:451
+msgid "Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen)."
+msgstr "Se disattivi il link al recesso qui sotto, nell'e-mail viene mostrata solo la nota sul PDF (ad esempio per i negozi in cui il cliente non deve ricevere un link diretto alla funzione di recesso)."
+
+#: includes/class-rs-fr-settings.php:471
+msgid "Vis info-boks med link til digital fortrydelse i kundens ordremails."
+msgstr "Mostra un riquadro informativo con il link al recesso digitale nelle e-mail d'ordine del cliente."
+
+#: includes/class-rs-fr-settings.php:473
+msgid "Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling."
+msgstr "Se la casella non è selezionata, viene mostrata solo una breve nota che indica che i termini e condizioni sono allegati in PDF, senza link alla funzione di recesso. I termini e condizioni vengono sempre allegati in PDF, indipendentemente da questa impostazione."
+
+#: includes/class-rs-fr-settings.php:493
+msgid "Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Il titolo del riquadro informativo nell'e-mail d'ordine. Usato solo quando il link qui sopra è attivo. Predefinito:"
+
+#: includes/class-rs-fr-settings.php:512
+msgid "Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Il testo introduttivo del riquadro informativo. Utile ad esempio per indicare che i prodotti su misura non sono coperti dal diritto di recesso. Usato solo quando il link qui sopra è attivo. Predefinito:"
+
+#: includes/class-rs-fr-settings.php:532
+msgid "Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Il testo del link alla funzione di recesso. Usato solo quando il link qui sopra è attivo. Predefinito:"
+
+#: includes/class-rs-fr-settings.php:551
+msgid "Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:"
+msgstr "La nota che indica che i termini e condizioni sono allegati in PDF. Viene sempre mostrata, anche quando il link qui sopra è disattivato. Predefinito:"
+
+#: includes/class-rs-fr-settings.php:564
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr "Qui è possibile gestire il testo dei termini e condizioni. Quando l'inserimento automatico è attivo, il plugin aggiorna la propria sezione contrassegnata nella pagina selezionata ogni volta che le impostazioni vengono salvate."
+
+#: includes/class-rs-fr-settings.php:565
+msgid "Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på."
+msgstr "Nota: questo testo è solo il rimando nei termini e condizioni. Il modulo di recesso vero e proprio viene mostrato inserendo lo shortcode [digital_fortrydelse] nella pagina a cui punta il token qui sotto."
+
+#: includes/class-rs-fr-settings.php:583
+msgid "Vælg side"
+msgstr "Seleziona pagina"
+
+#: includes/class-rs-fr-settings.php:589
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr "La pagina dei termini e condizioni di WooCommerce è selezionata come predefinita."
+
+#: includes/class-rs-fr-settings.php:591
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr "Seleziona la pagina usata per i termini e condizioni. Se WooCommerce ha impostato una pagina dei termini e condizioni, viene usata come predefinita."
+
+#: includes/class-rs-fr-settings.php:611
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr "Aggiorna automaticamente la sezione nei termini e condizioni quando le impostazioni vengono salvate."
+
+#: includes/class-rs-fr-settings.php:613
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr "Il plugin sostituisce solo il contenuto tra i propri marcatori di inizio e fine. Se i marcatori non esistono, la sezione viene aggiunta in fondo alla pagina."
+
+#: includes/class-rs-fr-settings.php:632
+msgid "Tokens:"
+msgstr "Token:"
+
+#: includes/class-rs-fr-settings.php:633
+msgid "klikbart link"
+msgstr "link cliccabile"
+
+#: includes/class-rs-fr-settings.php:634
+msgid "ren URL"
+msgstr "URL semplice"
+
+#: includes/class-rs-fr-settings.php:635
+msgid "De ældre tokens"
+msgstr "I token meno recenti"
+
+#: includes/class-rs-fr-settings.php:636
+msgid "og"
+msgstr "e"
+
+#: includes/class-rs-fr-settings.php:637
+msgid "virker stadig som alias."
+msgstr "continuano a funzionare come alias."
+
+#. translators: %s: resolved withdrawal page URL.
+#: includes/class-rs-fr-settings.php:643
+#, php-format
+msgid "Tokenet peger i øjeblikket på: %s"
+msgstr "Il token punta attualmente a: %s"
+
+#: includes/class-rs-fr-settings.php:649
+msgid "Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der."
+msgstr "Importante: il modulo vero e proprio non viene mostrato da questo testo. Aggiungi lo shortcode [digital_fortrydelse] nella pagina a cui punta il token per mostrare lì il modulo di recesso."
+
+#: includes/class-rs-fr-settings.php:743
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr "La sezione sul recesso digitale è stata aggiornata nella pagina dei termini e condizioni."
+
+#: includes/class-rs-fr-settings.php:748
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr "Non è stato possibile inserire la sezione perché non è stata selezionata una pagina dei termini e condizioni valida."
+
+#: includes/class-rs-fr-settings.php:752
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr "Non è stato possibile aggiornare la sezione nella pagina dei termini e condizioni."
+
+#: includes/class-rs-fr-settings.php:855
+msgid "Tilgængelige tokens:"
+msgstr "Token disponibili:"

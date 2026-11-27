@@ -60,11 +60,26 @@ Stien til fortrydelsessiden styres af `RS_FR_PATH` (standard: `/fortrydelsesret/
 
 ---
 
-## Pluginsprog (Dansk / English / Svenska)
+## Pluginsprog (10 sprog)
 
-Under **WooCommerce → Fortrydelse indstillinger → Sprog** kan du vælge **Dansk**, **English** eller **Svenska**. Valget skifter formular, fejlbeskeder, kvitteringsmails, Min Konto, admin-sider og standardteksten til handelsbetingelserne. Uændrede standardtekster (formularintro og handelsbetingelsesafsnit) skifter sprog, når du gemmer; tekster du selv har rettet, røres ikke. Mailboksen i WooCommerce-ordremails følger fortsat WPML/Polylang, hvis et af dem er aktivt.
+Under **WooCommerce → Fortrydelse indstillinger → Sprog** vælger du standardsproget: **Dansk, English, Svenska, Français, Deutsch, Magyar, Italiano, Polski, Română** eller **Español**. Sproget styrer formular, fejlbeskeder, kvitteringsmails, Min Konto, admin-sider og standardteksten til handelsbetingelserne. Uændrede standardtekster skifter sprog, når du gemmer; tekster du selv har rettet, røres ikke.
 
-Oversættelser ligger i `languages/` (`rs-digital-fortrydelsesret-en_US.po/.mo` og `-sv_SE.po/.mo`). Standardtekster pr. sprog ligger i `includes/class-rs-fr-i18n.php`.
+Oversættelser ligger i `languages/` (`rs-digital-fortrydelsesret-<locale>.po/.mo`). Standardtekster pr. sprog ligger i `includes/class-rs-fr-i18n.php` (da/en/sv) og `includes/texts/<locale>.php` (øvrige).
+
+## Flersprogede sites (WPML / Polylang)
+
+På et site med WPML eller Polylang følger pluginnet **kundens sprog**:
+
+- **Formular, fejlbeskeder og kvitteringsmail** bruger besøgssproget, hvis det er et af de 10 sprog. Ellers bruges sproget fra indstillingerne (fx English). Den interne mail til butikken sendes altid på indstillingens sprog.
+- **Ordremails** (boks + vedhæftet PDF) bruger **ordrens sprog** (WCML gemmer det i ordre-meta `wpml_language`), også når mailen sendes fra admin eller en webhook.
+- **Egne tekster** (formularintro, kvitteringsskabelon, boks-tekster, afsnit til betingelserne) kan oversættes i **WPML → String Translation** (domæne `admin_texts_digital_fortrydelse_settings`) via `wpml-config.xml`. Til sprog uden indbygget oversættelse (fx hollandsk) oversættes strengene dér; ellers bruges indstillingens sprog.
+- **Afsnittet i handelsbetingelserne** indsættes ved automatisk indsættelse også på alle oversættelser af betingelsessiden, hver på sit sprog. Genoversættes siden bagefter i WPML's editor, kan afsnittet blive overskrevet; det sættes ind igen, næste gang indstillingerne gemmes.
+
+**Opsætning (ca. 10 min):**
+1. Opdatér pluginnet, vælg standardsprog (fx English) og gem indstillingerne.
+2. WPML → Settings → "Reload config" (så `wpml-config.xml` læses), og gem fortrydelsesindstillingerne én gang.
+3. Opret fortrydelsessiden med slug `fortrydelsesret` og shortcoden `[digital_fortrydelse]`, og oversæt den.
+4. Aktivér **WooCommerce Multilingual**, så ordrens sprog gemmes.
 
 ## Oversættelse (WPML & Polylang)
 
@@ -73,9 +88,9 @@ Pluginnet er kompatibelt med både **WPML** og **Polylang** og virker
 
 ### Tekster i mail-boksen
 
-Teksterne er **indbygget på fem sprog**: dansk, engelsk, tysk, svensk og norsk
-(bokmål). Pluginnet vælger automatisk sproget ud fra ordrens/kundens sprog
-(Polylang/WPML) eller WordPress' locale. Er sproget ikke et af de fem, bruges dansk.
+Teksterne er **indbygget på 11 sprog**: dansk, engelsk, tysk, svensk, norsk (bokmål),
+fransk, ungarsk, italiensk, polsk, rumænsk og spansk. Pluginnet vælger automatisk sproget ud fra ordrens/kundens sprog
+(Polylang/WPML) eller WordPress' locale. Er sproget ikke indbygget, bruges sproget fra indstillingerne.
 
 **Override / flere sprog:** strengene registreres også i **String Translation**
 under gruppen **"RS Digital Fortrydelsesret"**, så du kan tilføje yderligere sprog

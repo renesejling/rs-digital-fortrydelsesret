@@ -46,8 +46,9 @@ Afhængigheder (via Composer i `vendor/`):
 > integreret/omdøbt (prefix `RS_FR_`) til rent intern brug på egne kunders sites.
 
 
-### Pluginsprog (da_DK / en_US / sv_SE)
-- Valgt i indstillingen `locale`. Nyt sprog = tilføj i `RS_FR_I18n::locales()` + `texts()` + `-<locale>.po/.mo`. `RS_FR_I18n` (`includes/class-rs-fr-i18n.php`) indlæser `.mo` på `init` (dansk = ingen fil, msgid'er er danske) og rummer standardtekster pr. sprog (`default_text()`).
+### Pluginsprog (da_DK / en_US / sv_SE / fr_FR / de_DE / hu_HU / it_IT / pl_PL / ro_RO / es_ES)
+- Valgt i indstillingen `locale`. Nyt sprog = tilføj i `RS_FR_I18n::locales()` + standardtekster (`base_texts()` eller `includes/texts/<locale>.php`) + `rs_fr_translations()` (mailboks) + `-<locale>.po/.mo`. `RS_FR_I18n` (`includes/class-rs-fr-i18n.php`) indlæser `.mo` på `init` (dansk = ingen fil, msgid'er er danske) og rummer standardtekster pr. sprog (`default_text()`).
+- Sprog pr. besøg: `current_locale()` = midlertidigt skift (`switch_to()`/`restore()`, altid i `try/finally`) → WPML/Polylang-sprog (kun frontend) → indstillingen (`setting_locale()`). Kundens locale gemmes i `metadata["locale"]`; ordremails skifter til ordrens sprog via `rs_fr_with_order_language()`. `wpml-config.xml` registrerer tilpasselige tekster til String Translation.
 - Ved sprogskift kører `localize_defaults()` og bytter kun tekster, der er identiske med en indbygget standard.
 - **Nye brugervendte strenge:** pak i `__()` med domænet, kør `xgettext` (se nøgleord `__ _e esc_html__ esc_attr__ esc_html_e`, `--from-code=UTF-8`) til `languages/rs-digital-fortrydelsesret.pot`, opdatér alle `-*.po` (`msgmerge`), og byg `.mo`-filerne med `msgfmt --check`. Commit `.mo`.
 - URL-slugs (`fortrydelser`, `/fortrydelsesret/`) og tokenet `{fortrydelse_link}` oversættes ikke.

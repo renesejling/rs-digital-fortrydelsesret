@@ -1,6 +1,6 @@
 <?php
 /**
- * Sprogvalg (dansk/engelsk/svensk) og standardtekster pr. sprog.
+ * Sprogvalg (dansk/engelsk/svensk/fransk/tysk/ungarsk/italiensk/polsk/rumænsk/spansk) og standardtekster pr. sprog.
  *
  * @package RS_FR
  */
@@ -28,7 +28,53 @@ final class RS_FR_I18n
             'da_DK' => 'Dansk',
             'en_US' => 'English',
             'sv_SE' => 'Svenska',
+            'fr_FR' => 'Français',
+            'de_DE' => 'Deutsch',
+            'hu_HU' => 'Magyar',
+            'it_IT' => 'Italiano',
+            'pl_PL' => 'Polski',
+            'ro_RO' => 'Română',
+            'es_ES' => 'Español',
         );
+    }
+
+    /**
+     * Midlertidige sprogskift: [locale, rå sprogkode, forrige WPML-sprog].
+     *
+     * @var array
+     */
+    private static $stack = array();
+
+    /**
+     * Sidst indlæste locale for pluginnets oversættelsesfil.
+     *
+     * @var string|null
+     */
+    private static $loaded_locale = null;
+
+    /**
+     * Det aktive sprog. Rækkefølge: midlertidigt skift, derefter besøgssproget
+     * fra WPML/Polylang (kun på frontend), derefter sproget fra indstillingerne.
+     *
+     * @return string
+     */
+    public static function current_locale()
+    {
+        if (self::$stack) {
+            $top = end(self::$stack);
+
+            return $top[0];
+        }
+
+        if (!is_admin() || wp_doing_ajax()) {
+            $locale = self::locale_from_lang(self::multilingual_lang());
+
+            if ('' !== $locale) {
+                return $locale;
+            }
+        }
+
+        return self::setting_locale();
     }
 
     /**
@@ -37,12 +83,114 @@ final class RS_FR_I18n
      *
      * @return string
      */
-    public static function current_locale()
+    public static function setting_locale()
     {
         $settings = get_option('digital_fortrydelse_settings', array());
         $locale = is_array($settings) && isset($settings['locale']) ? (string) $settings['locale'] : self::DEFAULT_LOCALE;
 
         return self::sanitize_locale($locale);
+    }
+
+    /**
+     * Det aktuelle besøgssprog fra WPML/Polylang (tom streng hvis ingen).
+     *
+     * @return string
+     */
+    public static function multilingual_lang()
+    {
+        if (has_filter('wpml_current_language')) {
+            $lang = apply_filters('wpml_current_language', null);
+
+            if ($lang && 'all' !== $lang) {
+                return (string) $lang;
+            }
+        }
+
+        if (function_exists('pll_current_language')) {
+            $lang = pll_current_language('slug');
+
+            if ($lang) {
+                return (string) $lang;
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Oversæt en sprogkode ('ro', 'ro-ro', 'ro_RO') til en understøttet locale.
+     *
+     * @param string $lang Sprogkode.
+     * @return string Locale, eller tom streng hvis sproget ikke er understøttet.
+     */
+    public static function locale_from_lang($lang)
+    {
+        $prefix = strtolower(substr((string) $lang, 0, 2));
+
+        if ('' === $prefix) {
+            return '';
+        }
+
+        foreach (array_keys(self::locales()) as $locale) {
+            if (0 === strpos(strtolower($locale), $prefix . '_')) {
+                return $locale;
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Skift midlertidigt sprog (også i WPML). Skal altid efterfølges af restore().
+     *
+     * @param string $locale Locale.
+     * @param string $lang   Rå WPML/Polylang-sprogkode (valgfri).
+     * @return void
+     */
+    public static function switch_to($locale, $lang = '')
+    {
+        $locale = self::sanitize_locale($locale);
+        $lang = $lang ? (string) $lang : strtolower(substr($locale, 0, 2));
+        $previous = has_filter('wpml_current_language') ? apply_filters('wpml_current_language', null) : null;
+
+        if (has_action('wpml_switch_language')) {
+            do_action('wpml_switch_language', $lang);
+        }
+
+        self::$stack[] = array($locale, $lang, $previous);
+        self::load_textdomain();
+    }
+
+    /**
+     * Gendan sproget før det seneste switch_to().
+     *
+     * @return void
+     */
+    public static function restore()
+    {
+        $top = array_pop(self::$stack);
+
+        if ($top && has_action('wpml_switch_language')) {
+            do_action('wpml_switch_language', $top[2]);
+        }
+
+        self::load_textdomain();
+    }
+
+    /**
+     * Rå sprogkode for et aktivt midlertidigt skift (tom streng hvis intet skift).
+     *
+     * @return string
+     */
+    public static function override_lang()
+    {
+        if (!self::$stack) {
+            return '';
+        }
+
+        $top = end(self::$stack);
+
+        return $top[1];
     }
 
     /**
@@ -59,16 +207,21 @@ final class RS_FR_I18n
     }
 
     /**
-     * Indlæs pluginnets oversættelsesfil for det valgte sprog.
+     * Indlæs pluginnets oversættelsesfil for det aktive sprog.
      * Dansk er originalsproget i koden, så der indlæses ingen fil.
      *
      * @return void
      */
     public static function load_textdomain()
     {
-        unload_textdomain(self::DOMAIN);
-
         $locale = self::current_locale();
+
+        if (self::$loaded_locale === $locale) {
+            return;
+        }
+
+        unload_textdomain(self::DOMAIN);
+        self::$loaded_locale = $locale;
 
         if (self::DEFAULT_LOCALE === $locale) {
             return;
@@ -181,6 +334,26 @@ final class RS_FR_I18n
      * @return array<string,array<string,string>>
      */
     private static function texts()
+    {
+        $texts = self::base_texts();
+
+        foreach (array_keys(self::locales()) as $locale) {
+            $file = RS_FR_PLUGIN_PATH . 'includes/texts/' . $locale . '.php';
+
+            if (!isset($texts[$locale]) && is_readable($file)) {
+                $texts[$locale] = require $file;
+            }
+        }
+
+        return $texts;
+    }
+
+    /**
+     * Standardtekster for dansk, engelsk og svensk.
+     *
+     * @return array<string,array<string,string>>
+     */
+    private static function base_texts()
     {
         return array(
             'da_DK' => array(

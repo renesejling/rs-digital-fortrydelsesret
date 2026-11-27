@@ -95,6 +95,7 @@ final class RS_FR_Frontend
             <form class="digital-fortrydelse__form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <input type="hidden" name="action" value="<?php echo esc_attr(self::ACTION); ?>" />
                 <input type="hidden" name="digital_fortrydelse_return_url" value="<?php echo esc_url(self::current_url()); ?>" />
+                <input type="hidden" name="digital_fortrydelse_locale" value="<?php echo esc_attr(RS_FR_I18n::current_locale()); ?>" />
                 <?php wp_nonce_field(self::ACTION, 'digital_fortrydelse_nonce'); ?>
 
                 <p class="digital-fortrydelse__hp" aria-hidden="true">
@@ -158,6 +159,10 @@ final class RS_FR_Frontend
      */
     public static function handle_submit()
     {
+        // admin-post.php kender ikke besøgssproget: brug kundens sprog fra formularen.
+        $customer_locale = RS_FR_I18n::sanitize_locale(self::post_text('digital_fortrydelse_locale'));
+        RS_FR_I18n::switch_to($customer_locale);
+
         $return_url = self::get_return_url();
         $errors = self::validate_submission();
 
@@ -215,6 +220,7 @@ final class RS_FR_Frontend
                 'metadata' => wp_json_encode(
                     array(
                         'source' => 'frontend_shortcode',
+                        'locale' => $customer_locale,
                         'ip_hash' => $payload['ip_hash'],
                         'user_agent' => $payload['user_agent'],
                         'order_found' => $order_context['found'],

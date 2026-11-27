@@ -1,0 +1,633 @@
+# Polish translation of RS Digital Fortrydelsesret.
+# Copyright (C) ReneSejling.dk
+# This file is distributed under the same license as the RS Digital Fortrydelsesret package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RS Digital Fortrydelsesret\n"
+"Report-Msgid-Bugs-To: https://github.com/renesejling/rs-digital-fortrydelsesret\n"
+"POT-Creation-Date: 2026-11-12 09:02+0100\n"
+"PO-Revision-Date: 2026-11-27 12:00+0100\n"
+"Last-Translator: ReneSejling.dk\n"
+"Language-Team: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: rs-digital-fortrydelsesret.php:659
+msgid "Dompdf er ikke installeret (kør \"composer install\")."
+msgstr "Dompdf nie jest zainstalowany (uruchom \"composer install\")."
+
+#: rs-digital-fortrydelsesret.php:667
+msgid "Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration)."
+msgstr "W WooCommerce nie wybrano strony z regulaminem (WooCommerce → Ustawienia → Zaawansowane → Konfiguracja stron)."
+
+#: rs-digital-fortrydelsesret.php:672
+msgid "Den valgte handelsbetingelses-side findes ikke længere."
+msgstr "Wybrana strona z regulaminem już nie istnieje."
+
+#: rs-digital-fortrydelsesret.php:685
+msgid "Version pr."
+msgstr "Wersja z dnia"
+
+#: rs-digital-fortrydelsesret.php:740
+msgid "Test PDF"
+msgstr "Testuj PDF"
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Du har ikke rettigheder til at se denne side."
+msgstr "Nie masz uprawnień do wyświetlenia tej strony."
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Adgang nægtet"
+msgstr "Odmowa dostępu"
+
+#: rs-digital-fortrydelsesret.php:754
+msgid "Kunne ikke generere PDF"
+msgstr "Nie udało się wygenerować pliku PDF"
+
+#: includes/class-rs-fr-account.php:67 includes/class-rs-fr-account.php:74
+#: includes/class-rs-fr-account.php:116
+msgid "Mine fortrydelser"
+msgstr "Moje odstąpienia od umowy"
+
+#: includes/class-rs-fr-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr "Zaloguj się, aby zobaczyć swoje odstąpienia od umowy."
+
+#: includes/class-rs-fr-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr "Nie masz zarejestrowanych odstąpień od umowy."
+
+#: includes/class-rs-fr-account.php:127 includes/class-rs-fr-account.php:136
+#: includes/class-rs-fr-account.php:171 includes/class-rs-fr-admin.php:158
+#: includes/class-rs-fr-admin.php:217
+msgid "Reference"
+msgstr "Numer referencyjny"
+
+#: includes/class-rs-fr-account.php:128 includes/class-rs-fr-account.php:139
+#: includes/class-rs-fr-account.php:172 includes/class-rs-fr-admin.php:159
+msgid "Dato"
+msgstr "Data"
+
+#: includes/class-rs-fr-account.php:129 includes/class-rs-fr-account.php:140
+#: includes/class-rs-fr-admin.php:161 includes/class-rs-fr-admin.php:225
+msgid "Ordre"
+msgstr "Zamówienie"
+
+#: includes/class-rs-fr-account.php:130 includes/class-rs-fr-account.php:141
+#: includes/class-rs-fr-account.php:175 includes/class-rs-fr-admin.php:163
+#: includes/class-rs-fr-admin.php:218 includes/class-rs-fr-admin.php:252
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-rs-fr-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr "Nie znaleziono odstąpienia od umowy."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-account.php:165 includes/class-rs-fr-admin.php:209
+#, php-format
+msgid "Fortrydelse %s"
+msgstr "Odstąpienie od umowy %s"
+
+#: includes/class-rs-fr-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr "Wróć do moich odstąpień od umowy"
+
+#: includes/class-rs-fr-account.php:173 includes/class-rs-fr-admin.php:224
+#: includes/class-rs-fr-frontend.php:116
+msgid "Ordrenummer"
+msgstr "Numer zamówienia"
+
+#: includes/class-rs-fr-account.php:174 includes/class-rs-fr-admin.php:229
+msgid "Fortrydelse"
+msgstr "Odstąpienie od umowy"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-admin.php:230
+msgid "Indsendt indhold"
+msgstr "Przesłana treść"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-account.php:248
+#: includes/class-rs-fr-admin.php:230 includes/class-rs-fr-admin.php:545
+#: includes/class-rs-fr-frontend.php:124 includes/class-rs-fr-mailer.php:274
+msgid "Hele ordren"
+msgstr "Całe zamówienie"
+
+#: includes/class-rs-fr-account.php:228 includes/class-rs-fr-admin.php:481
+msgid "Modtaget"
+msgstr "Otrzymane"
+
+#: includes/class-rs-fr-account.php:229 includes/class-rs-fr-admin.php:482
+msgid "Under behandling"
+msgstr "W trakcie rozpatrywania"
+
+#: includes/class-rs-fr-account.php:230 includes/class-rs-fr-admin.php:483
+msgid "Godkendt"
+msgstr "Zatwierdzone"
+
+#: includes/class-rs-fr-account.php:231 includes/class-rs-fr-admin.php:484
+msgid "Afvist"
+msgstr "Odrzucone"
+
+#: includes/class-rs-fr-account.php:232 includes/class-rs-fr-admin.php:485
+msgid "Fuldført"
+msgstr "Zakończone"
+
+#: includes/class-rs-fr-account.php:247 includes/class-rs-fr-admin.php:544
+#: includes/class-rs-fr-frontend.php:128 includes/class-rs-fr-mailer.php:271
+msgid "Enkelte produkter"
+msgstr "Wybrane produkty"
+
+#: includes/class-rs-fr-admin.php:43 includes/class-rs-fr-admin.php:44
+#: includes/class-rs-fr-admin.php:141
+msgid "Fortrydelser"
+msgstr "Odstąpienia od umowy"
+
+#: includes/class-rs-fr-admin.php:106 includes/class-rs-fr-settings.php:271
+msgid "Du har ikke adgang til denne side."
+msgstr "Nie masz dostępu do tej strony."
+
+#: includes/class-rs-fr-admin.php:147
+msgid "Søg fortrydelser"
+msgstr "Szukaj odstąpień od umowy"
+
+#: includes/class-rs-fr-admin.php:150
+msgid "Filtrer"
+msgstr "Filtruj"
+
+#: includes/class-rs-fr-admin.php:151
+msgid "Eksporter CSV"
+msgstr "Eksportuj CSV"
+
+#: includes/class-rs-fr-admin.php:160
+msgid "Kunde"
+msgstr "Klient"
+
+#: includes/class-rs-fr-admin.php:162
+msgid "Type"
+msgstr "Typ"
+
+#: includes/class-rs-fr-admin.php:164 includes/class-rs-fr-admin.php:227
+msgid "Frist"
+msgstr "Termin"
+
+#: includes/class-rs-fr-admin.php:182
+msgid "Ingen fortrydelser fundet."
+msgstr "Nie znaleziono odstąpień od umowy."
+
+#: includes/class-rs-fr-admin.php:201
+msgid "Fortrydelse ikke fundet"
+msgstr "Nie znaleziono odstąpienia od umowy"
+
+#: includes/class-rs-fr-admin.php:202 includes/class-rs-fr-admin.php:213
+msgid "Tilbage til oversigten"
+msgstr "Wróć do przeglądu"
+
+#: includes/class-rs-fr-admin.php:219
+msgid "Indsendt"
+msgstr "Przesłano"
+
+#: includes/class-rs-fr-admin.php:220 includes/class-rs-fr-frontend.php:106
+msgid "Navn"
+msgstr "Imię i nazwisko"
+
+#: includes/class-rs-fr-admin.php:221 includes/class-rs-fr-frontend.php:111
+msgid "Mailadresse"
+msgstr "Adres e-mail"
+
+#: includes/class-rs-fr-admin.php:222
+msgid "Ordre-mailadresse"
+msgstr "Adres e-mail z zamówienia"
+
+#: includes/class-rs-fr-admin.php:222 includes/class-rs-fr-admin.php:457
+#: includes/class-rs-fr-mailer.php:228 includes/class-rs-fr-mailer.php:230
+msgid "Ikke fundet"
+msgstr "Nie znaleziono"
+
+#: includes/class-rs-fr-admin.php:223
+msgid "E-mailafvigelse"
+msgstr "Rozbieżność adresu e-mail"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-mailer.php:229
+msgid "Ja"
+msgstr "Tak"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-admin.php:231
+#: includes/class-rs-fr-admin.php:232 includes/class-rs-fr-mailer.php:229
+msgid "Nej"
+msgstr "Nie"
+
+#: includes/class-rs-fr-admin.php:226
+msgid "Ordredato"
+msgstr "Data zamówienia"
+
+#: includes/class-rs-fr-admin.php:226 includes/class-rs-fr-admin.php:227
+#: includes/class-rs-fr-admin.php:531 includes/class-rs-fr-mailer.php:232
+#: includes/class-rs-fr-mailer.php:233
+msgid "Ukendt"
+msgstr "Nieznana"
+
+#: includes/class-rs-fr-admin.php:228
+msgid "Friststatus"
+msgstr "Status terminu"
+
+#: includes/class-rs-fr-admin.php:231
+msgid "Kundekvittering sendt"
+msgstr "Potwierdzenie dla klienta wysłane"
+
+#: includes/class-rs-fr-admin.php:232
+msgid "Intern mail sendt"
+msgstr "Wewnętrzny e-mail wysłany"
+
+#: includes/class-rs-fr-admin.php:236
+msgid "Behandling"
+msgstr "Rozpatrywanie"
+
+#: includes/class-rs-fr-admin.php:238
+msgid "Hvad sker der, når status ændres?"
+msgstr "Co się dzieje po zmianie statusu?"
+
+#: includes/class-rs-fr-admin.php:239
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr "Po zmianie statusu i kliknięciu „Zapisz rozpatrzenie” aktualizowana jest tylko wewnętrzna sprawa odstąpienia od umowy."
+
+#: includes/class-rs-fr-admin.php:241
+msgid "Sagens status bliver gemt."
+msgstr "Status sprawy zostanie zapisany."
+
+#: includes/class-rs-fr-admin.php:242
+msgid "Den interne note bliver gemt."
+msgstr "Notatka wewnętrzna zostanie zapisana."
+
+#: includes/class-rs-fr-admin.php:243
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr "Czas ostatniej aktualizacji zostanie zapisany."
+
+#: includes/class-rs-fr-admin.php:245
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr "Zamówienie WooCommerce nie jest zmieniane automatycznie: status zamówienia, zwrot środków, stan magazynowy i e-maile do klientów są w tej wersji nadal obsługiwane ręcznie."
+
+#: includes/class-rs-fr-admin.php:256
+msgid "Intern note"
+msgstr "Notatka wewnętrzna"
+
+#: includes/class-rs-fr-admin.php:259
+msgid "Gem behandling"
+msgstr "Zapisz rozpatrzenie"
+
+#: includes/class-rs-fr-admin.php:272 includes/class-rs-fr-admin.php:304
+msgid "Du har ikke adgang til denne handling."
+msgstr "Nie masz dostępu do tej czynności."
+
+#: includes/class-rs-fr-admin.php:379
+msgid "Alle statusser"
+msgstr "Wszystkie statusy"
+
+#: includes/class-rs-fr-admin.php:442
+msgid "Sagen blev opdateret."
+msgstr "Sprawa została zaktualizowana."
+
+#: includes/class-rs-fr-admin.php:443
+msgid "Sagen kunne ikke opdateres."
+msgstr "Nie udało się zaktualizować sprawy."
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-fr-admin.php:468
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr "Otwórz zamówienie #%s"
+
+#: includes/class-rs-fr-admin.php:529
+msgid "Inden for frist"
+msgstr "W terminie"
+
+#: includes/class-rs-fr-admin.php:530
+msgid "Overskredet"
+msgstr "Po terminie"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-frontend.php:73
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr "Twoje oświadczenie o odstąpieniu od umowy zostało otrzymane. Twój numer referencyjny to %s."
+
+#: includes/class-rs-fr-frontend.php:78
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr "Potwierdzenie zostało wysłane na podany przez Ciebie adres e-mail."
+
+#: includes/class-rs-fr-frontend.php:93
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse."
+msgstr "Potwierdzenie informuje wyłącznie, że otrzymaliśmy Twoje oświadczenie o odstąpieniu od umowy. Ostateczną decyzję przekażemy Ci później."
+
+#: includes/class-rs-fr-frontend.php:101
+msgid "Website"
+msgstr "Strona internetowa"
+
+#: includes/class-rs-fr-frontend.php:121
+msgid "Hvad vil du fortryde?"
+msgstr "Od czego chcesz odstąpić?"
+
+#: includes/class-rs-fr-frontend.php:133
+msgid "Produkter eller bemærkning"
+msgstr "Produkty lub uwagi"
+
+#: includes/class-rs-fr-frontend.php:145
+msgid "Bekræft fortrydelse"
+msgstr "Potwierdź odstąpienie od umowy"
+
+#: includes/class-rs-fr-frontend.php:262
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr "Nie udało się zweryfikować formularza. Odśwież stronę i spróbuj ponownie."
+
+#: includes/class-rs-fr-frontend.php:266
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr "Nie udało się wysłać oświadczenia o odstąpieniu od umowy."
+
+#: includes/class-rs-fr-frontend.php:270
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr "Z tego samego połączenia wysłano zbyt wiele zgłoszeń. Spróbuj ponownie później."
+
+#: includes/class-rs-fr-frontend.php:274
+msgid "Indtast dit navn."
+msgstr "Wpisz swoje imię i nazwisko."
+
+#: includes/class-rs-fr-frontend.php:278
+msgid "Indtast en gyldig mailadresse."
+msgstr "Wpisz prawidłowy adres e-mail."
+
+#: includes/class-rs-fr-frontend.php:282
+msgid "Indtast ordrenummer."
+msgstr "Wpisz numer zamówienia."
+
+#: includes/class-rs-fr-frontend.php:288
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr "Wybierz, czy chcesz odstąpić od całego zamówienia, czy tylko od wybranych produktów."
+
+#: includes/class-rs-fr-frontend.php:292
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr "Napisz, od jakich produktów chcesz odstąpić."
+
+#: includes/class-rs-fr-frontend.php:311
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr "Numer zamówienia i adres e-mail do siebie nie pasują. Sprawdź dane i spróbuj ponownie."
+
+#: includes/class-rs-fr-frontend.php:326
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr "Dla podanych produktów z tego zamówienia istnieje już sprawa odstąpienia od umowy. Podaj inne pozycje zamówienia tylko wtedy, gdy chcesz utworzyć nowe częściowe odstąpienie."
+
+#: includes/class-rs-fr-frontend.php:330
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr "Dla tego zamówienia istnieje już sprawa odstąpienia od umowy."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr "Potwierdzenie odstąpienia od umowy - %s"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr "Otrzymano nowe odstąpienie od umowy - %s"
+
+#: includes/class-rs-fr-mailer.php:256
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr "Klient chce odstąpić od całego zamówienia."
+
+#: includes/class-rs-fr-mailer.php:259
+msgid "Ingen yderligere bemærkning angivet."
+msgstr "Nie podano dodatkowych uwag."
+
+#: includes/class-rs-fr-repository.php:101
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr "Nie udało się zapisać odstąpienia od umowy. Spróbuj ponownie później."
+
+#: includes/class-rs-fr-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr "Ustawienia cyfrowego odstąpienia od umowy"
+
+#: includes/class-rs-fr-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr "Ustawienia odstąpienia od umowy"
+
+#: includes/class-rs-fr-settings.php:80
+msgid "Generelle indstillinger"
+msgstr "Ustawienia ogólne"
+
+#: includes/class-rs-fr-settings.php:87
+msgid "Intern modtager"
+msgstr "Odbiorca wewnętrzny"
+
+#: includes/class-rs-fr-settings.php:95
+msgid "Sprog"
+msgstr "Język"
+
+#: includes/class-rs-fr-settings.php:103
+msgid "Opbevaring"
+msgstr "Przechowywanie"
+
+#: includes/class-rs-fr-settings.php:111
+msgid "Formulartekst"
+msgstr "Tekst formularza"
+
+#: includes/class-rs-fr-settings.php:119
+msgid "Tekst før knap"
+msgstr "Tekst przed przyciskiem"
+
+#: includes/class-rs-fr-settings.php:127
+msgid "Kundekvittering"
+msgstr "Potwierdzenie dla klienta"
+
+#: includes/class-rs-fr-settings.php:135
+msgid "Intern mail"
+msgstr "Wewnętrzny e-mail"
+
+#: includes/class-rs-fr-settings.php:143
+msgid "Afinstallering"
+msgstr "Odinstalowanie"
+
+#: includes/class-rs-fr-settings.php:151
+msgid "Ordremail (fortrydelsestekst)"
+msgstr "E-mail zamówienia (tekst o odstąpieniu od umowy)"
+
+#: includes/class-rs-fr-settings.php:158
+msgid "Link til fortrydelse"
+msgstr "Link do odstąpienia od umowy"
+
+#: includes/class-rs-fr-settings.php:166
+msgid "Overskrift"
+msgstr "Nagłówek"
+
+#: includes/class-rs-fr-settings.php:174
+msgid "Introtekst"
+msgstr "Tekst wstępu"
+
+#: includes/class-rs-fr-settings.php:182
+msgid "Link-tekst"
+msgstr "Tekst linku"
+
+#: includes/class-rs-fr-settings.php:190
+msgid "PDF-note"
+msgstr "Notatka o PDF"
+
+#: includes/class-rs-fr-settings.php:199
+msgid "Handelsbetingelser"
+msgstr "Regulamin"
+
+#: includes/class-rs-fr-settings.php:206
+msgid "Handelsbetingelsesside"
+msgstr "Strona regulaminu"
+
+#: includes/class-rs-fr-settings.php:214
+msgid "Automatisk indsættelse"
+msgstr "Automatyczne wstawianie"
+
+#: includes/class-rs-fr-settings.php:222
+msgid "Tekstafsnit"
+msgstr "Sekcja tekstu"
+
+#: includes/class-rs-fr-settings.php:277
+msgid "Digital Fortrydelse"
+msgstr "Cyfrowe odstąpienie od umowy"
+
+#: includes/class-rs-fr-settings.php:303
+msgid "Brug WooCommerce standardmodtager"
+msgstr "Użyj domyślnego odbiorcy WooCommerce"
+
+#: includes/class-rs-fr-settings.php:305
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr "Pozostaw puste, aby użyć odbiorcy z e-maili WooCommerce o nowym zamówieniu."
+
+#: includes/class-rs-fr-settings.php:325
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr "Liczba lat przechowywania spraw odstąpienia od umowy. Maksimum to 5 lat."
+
+#: includes/class-rs-fr-settings.php:343
+msgid "Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke."
+msgstr "Określa język formularza, e-maili, sekcji w regulaminie i stron administracyjnych wtyczki. Niezmienione teksty domyślne zmieniają język automatycznie po zapisaniu. Teksty, które sam dostosowałeś, nie są zmieniane."
+
+#: includes/class-rs-fr-settings.php:378
+msgid "Valgfri tekst der vises i en infoboks lige før \"Bekræft fortrydelse\"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt."
+msgstr "Opcjonalny tekst wyświetlany w ramce informacyjnej tuż przed przyciskiem „Potwierdź odstąpienie od umowy”. Użyj go np. do informacji o towarach wykonanych na zamówienie. Pozostaw puste, aby ukryć ramkę. Dozwolony jest prosty HTML, np. linki i pogrubienie."
+
+#: includes/class-rs-fr-settings.php:397
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr "Potwierdzenie dla klienta może jedynie potwierdzać otrzymanie zgłoszenia. Nie może być sformułowane jako ostateczne zatwierdzenie ani zwrot środków."
+
+#: includes/class-rs-fr-settings.php:437
+msgid "Slet pluginets data ved afinstallering."
+msgstr "Usuń dane wtyczki podczas odinstalowania."
+
+#: includes/class-rs-fr-settings.php:450
+msgid "Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten."
+msgstr "Tutaj możesz dostosować tekst wstawiany do e-maili WooCommerce o zamówieniach (e-maile „w trakcie realizacji” i „zrealizowane”). Pozostaw pole puste, aby użyć wbudowanego tekstu domyślnego wtyczki (który jest też tłumaczony automatycznie przez WPML/Polylang). Wypełnij pola, jeśli sprzedajesz np. także towary wykonane na zamówienie, które nie podlegają prawu odstąpienia od umowy."
+
+#: includes/class-rs-fr-settings.php:451
+msgid "Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen)."
+msgstr "Jeśli wyłączysz poniżej link do odstąpienia od umowy, w e-mailu będzie widoczna tylko notatka o PDF (np. w sklepach, w których klient nie ma otrzymywać bezpośredniego linku do funkcji odstąpienia)."
+
+#: includes/class-rs-fr-settings.php:471
+msgid "Vis info-boks med link til digital fortrydelse i kundens ordremails."
+msgstr "Pokaż w e-mailach klienta o zamówieniu ramkę informacyjną z linkiem do cyfrowego odstąpienia od umowy."
+
+#: includes/class-rs-fr-settings.php:473
+msgid "Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling."
+msgstr "Jeśli pole nie jest zaznaczone, wyświetlana jest tylko krótka notatka, że regulamin jest załączony jako PDF, bez linku do funkcji odstąpienia. Regulamin jest zawsze załączany jako PDF, niezależnie od tego ustawienia."
+
+#: includes/class-rs-fr-settings.php:493
+msgid "Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Nagłówek ramki informacyjnej w e-mailu o zamówieniu. Używany tylko wtedy, gdy powyższy link jest włączony. Domyślnie:"
+
+#: includes/class-rs-fr-settings.php:512
+msgid "Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Tekst wstępny w ramce informacyjnej. Użyj go np. do poinformowania, że towary wykonane na zamówienie nie podlegają prawu odstąpienia od umowy. Używany tylko wtedy, gdy powyższy link jest włączony. Domyślnie:"
+
+#: includes/class-rs-fr-settings.php:532
+msgid "Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Tekst linku do funkcji odstąpienia od umowy. Używany tylko wtedy, gdy powyższy link jest włączony. Domyślnie:"
+
+#: includes/class-rs-fr-settings.php:551
+msgid "Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:"
+msgstr "Notatka o tym, że regulamin jest załączony jako PDF. Wyświetlana zawsze, także gdy powyższy link jest wyłączony. Domyślnie:"
+
+#: includes/class-rs-fr-settings.php:564
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr "Tutaj można zarządzać tekstem regulaminu. Gdy włączone jest automatyczne wstawianie, wtyczka aktualizuje własną oznaczoną sekcję na wybranej stronie przy każdym zapisaniu ustawień."
+
+#: includes/class-rs-fr-settings.php:565
+msgid "Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på."
+msgstr "Uwaga: ten tekst jest tylko odwołaniem w regulaminie. Sam formularz odstąpienia od umowy wyświetlisz, wstawiając shortcode [digital_fortrydelse] na stronie, na którą wskazuje token poniżej."
+
+#: includes/class-rs-fr-settings.php:583
+msgid "Vælg side"
+msgstr "Wybierz stronę"
+
+#: includes/class-rs-fr-settings.php:589
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr "Strona regulaminu WooCommerce jest wybrana domyślnie."
+
+#: includes/class-rs-fr-settings.php:591
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr "Wybierz stronę używaną jako regulamin. Jeśli w WooCommerce ustawiono stronę regulaminu, jest ona używana domyślnie."
+
+#: includes/class-rs-fr-settings.php:611
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr "Automatycznie aktualizuj sekcję w regulaminie po zapisaniu ustawień."
+
+#: includes/class-rs-fr-settings.php:613
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr "Wtyczka zastępuje tylko treść pomiędzy własnymi znacznikami początku i końca. Jeśli znaczników nie ma, sekcja jest dodawana na dole strony."
+
+#: includes/class-rs-fr-settings.php:632
+msgid "Tokens:"
+msgstr "Tokeny:"
+
+#: includes/class-rs-fr-settings.php:633
+msgid "klikbart link"
+msgstr "klikalny link"
+
+#: includes/class-rs-fr-settings.php:634
+msgid "ren URL"
+msgstr "sam adres URL"
+
+#: includes/class-rs-fr-settings.php:635
+msgid "De ældre tokens"
+msgstr "Starsze tokeny"
+
+#: includes/class-rs-fr-settings.php:636
+msgid "og"
+msgstr "i"
+
+#: includes/class-rs-fr-settings.php:637
+msgid "virker stadig som alias."
+msgstr "nadal działają jako aliasy."
+
+#. translators: %s: resolved withdrawal page URL.
+#: includes/class-rs-fr-settings.php:643
+#, php-format
+msgid "Tokenet peger i øjeblikket på: %s"
+msgstr "Token wskazuje obecnie na: %s"
+
+#: includes/class-rs-fr-settings.php:649
+msgid "Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der."
+msgstr "Ważne: ten tekst sam nie wyświetla formularza. Dodaj shortcode [digital_fortrydelse] na stronie, na którą wskazuje token, aby wyświetlić tam formularz odstąpienia od umowy."
+
+#: includes/class-rs-fr-settings.php:743
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr "Sekcja o cyfrowym odstąpieniu od umowy została zaktualizowana na stronie regulaminu."
+
+#: includes/class-rs-fr-settings.php:748
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr "Nie udało się wstawić sekcji, ponieważ nie wybrano prawidłowej strony regulaminu."
+
+#: includes/class-rs-fr-settings.php:752
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr "Nie udało się zaktualizować sekcji na stronie regulaminu."
+
+#: includes/class-rs-fr-settings.php:855
+msgid "Tilgængelige tokens:"
+msgstr "Dostępne tokeny:"

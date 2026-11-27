@@ -682,7 +682,7 @@ final class RS_FR_Settings
 
         $settings = wp_parse_args(is_array($settings) ? $settings : array(), $defaults);
 
-        return RS_FR_I18n::localize_defaults($settings, RS_FR_I18n::sanitize_locale($settings['locale']));
+        return RS_FR_I18n::localize_defaults($settings, RS_FR_I18n::current_locale());
     }
 
     /**
@@ -717,7 +717,60 @@ final class RS_FR_Settings
 
         $updated = self::sync_terms_section($page_id, $value);
 
+        // Oversatte betingelsessider (WPML/Polylang) får afsnittet på deres eget sprog.
+        foreach (self::terms_page_translations($page_id) as $lang => $translated_id) {
+            $locale = RS_FR_I18n::locale_from_lang($lang);
+            $locale = '' !== $locale ? $locale : RS_FR_I18n::setting_locale();
+
+            RS_FR_I18n::switch_to($locale, $lang);
+            try {
+                $translated_settings = RS_FR_I18n::localize_defaults($value, $locale);
+                $translated_settings['locale'] = $locale;
+                self::sync_terms_section($translated_id, $translated_settings);
+            } finally {
+                RS_FR_I18n::restore();
+            }
+        }
+
         set_transient('digital_fortrydelse_terms_sync_notice', $updated ? 'synced' : 'failed', 60);
+    }
+
+    /**
+     * Oversatte versioner af betingelsessiden (WPML/Polylang), uden originalen.
+     *
+     * @param int $page_id Original-sidens ID.
+     * @return array<string,int> Sprogkode => side-ID.
+     */
+    private static function terms_page_translations($page_id)
+    {
+        $result = array();
+
+        if (function_exists('pll_get_post_translations')) {
+            $translations = pll_get_post_translations($page_id);
+
+            foreach (is_array($translations) ? $translations : array() as $lang => $id) {
+                if ((int) $id && (int) $id !== (int) $page_id) {
+                    $result[(string) $lang] = (int) $id;
+                }
+            }
+
+            return $result;
+        }
+
+        if (has_filter('wpml_element_trid') && has_filter('wpml_get_element_translations')) {
+            $trid = apply_filters('wpml_element_trid', null, $page_id, 'post_page');
+            $translations = $trid ? apply_filters('wpml_get_element_translations', null, $trid, 'post_page') : array();
+
+            foreach (is_array($translations) ? $translations : array() as $lang => $item) {
+                $id = is_object($item) && isset($item->element_id) ? (int) $item->element_id : 0;
+
+                if ($id && $id !== (int) $page_id && get_post($id)) {
+                    $result[(string) $lang] = $id;
+                }
+            }
+        }
+
+        return $result;
     }
 
     /**

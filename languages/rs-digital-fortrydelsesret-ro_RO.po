@@ -1,0 +1,633 @@
+# Romanian translation of RS Digital Fortrydelsesret.
+# Copyright (C) ReneSejling.dk
+# This file is distributed under the same license as the RS Digital Fortrydelsesret package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RS Digital Fortrydelsesret\n"
+"Report-Msgid-Bugs-To: https://github.com/renesejling/rs-digital-fortrydelsesret\n"
+"POT-Creation-Date: 2026-11-12 09:02+0100\n"
+"PO-Revision-Date: 2026-11-27 12:00+0100\n"
+"Last-Translator: ReneSejling.dk\n"
+"Language-Team: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
+
+#: rs-digital-fortrydelsesret.php:659
+msgid "Dompdf er ikke installeret (kør \"composer install\")."
+msgstr "Dompdf nu este instalat (rulați \"composer install\")."
+
+#: rs-digital-fortrydelsesret.php:667
+msgid "Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration)."
+msgstr "Nu a fost selectată nicio pagină cu termeni și condiții în WooCommerce (WooCommerce → Setări → Avansat → Configurarea paginilor)."
+
+#: rs-digital-fortrydelsesret.php:672
+msgid "Den valgte handelsbetingelses-side findes ikke længere."
+msgstr "Pagina selectată cu termeni și condiții nu mai există."
+
+#: rs-digital-fortrydelsesret.php:685
+msgid "Version pr."
+msgstr "Versiunea din"
+
+#: rs-digital-fortrydelsesret.php:740
+msgid "Test PDF"
+msgstr "Testează PDF"
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Du har ikke rettigheder til at se denne side."
+msgstr "Nu aveți permisiunea de a vedea această pagină."
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Adgang nægtet"
+msgstr "Acces interzis"
+
+#: rs-digital-fortrydelsesret.php:754
+msgid "Kunne ikke generere PDF"
+msgstr "PDF-ul nu a putut fi generat"
+
+#: includes/class-rs-fr-account.php:67 includes/class-rs-fr-account.php:74
+#: includes/class-rs-fr-account.php:116
+msgid "Mine fortrydelser"
+msgstr "Retragerile mele"
+
+#: includes/class-rs-fr-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr "Autentificați-vă pentru a vedea retragerile dumneavoastră."
+
+#: includes/class-rs-fr-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr "Nu aveți nicio retragere înregistrată."
+
+#: includes/class-rs-fr-account.php:127 includes/class-rs-fr-account.php:136
+#: includes/class-rs-fr-account.php:171 includes/class-rs-fr-admin.php:158
+#: includes/class-rs-fr-admin.php:217
+msgid "Reference"
+msgstr "Referință"
+
+#: includes/class-rs-fr-account.php:128 includes/class-rs-fr-account.php:139
+#: includes/class-rs-fr-account.php:172 includes/class-rs-fr-admin.php:159
+msgid "Dato"
+msgstr "Data"
+
+#: includes/class-rs-fr-account.php:129 includes/class-rs-fr-account.php:140
+#: includes/class-rs-fr-admin.php:161 includes/class-rs-fr-admin.php:225
+msgid "Ordre"
+msgstr "Comandă"
+
+#: includes/class-rs-fr-account.php:130 includes/class-rs-fr-account.php:141
+#: includes/class-rs-fr-account.php:175 includes/class-rs-fr-admin.php:163
+#: includes/class-rs-fr-admin.php:218 includes/class-rs-fr-admin.php:252
+msgid "Status"
+msgstr "Stare"
+
+#: includes/class-rs-fr-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr "Retragerea nu a fost găsită."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-account.php:165 includes/class-rs-fr-admin.php:209
+#, php-format
+msgid "Fortrydelse %s"
+msgstr "Retragere %s"
+
+#: includes/class-rs-fr-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr "Înapoi la retragerile mele"
+
+#: includes/class-rs-fr-account.php:173 includes/class-rs-fr-admin.php:224
+#: includes/class-rs-fr-frontend.php:116
+msgid "Ordrenummer"
+msgstr "Numărul comenzii"
+
+#: includes/class-rs-fr-account.php:174 includes/class-rs-fr-admin.php:229
+msgid "Fortrydelse"
+msgstr "Retragere"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-admin.php:230
+msgid "Indsendt indhold"
+msgstr "Conținut trimis"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-account.php:248
+#: includes/class-rs-fr-admin.php:230 includes/class-rs-fr-admin.php:545
+#: includes/class-rs-fr-frontend.php:124 includes/class-rs-fr-mailer.php:274
+msgid "Hele ordren"
+msgstr "Întreaga comandă"
+
+#: includes/class-rs-fr-account.php:228 includes/class-rs-fr-admin.php:481
+msgid "Modtaget"
+msgstr "Primită"
+
+#: includes/class-rs-fr-account.php:229 includes/class-rs-fr-admin.php:482
+msgid "Under behandling"
+msgstr "În curs de procesare"
+
+#: includes/class-rs-fr-account.php:230 includes/class-rs-fr-admin.php:483
+msgid "Godkendt"
+msgstr "Aprobată"
+
+#: includes/class-rs-fr-account.php:231 includes/class-rs-fr-admin.php:484
+msgid "Afvist"
+msgstr "Respinsă"
+
+#: includes/class-rs-fr-account.php:232 includes/class-rs-fr-admin.php:485
+msgid "Fuldført"
+msgstr "Finalizată"
+
+#: includes/class-rs-fr-account.php:247 includes/class-rs-fr-admin.php:544
+#: includes/class-rs-fr-frontend.php:128 includes/class-rs-fr-mailer.php:271
+msgid "Enkelte produkter"
+msgstr "Anumite produse"
+
+#: includes/class-rs-fr-admin.php:43 includes/class-rs-fr-admin.php:44
+#: includes/class-rs-fr-admin.php:141
+msgid "Fortrydelser"
+msgstr "Retrageri"
+
+#: includes/class-rs-fr-admin.php:106 includes/class-rs-fr-settings.php:271
+msgid "Du har ikke adgang til denne side."
+msgstr "Nu aveți acces la această pagină."
+
+#: includes/class-rs-fr-admin.php:147
+msgid "Søg fortrydelser"
+msgstr "Caută retrageri"
+
+#: includes/class-rs-fr-admin.php:150
+msgid "Filtrer"
+msgstr "Filtrează"
+
+#: includes/class-rs-fr-admin.php:151
+msgid "Eksporter CSV"
+msgstr "Exportă CSV"
+
+#: includes/class-rs-fr-admin.php:160
+msgid "Kunde"
+msgstr "Client"
+
+#: includes/class-rs-fr-admin.php:162
+msgid "Type"
+msgstr "Tip"
+
+#: includes/class-rs-fr-admin.php:164 includes/class-rs-fr-admin.php:227
+msgid "Frist"
+msgstr "Termen"
+
+#: includes/class-rs-fr-admin.php:182
+msgid "Ingen fortrydelser fundet."
+msgstr "Nu au fost găsite retrageri."
+
+#: includes/class-rs-fr-admin.php:201
+msgid "Fortrydelse ikke fundet"
+msgstr "Retragerea nu a fost găsită"
+
+#: includes/class-rs-fr-admin.php:202 includes/class-rs-fr-admin.php:213
+msgid "Tilbage til oversigten"
+msgstr "Înapoi la prezentarea generală"
+
+#: includes/class-rs-fr-admin.php:219
+msgid "Indsendt"
+msgstr "Trimisă"
+
+#: includes/class-rs-fr-admin.php:220 includes/class-rs-fr-frontend.php:106
+msgid "Navn"
+msgstr "Nume"
+
+#: includes/class-rs-fr-admin.php:221 includes/class-rs-fr-frontend.php:111
+msgid "Mailadresse"
+msgstr "Adresa de e-mail"
+
+#: includes/class-rs-fr-admin.php:222
+msgid "Ordre-mailadresse"
+msgstr "Adresa de e-mail a comenzii"
+
+#: includes/class-rs-fr-admin.php:222 includes/class-rs-fr-admin.php:457
+#: includes/class-rs-fr-mailer.php:228 includes/class-rs-fr-mailer.php:230
+msgid "Ikke fundet"
+msgstr "Negăsit"
+
+#: includes/class-rs-fr-admin.php:223
+msgid "E-mailafvigelse"
+msgstr "E-mail diferit"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-mailer.php:229
+msgid "Ja"
+msgstr "Da"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-admin.php:231
+#: includes/class-rs-fr-admin.php:232 includes/class-rs-fr-mailer.php:229
+msgid "Nej"
+msgstr "Nu"
+
+#: includes/class-rs-fr-admin.php:226
+msgid "Ordredato"
+msgstr "Data comenzii"
+
+#: includes/class-rs-fr-admin.php:226 includes/class-rs-fr-admin.php:227
+#: includes/class-rs-fr-admin.php:531 includes/class-rs-fr-mailer.php:232
+#: includes/class-rs-fr-mailer.php:233
+msgid "Ukendt"
+msgstr "Necunoscut"
+
+#: includes/class-rs-fr-admin.php:228
+msgid "Friststatus"
+msgstr "Starea termenului"
+
+#: includes/class-rs-fr-admin.php:231
+msgid "Kundekvittering sendt"
+msgstr "Confirmare către client trimisă"
+
+#: includes/class-rs-fr-admin.php:232
+msgid "Intern mail sendt"
+msgstr "E-mail intern trimis"
+
+#: includes/class-rs-fr-admin.php:236
+msgid "Behandling"
+msgstr "Procesare"
+
+#: includes/class-rs-fr-admin.php:238
+msgid "Hvad sker der, når status ændres?"
+msgstr "Ce se întâmplă când se schimbă starea?"
+
+#: includes/class-rs-fr-admin.php:239
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr "Când schimbați starea și apăsați „Salvează procesarea”, se actualizează doar dosarul intern de retragere."
+
+#: includes/class-rs-fr-admin.php:241
+msgid "Sagens status bliver gemt."
+msgstr "Starea dosarului este salvată."
+
+#: includes/class-rs-fr-admin.php:242
+msgid "Den interne note bliver gemt."
+msgstr "Nota internă este salvată."
+
+#: includes/class-rs-fr-admin.php:243
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr "Momentul ultimei actualizări este salvat."
+
+#: includes/class-rs-fr-admin.php:245
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr "Comanda WooCommerce nu se modifică automat: starea comenzii, rambursarea, stocul și e-mailurile către clienți se gestionează în continuare manual în această versiune."
+
+#: includes/class-rs-fr-admin.php:256
+msgid "Intern note"
+msgstr "Notă internă"
+
+#: includes/class-rs-fr-admin.php:259
+msgid "Gem behandling"
+msgstr "Salvează procesarea"
+
+#: includes/class-rs-fr-admin.php:272 includes/class-rs-fr-admin.php:304
+msgid "Du har ikke adgang til denne handling."
+msgstr "Nu aveți acces la această acțiune."
+
+#: includes/class-rs-fr-admin.php:379
+msgid "Alle statusser"
+msgstr "Toate stările"
+
+#: includes/class-rs-fr-admin.php:442
+msgid "Sagen blev opdateret."
+msgstr "Dosarul a fost actualizat."
+
+#: includes/class-rs-fr-admin.php:443
+msgid "Sagen kunne ikke opdateres."
+msgstr "Dosarul nu a putut fi actualizat."
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-fr-admin.php:468
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr "Deschide comanda #%s"
+
+#: includes/class-rs-fr-admin.php:529
+msgid "Inden for frist"
+msgstr "În termen"
+
+#: includes/class-rs-fr-admin.php:530
+msgid "Overskredet"
+msgstr "Depășit"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-frontend.php:73
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr "Solicitarea dumneavoastră de retragere a fost primită. Referința dumneavoastră este %s."
+
+#: includes/class-rs-fr-frontend.php:78
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr "O confirmare a fost trimisă la adresa de e-mail pe care ați indicat-o."
+
+#: includes/class-rs-fr-frontend.php:93
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse."
+msgstr "Confirmarea atestă doar că am primit solicitarea dumneavoastră de retragere. Veți primi ulterior din partea noastră o decizie finală."
+
+#: includes/class-rs-fr-frontend.php:101
+msgid "Website"
+msgstr "Site web"
+
+#: includes/class-rs-fr-frontend.php:121
+msgid "Hvad vil du fortryde?"
+msgstr "Din ce doriți să vă retrageți?"
+
+#: includes/class-rs-fr-frontend.php:133
+msgid "Produkter eller bemærkning"
+msgstr "Produse sau observații"
+
+#: includes/class-rs-fr-frontend.php:145
+msgid "Bekræft fortrydelse"
+msgstr "Confirmă retragerea"
+
+#: includes/class-rs-fr-frontend.php:262
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr "Formularul nu a putut fi validat. Reîncărcați pagina și încercați din nou."
+
+#: includes/class-rs-fr-frontend.php:266
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr "Retragerea nu a putut fi trimisă."
+
+#: includes/class-rs-fr-frontend.php:270
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr "Au fost trimise prea multe solicitări de la aceeași conexiune. Încercați din nou mai târziu."
+
+#: includes/class-rs-fr-frontend.php:274
+msgid "Indtast dit navn."
+msgstr "Introduceți numele dumneavoastră."
+
+#: includes/class-rs-fr-frontend.php:278
+msgid "Indtast en gyldig mailadresse."
+msgstr "Introduceți o adresă de e-mail validă."
+
+#: includes/class-rs-fr-frontend.php:282
+msgid "Indtast ordrenummer."
+msgstr "Introduceți numărul comenzii."
+
+#: includes/class-rs-fr-frontend.php:288
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr "Alegeți dacă doriți să vă retrageți din întreaga comandă sau doar din anumite produse."
+
+#: includes/class-rs-fr-frontend.php:292
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr "Indicați din ce produse doriți să vă retrageți."
+
+#: includes/class-rs-fr-frontend.php:311
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr "Numărul comenzii și adresa de e-mail nu corespund. Verificați datele și încercați din nou."
+
+#: includes/class-rs-fr-frontend.php:326
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr "Există deja un dosar de retragere pentru produsele indicate din această comandă. Indicați alte linii ale comenzii doar dacă doriți să creați o nouă retragere parțială."
+
+#: includes/class-rs-fr-frontend.php:330
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr "Există deja un dosar de retragere pentru această comandă."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr "Confirmare de retragere - %s"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr "Retragere nouă primită - %s"
+
+#: includes/class-rs-fr-mailer.php:256
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr "Clientul dorește să se retragă din întreaga comandă."
+
+#: includes/class-rs-fr-mailer.php:259
+msgid "Ingen yderligere bemærkning angivet."
+msgstr "Nu au fost indicate alte observații."
+
+#: includes/class-rs-fr-repository.php:101
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr "Retragerea nu a putut fi salvată. Încercați din nou mai târziu."
+
+#: includes/class-rs-fr-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr "Setări pentru retragerea digitală"
+
+#: includes/class-rs-fr-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr "Setări retragere"
+
+#: includes/class-rs-fr-settings.php:80
+msgid "Generelle indstillinger"
+msgstr "Setări generale"
+
+#: includes/class-rs-fr-settings.php:87
+msgid "Intern modtager"
+msgstr "Destinatar intern"
+
+#: includes/class-rs-fr-settings.php:95
+msgid "Sprog"
+msgstr "Limbă"
+
+#: includes/class-rs-fr-settings.php:103
+msgid "Opbevaring"
+msgstr "Păstrare"
+
+#: includes/class-rs-fr-settings.php:111
+msgid "Formulartekst"
+msgstr "Textul formularului"
+
+#: includes/class-rs-fr-settings.php:119
+msgid "Tekst før knap"
+msgstr "Text înainte de buton"
+
+#: includes/class-rs-fr-settings.php:127
+msgid "Kundekvittering"
+msgstr "Confirmare către client"
+
+#: includes/class-rs-fr-settings.php:135
+msgid "Intern mail"
+msgstr "E-mail intern"
+
+#: includes/class-rs-fr-settings.php:143
+msgid "Afinstallering"
+msgstr "Dezinstalare"
+
+#: includes/class-rs-fr-settings.php:151
+msgid "Ordremail (fortrydelsestekst)"
+msgstr "E-mail de comandă (text despre retragere)"
+
+#: includes/class-rs-fr-settings.php:158
+msgid "Link til fortrydelse"
+msgstr "Link către retragere"
+
+#: includes/class-rs-fr-settings.php:166
+msgid "Overskrift"
+msgstr "Titlu"
+
+#: includes/class-rs-fr-settings.php:174
+msgid "Introtekst"
+msgstr "Text introductiv"
+
+#: includes/class-rs-fr-settings.php:182
+msgid "Link-tekst"
+msgstr "Textul linkului"
+
+#: includes/class-rs-fr-settings.php:190
+msgid "PDF-note"
+msgstr "Notă despre PDF"
+
+#: includes/class-rs-fr-settings.php:199
+msgid "Handelsbetingelser"
+msgstr "Termeni și condiții"
+
+#: includes/class-rs-fr-settings.php:206
+msgid "Handelsbetingelsesside"
+msgstr "Pagina cu termeni și condiții"
+
+#: includes/class-rs-fr-settings.php:214
+msgid "Automatisk indsættelse"
+msgstr "Inserare automată"
+
+#: includes/class-rs-fr-settings.php:222
+msgid "Tekstafsnit"
+msgstr "Secțiune de text"
+
+#: includes/class-rs-fr-settings.php:277
+msgid "Digital Fortrydelse"
+msgstr "Retragere digitală"
+
+#: includes/class-rs-fr-settings.php:303
+msgid "Brug WooCommerce standardmodtager"
+msgstr "Folosește destinatarul implicit WooCommerce"
+
+#: includes/class-rs-fr-settings.php:305
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr "Lăsați gol pentru a folosi destinatarul din e-mailurile WooCommerce pentru comenzi noi."
+
+#: includes/class-rs-fr-settings.php:325
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr "Numărul de ani în care se păstrează dosarele de retragere. Maximum 5 ani."
+
+#: includes/class-rs-fr-settings.php:343
+msgid "Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke."
+msgstr "Controlează limba formularului, a e-mailurilor, a secțiunii din termeni și condiții și a paginilor de administrare ale pluginului. Textele implicite nemodificate își schimbă automat limba la salvare. Textele pe care le-ați personalizat nu se modifică."
+
+#: includes/class-rs-fr-settings.php:378
+msgid "Valgfri tekst der vises i en infoboks lige før \"Bekræft fortrydelse\"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt."
+msgstr "Text opțional afișat într-o casetă informativă chiar înainte de butonul „Confirmă retragerea”. Folosiți-l, de exemplu, pentru informații despre produsele personalizate. Lăsați gol pentru a ascunde caseta. Este permis HTML simplu, precum linkuri și text aldin."
+
+#: includes/class-rs-fr-settings.php:397
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr "Confirmarea către client trebuie să confirme doar primirea solicitării. Nu trebuie formulată ca o aprobare finală sau ca o rambursare."
+
+#: includes/class-rs-fr-settings.php:437
+msgid "Slet pluginets data ved afinstallering."
+msgstr "Șterge datele pluginului la dezinstalare."
+
+#: includes/class-rs-fr-settings.php:450
+msgid "Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten."
+msgstr "Aici puteți personaliza textul inserat în e-mailurile WooCommerce despre comenzi (e-mailurile „în curs de procesare” și „finalizată”). Lăsați un câmp gol pentru a folosi textul implicit integrat al pluginului (care este tradus automat și prin WPML/Polylang). Completați câmpurile dacă vindeți, de exemplu, și produse personalizate care nu sunt acoperite de dreptul de retragere."
+
+#: includes/class-rs-fr-settings.php:451
+msgid "Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen)."
+msgstr "Dacă dezactivați mai jos linkul către retragere, în e-mail se afișează doar nota despre PDF (de exemplu, pentru magazinele în care clientul nu trebuie să primească un link direct către funcția de retragere)."
+
+#: includes/class-rs-fr-settings.php:471
+msgid "Vis info-boks med link til digital fortrydelse i kundens ordremails."
+msgstr "Afișează o casetă informativă cu link către retragerea digitală în e-mailurile de comandă ale clientului."
+
+#: includes/class-rs-fr-settings.php:473
+msgid "Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling."
+msgstr "Dacă bifa nu este activată, se afișează doar o scurtă notă că termenii și condițiile sunt atașați ca PDF, fără link către funcția de retragere. Termenii și condițiile sunt întotdeauna atașați ca PDF, indiferent de această setare."
+
+#: includes/class-rs-fr-settings.php:493
+msgid "Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Titlul casetei informative din e-mailul comenzii. Se folosește doar când linkul de mai sus este activat. Implicit:"
+
+#: includes/class-rs-fr-settings.php:512
+msgid "Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Textul introductiv din caseta informativă. Folosiți-l, de exemplu, pentru a indica faptul că produsele personalizate nu sunt acoperite de dreptul de retragere. Se folosește doar când linkul de mai sus este activat. Implicit:"
+
+#: includes/class-rs-fr-settings.php:532
+msgid "Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Textul linkului către funcția de retragere. Se folosește doar când linkul de mai sus este activat. Implicit:"
+
+#: includes/class-rs-fr-settings.php:551
+msgid "Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:"
+msgstr "Nota că termenii și condițiile sunt atașați ca PDF. Se afișează întotdeauna, chiar și când linkul de mai sus este dezactivat. Implicit:"
+
+#: includes/class-rs-fr-settings.php:564
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr "Aici se poate gestiona textul pentru termeni și condiții. Când inserarea automată este activată, pluginul își actualizează propria secțiune marcată pe pagina selectată de fiecare dată când setările sunt salvate."
+
+#: includes/class-rs-fr-settings.php:565
+msgid "Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på."
+msgstr "Notă: acest text este doar trimiterea din termeni și condiții. Formularul de retragere în sine se afișează inserând shortcode-ul [digital_fortrydelse] pe pagina către care trimite tokenul de mai jos."
+
+#: includes/class-rs-fr-settings.php:583
+msgid "Vælg side"
+msgstr "Selectează pagina"
+
+#: includes/class-rs-fr-settings.php:589
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr "Pagina WooCommerce cu termeni și condiții este selectată implicit."
+
+#: includes/class-rs-fr-settings.php:591
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr "Selectați pagina folosită pentru termeni și condiții. Dacă WooCommerce are o pagină cu termeni și condiții setată, aceasta este folosită implicit."
+
+#: includes/class-rs-fr-settings.php:611
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr "Actualizează automat secțiunea din termeni și condiții când setările sunt salvate."
+
+#: includes/class-rs-fr-settings.php:613
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr "Pluginul înlocuiește doar conținutul dintre propriii markeri de început și de sfârșit. Dacă markerii nu există, secțiunea este adăugată la finalul paginii."
+
+#: includes/class-rs-fr-settings.php:632
+msgid "Tokens:"
+msgstr "Tokenuri:"
+
+#: includes/class-rs-fr-settings.php:633
+msgid "klikbart link"
+msgstr "link pe care se poate face clic"
+
+#: includes/class-rs-fr-settings.php:634
+msgid "ren URL"
+msgstr "URL simplu"
+
+#: includes/class-rs-fr-settings.php:635
+msgid "De ældre tokens"
+msgstr "Tokenurile mai vechi"
+
+#: includes/class-rs-fr-settings.php:636
+msgid "og"
+msgstr "și"
+
+#: includes/class-rs-fr-settings.php:637
+msgid "virker stadig som alias."
+msgstr "funcționează în continuare ca alias."
+
+#. translators: %s: resolved withdrawal page URL.
+#: includes/class-rs-fr-settings.php:643
+#, php-format
+msgid "Tokenet peger i øjeblikket på: %s"
+msgstr "Tokenul trimite în prezent către: %s"
+
+#: includes/class-rs-fr-settings.php:649
+msgid "Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der."
+msgstr "Important: formularul în sine nu este afișat de acest text. Adăugați shortcode-ul [digital_fortrydelse] pe pagina către care trimite tokenul pentru a afișa acolo formularul de retragere."
+
+#: includes/class-rs-fr-settings.php:743
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr "Secțiunea despre retragerea digitală a fost actualizată pe pagina cu termeni și condiții."
+
+#: includes/class-rs-fr-settings.php:748
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr "Secțiunea nu a putut fi inserată, deoarece nu este selectată o pagină validă cu termeni și condiții."
+
+#: includes/class-rs-fr-settings.php:752
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr "Secțiunea nu a putut fi actualizată pe pagina cu termeni și condiții."
+
+#: includes/class-rs-fr-settings.php:855
+msgid "Tilgængelige tokens:"
+msgstr "Tokenuri disponibile:"

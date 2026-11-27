@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Digital fortrydelsesret til WooCommerce: fortrydelsesformular (shortcode [digital_fortrydelse]), kvitterings-/notifikationsmails, admin-sagsbehandling, GDPR-retention, Min Konto-visning og handelsbetingelser som PDF. WPML/Polylang-klar.
- * Version:     2.5.0
+ * Version:     2.6.0
 
  * Author:      ReneSejling.dk
 
@@ -30,7 +30,7 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.5.0' );
+	define( 'RS_FR_VERSION', '2.6.0' );
 
 }
 
@@ -82,9 +82,12 @@ register_deactivation_hook( __FILE__, array( 'RS_FR_Deactivator', 'deactivate' )
  */
 add_action( 'plugins_loaded', 'rs_fr_bootstrap_modules' );
 function rs_fr_bootstrap_modules() {
-	// Pluginnets eget sprogvalg (dansk/engelsk) fra indstillingerne. Indlæses
+	// Pluginnets sprog: indstillingen + besøgssproget fra WPML/Polylang. Indlæses
 	// på 'init' (prioritet 0) for at undgå "too early"-advarslen i WP 6.7+.
 	add_action( 'init', array( 'RS_FR_I18n', 'load_textdomain' ), 0 );
+
+	// Besøgssproget (WPML/Polylang) er først kendt på 'wp' — skift oversættelsesfil dengang.
+	add_action( 'wp', array( 'RS_FR_I18n', 'load_textdomain' ), 0 );
 
 	// Hold den gemte version i sync efter kode-opdateringer. Ved en ny version
 	// sikrer vi også capabilities, så admin-menuerne dukker op efter en
@@ -142,8 +145,8 @@ const RS_FR_STRINGS_GROUP = 'RS Digital Fortrydelsesret';
 /* ------------------------------------------------------------------ *
  * 0) Oversættelse (indbygget + WPML/Polylang String Translation)     *
  * ------------------------------------------------------------------ *
- * Mail-boksens tekster er indbygget på dansk, engelsk, tysk, svensk  *
- * og norsk (bokmål), så det virker out-of-the-box uden opsætning.    *
+ * Mail-boksens tekster er indbygget på da/en/de/sv/nb/fr/hu/it/pl/ro/es
+ * (norsk = bokmål), så det virker out-of-the-box uden opsætning.    *
  * Sproget bestemmes ud fra Polylang/WPML/WordPress ved afsendelse.   *
  *                                                                    *
  * Derudover registreres de danske strenge i WPML/Polylang's String   *
@@ -191,6 +194,54 @@ function rs_fr_translations() {
 			'intro_plain'    => 'Du har 14 dagars angerratt. Angra ditt kop direkt har:',
 			'pdf_note_plain' => 'Dina kopvillkor bifogas detta mejl som PDF.',
 		),
+		'fr' => array(
+			'heading'        => 'Droit de rétractation',
+			'intro'          => 'Vous disposez d\'un droit de rétractation de 14 jours. Vous pouvez vous rétracter de votre achat directement via notre fonction numérique de rétractation :',
+			'link_text'      => 'Accéder à la rétractation',
+			'pdf_note'       => 'Vos conditions générales sont jointes à cet e-mail au format PDF.',
+			'intro_plain'    => 'Vous disposez d\'un droit de retractation de 14 jours. Retractez-vous directement ici :',
+			'pdf_note_plain' => 'Vos conditions generales sont jointes a cet e-mail au format PDF.',
+		),
+		'hu' => array(
+			'heading'        => 'Elállási jog',
+			'intro'          => 'Önt 14 napos elállási jog illeti meg. A vásárlástól közvetlenül a digitális elállási funkciónkkal állhat el:',
+			'link_text'      => 'Ugrás az elálláshoz',
+			'pdf_note'       => 'Az Általános Szerződési Feltételeket PDF-fájlként csatoltuk ehhez az e-mailhez.',
+			'intro_plain'    => 'On 14 napos elallasi jog illeti meg. A vasarlastol kozvetlenul itt allhat el:',
+			'pdf_note_plain' => 'Az Altalanos Szerzodesi Felteteleket PDF-fajlkent csatoltuk ehhez az e-mailhez.',
+		),
+		'it' => array(
+			'heading'        => 'Diritto di recesso',
+			'intro'          => 'Ha a disposizione 14 giorni per esercitare il diritto di recesso. Può recedere dal suo acquisto direttamente tramite la nostra funzione digitale di recesso:',
+			'link_text'      => 'Vai al recesso',
+			'pdf_note'       => 'Le sue condizioni generali sono allegate a questa e-mail in formato PDF.',
+			'intro_plain'    => 'Ha a disposizione 14 giorni per esercitare il diritto di recesso. Receda dal suo acquisto direttamente qui:',
+			'pdf_note_plain' => 'Le sue condizioni generali sono allegate a questa e-mail in formato PDF.',
+		),
+		'pl' => array(
+			'heading'        => 'Prawo odstąpienia od umowy',
+			'intro'          => 'Masz 14 dni na odstąpienie od umowy. Możesz odstąpić od zakupu bezpośrednio za pomocą naszej cyfrowej funkcji odstąpienia od umowy:',
+			'link_text'      => 'Przejdź do odstąpienia',
+			'pdf_note'       => 'Twoje warunki handlowe są dołączone do tej wiadomości e-mail w formacie PDF.',
+			'intro_plain'    => 'Masz 14 dni na odstapienie od umowy. Odstap od zakupu bezposrednio tutaj:',
+			'pdf_note_plain' => 'Twoje warunki handlowe sa dolaczone do tej wiadomosci e-mail w formacie PDF.',
+		),
+		'ro' => array(
+			'heading'        => 'Dreptul de retragere',
+			'intro'          => 'Aveți dreptul de a vă retrage din contract în termen de 14 zile. Vă puteți retrage din achiziție direct prin funcția noastră digitală de retragere:',
+			'link_text'      => 'Mergi la retragere',
+			'pdf_note'       => 'Termenii și condițiile dumneavoastră sunt atașate acestui e-mail în format PDF.',
+			'intro_plain'    => 'Aveti dreptul de a va retrage din contract in termen de 14 zile. Retrageti-va din achizitie direct aici:',
+			'pdf_note_plain' => 'Termenii si conditiile dumneavoastra sunt atasate acestui e-mail in format PDF.',
+		),
+		'es' => array(
+			'heading'        => 'Derecho de desistimiento',
+			'intro'          => 'Dispone de 14 días para ejercer su derecho de desistimiento. Puede desistir de su compra directamente a través de nuestra función digital de desistimiento:',
+			'link_text'      => 'Ir al desistimiento',
+			'pdf_note'       => 'Sus condiciones generales se adjuntan a este correo electrónico en formato PDF.',
+			'intro_plain'    => 'Dispone de 14 dias para ejercer su derecho de desistimiento. Desista de su compra directamente aqui:',
+			'pdf_note_plain' => 'Sus condiciones generales se adjuntan a este correo electronico en formato PDF.',
+		),
 		'nb' => array(
 			'heading'        => 'Angrerett',
 			'intro'          => 'Du har 14 dagers angrerett. Du kan angre kjøpet ditt direkte via vår digitale angrefunksjon:',
@@ -209,6 +260,14 @@ function rs_fr_translations() {
  * @return string Sprogkode (lowercase, 2 tegn).
  */
 function rs_fr_current_lang() {
+	// Midlertidigt sprogskift (fx ordrens sprog når en mail sendes fra admin).
+	if ( class_exists( 'RS_FR_I18n' ) ) {
+		$override = RS_FR_I18n::override_lang();
+		if ( '' !== $override ) {
+			return strtolower( substr( $override, 0, 2 ) );
+		}
+	}
+
 	// Polylang.
 	if ( function_exists( 'pll_current_language' ) ) {
 		$lang = pll_current_language( 'slug' );
@@ -217,8 +276,13 @@ function rs_fr_current_lang() {
 		}
 	}
 
-	// WPML.
-	if ( defined( 'ICL_LANGUAGE_CODE' ) && ICL_LANGUAGE_CODE ) {
+	// WPML (filteret følger wpml_switch_language, i modsætning til konstanten ICL_LANGUAGE_CODE).
+	if ( has_filter( 'wpml_current_language' ) ) {
+		$lang = apply_filters( 'wpml_current_language', null );
+		if ( $lang && 'all' !== $lang ) {
+			return strtolower( substr( (string) $lang, 0, 2 ) );
+		}
+	} elseif ( defined( 'ICL_LANGUAGE_CODE' ) && ICL_LANGUAGE_CODE ) {
 		return strtolower( substr( ICL_LANGUAGE_CODE, 0, 2 ) );
 	}
 
@@ -277,8 +341,8 @@ function rs_fr_register_strings() {
  *
  * Rækkefølge:
  *   1. String Translation-oversættelse (hvis udfyldt i WPML/Polylang).
- *   2. Indbygget oversættelse for det aktuelle sprog (da/en/de/sv/nb).
- *   3. Dansk standard.
+ *   2. Indbygget oversættelse for det aktuelle sprog.
+ *   3. Indbygget oversættelse for sproget i indstillingerne, ellers dansk.
  *
  * @param string $name Nøglen fra rs_fr_translations().
  * @return string Oversat tekst.
@@ -289,9 +353,16 @@ function rs_fr_t( $name ) {
 
 	// Indbygget oversættelse for det aktuelle sprog (fallback til dansk).
 	$lang     = rs_fr_current_lang();
-	$built_in = ( isset( $translations[ $lang ][ $name ] ) && '' !== $translations[ $lang ][ $name ] )
-		? $translations[ $lang ][ $name ]
-		: $danish;
+	$built_in = $danish;
+	if ( isset( $translations[ $lang ][ $name ] ) && '' !== $translations[ $lang ][ $name ] ) {
+		$built_in = $translations[ $lang ][ $name ];
+	} elseif ( class_exists( 'RS_FR_I18n' ) ) {
+		// Ukendt sprog: brug sproget fra indstillingerne (fx engelsk) frem for dansk.
+		$fallback = strtolower( substr( RS_FR_I18n::setting_locale(), 0, 2 ) );
+		if ( isset( $translations[ $fallback ][ $name ] ) && '' !== $translations[ $fallback ][ $name ] ) {
+			$built_in = $translations[ $fallback ][ $name ];
+		}
+	}
 
 	// 1) WPML String Translation – brug kun hvis der faktisk findes en oversættelse
 	//    (ellers returnerer den bare originalen, og så foretrækker vi vores indbyggede).
@@ -320,23 +391,28 @@ function rs_fr_t( $name ) {
  *
  * @param int    $base_id   Original-sidens ID.
  * @param string $post_type Posttype (bruges af WPML), standard 'page'.
+ * @param string $lang      Sprogkode (valgfri). Standard: midlertidigt skift, ellers aktuelt sprog.
  * @return int Det oversatte side-ID (eller originalen hvis ingen oversættelse).
  */
-function rs_fr_translated_post_id( $base_id, $post_type = 'page' ) {
+function rs_fr_translated_post_id( $base_id, $post_type = 'page', $lang = null ) {
 	$base_id = (int) $base_id;
 	if ( ! $base_id ) {
 		return 0;
 	}
 
+	if ( null === $lang && class_exists( 'RS_FR_I18n' ) && '' !== RS_FR_I18n::override_lang() ) {
+		$lang = RS_FR_I18n::override_lang();
+	}
+
 	// Polylang.
 	if ( function_exists( 'pll_get_post' ) ) {
-		$candidate = pll_get_post( $base_id );
+		$candidate = $lang ? pll_get_post( $base_id, $lang ) : pll_get_post( $base_id );
 		if ( $candidate ) {
 			return (int) $candidate;
 		}
 	} elseif ( has_filter( 'wpml_object_id' ) ) {
 		// WPML (true = fald tilbage til original hvis ingen oversættelse).
-		$candidate = apply_filters( 'wpml_object_id', $base_id, $post_type, true );
+		$candidate = apply_filters( 'wpml_object_id', $base_id, $post_type, true, $lang ? $lang : null );
 		if ( $candidate ) {
 			return (int) $candidate;
 		}
@@ -427,8 +503,65 @@ function rs_fr_email_note_text( $name ) {
 /* ------------------------------------------------------------------ *
  * 1) Kort info-boks + link + note om vedhæftning i kundens ordremails *
  * ------------------------------------------------------------------ */
+/**
+ * Find sproget for en WooCommerce-ordre (WPML/WCML gemmer det i ordre-meta
+ * 'wpml_language'; Polylang kan oplyse det via pll_get_post_language()).
+ *
+ * @param mixed $order WC_Order.
+ * @return string Rå sprogkode eller tom streng.
+ */
+function rs_fr_order_lang( $order ) {
+	if ( ! is_object( $order ) || ! method_exists( $order, 'get_meta' ) ) {
+		return '';
+	}
+
+	$lang = (string) $order->get_meta( 'wpml_language' );
+	if ( '' === $lang && function_exists( 'pll_get_post_language' ) && method_exists( $order, 'get_id' ) ) {
+		$pll  = pll_get_post_language( $order->get_id(), 'slug' );
+		$lang = $pll ? (string) $pll : '';
+	}
+
+	return sanitize_key( $lang );
+}
+
+/**
+ * Kør en funktion på ordrens sprog (fx når en mail sendes fra admin eller en
+ * webhook, hvor WPML's aktuelle sprog ikke er kundens). Sproget gendannes altid.
+ *
+ * @param mixed    $order    WC_Order.
+ * @param callable $callback Funktionen der skal køres.
+ * @return mixed Callbackens returværdi.
+ */
+function rs_fr_with_order_language( $order, $callback ) {
+	$lang = rs_fr_order_lang( $order );
+	if ( '' === $lang || ! class_exists( 'RS_FR_I18n' ) ) {
+		return call_user_func( $callback );
+	}
+
+	$locale = RS_FR_I18n::locale_from_lang( $lang );
+	if ( '' === $locale ) {
+		$locale = RS_FR_I18n::setting_locale();
+	}
+
+	RS_FR_I18n::switch_to( $locale, $lang );
+	try {
+		return call_user_func( $callback );
+	} finally {
+		RS_FR_I18n::restore();
+	}
+}
+
 add_action( 'woocommerce_email_after_order_table', 'rs_fr_email_note', 20, 4 );
 function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
+	rs_fr_with_order_language(
+		$order,
+		static function () use ( $order, $sent_to_admin, $plain_text, $email ) {
+			rs_fr_render_email_note( $order, $sent_to_admin, $plain_text, $email );
+		}
+	);
+}
+
+function rs_fr_render_email_note( $order, $sent_to_admin, $plain_text, $email ) {
 	if ( $sent_to_admin || ! in_array( $email->id, RS_FR_MAILS, true ) ) {
 		return;
 	}
@@ -501,6 +634,15 @@ function rs_fr_email_note( $order, $sent_to_admin, $plain_text, $email ) {
  * ------------------------------------------------------- */
 add_filter( 'woocommerce_email_attachments', 'rs_fr_attach_pdf', 10, 3 );
 function rs_fr_attach_pdf( $attachments, $email_id, $order ) {
+	return rs_fr_with_order_language(
+		$order,
+		static function () use ( $attachments, $email_id ) {
+			return rs_fr_attach_pdf_for_current_language( $attachments, $email_id );
+		}
+	);
+}
+
+function rs_fr_attach_pdf_for_current_language( $attachments, $email_id ) {
 	if ( ! in_array( $email_id, RS_FR_MAILS, true ) ) {
 		return $attachments;
 	}
@@ -698,6 +840,27 @@ function rs_fr_build_pdf_output( $terms_id = 0 ) {
 }
 
 /**
+ * Sprogkode for en side (WPML/Polylang), tom streng hvis ukendt.
+ *
+ * @param int $post_id Side-ID.
+ * @return string
+ */
+function rs_fr_post_lang( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( function_exists( 'pll_get_post_language' ) ) {
+		$lang = pll_get_post_language( $post_id, 'slug' );
+		return $lang ? (string) $lang : '';
+	}
+	if ( has_filter( 'wpml_post_language_details' ) ) {
+		$details = apply_filters( 'wpml_post_language_details', null, $post_id );
+		if ( is_array( $details ) && ! empty( $details['language_code'] ) ) {
+			return (string) $details['language_code'];
+		}
+	}
+	return '';
+}
+
+/**
  * Generér PDF ud fra en handelsbetingelses-side og gem den som cachet fil
  * (den der vedhæftes kundens mails). Filnavnet følger side-ID'et, så hvert
  * sprog/side får sin egen cachede PDF.
@@ -711,7 +874,19 @@ function rs_fr_generate_pdf( $terms_id = 0 ) {
 		$terms_id = (int) get_option( 'woocommerce_terms_page_id' );
 	}
 
-	$output = rs_fr_build_pdf_output( $terms_id );
+	// Byg PDF'en på sidens eget sprog ("Version pr." m.m.), ikke på admins sprog.
+	$page_lang = rs_fr_post_lang( $terms_id );
+	if ( '' !== $page_lang && class_exists( 'RS_FR_I18n' ) ) {
+		$locale = RS_FR_I18n::locale_from_lang( $page_lang );
+		RS_FR_I18n::switch_to( '' !== $locale ? $locale : RS_FR_I18n::setting_locale(), $page_lang );
+		try {
+			$output = rs_fr_build_pdf_output( $terms_id );
+		} finally {
+			RS_FR_I18n::restore();
+		}
+	} else {
+		$output = rs_fr_build_pdf_output( $terms_id );
+	}
 	if ( is_wp_error( $output ) ) {
 		return false;
 	}

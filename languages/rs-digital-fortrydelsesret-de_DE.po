@@ -1,0 +1,633 @@
+# German translation of RS Digital Fortrydelsesret.
+# Copyright (C) ReneSejling.dk
+# This file is distributed under the same license as the RS Digital Fortrydelsesret package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RS Digital Fortrydelsesret\n"
+"Report-Msgid-Bugs-To: https://github.com/renesejling/rs-digital-fortrydelsesret\n"
+"POT-Creation-Date: 2026-11-12 09:02+0100\n"
+"PO-Revision-Date: 2026-11-27 12:00+0100\n"
+"Last-Translator: ReneSejling.dk\n"
+"Language-Team: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: rs-digital-fortrydelsesret.php:659
+msgid "Dompdf er ikke installeret (kør \"composer install\")."
+msgstr "Dompdf ist nicht installiert (führen Sie \"composer install\" aus)."
+
+#: rs-digital-fortrydelsesret.php:667
+msgid "Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration)."
+msgstr "In WooCommerce ist keine AGB-Seite ausgewählt (WooCommerce → Einstellungen → Erweitert → Seiten-Einrichtung)."
+
+#: rs-digital-fortrydelsesret.php:672
+msgid "Den valgte handelsbetingelses-side findes ikke længere."
+msgstr "Die ausgewählte AGB-Seite existiert nicht mehr."
+
+#: rs-digital-fortrydelsesret.php:685
+msgid "Version pr."
+msgstr "Stand:"
+
+#: rs-digital-fortrydelsesret.php:740
+msgid "Test PDF"
+msgstr "PDF testen"
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Du har ikke rettigheder til at se denne side."
+msgstr "Sie haben keine Berechtigung, diese Seite anzuzeigen."
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Adgang nægtet"
+msgstr "Zugriff verweigert"
+
+#: rs-digital-fortrydelsesret.php:754
+msgid "Kunne ikke generere PDF"
+msgstr "PDF konnte nicht erzeugt werden"
+
+#: includes/class-rs-fr-account.php:67 includes/class-rs-fr-account.php:74
+#: includes/class-rs-fr-account.php:116
+msgid "Mine fortrydelser"
+msgstr "Meine Widerrufe"
+
+#: includes/class-rs-fr-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr "Melden Sie sich an, um Ihre Widerrufe zu sehen."
+
+#: includes/class-rs-fr-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr "Sie haben keine registrierten Widerrufe."
+
+#: includes/class-rs-fr-account.php:127 includes/class-rs-fr-account.php:136
+#: includes/class-rs-fr-account.php:171 includes/class-rs-fr-admin.php:158
+#: includes/class-rs-fr-admin.php:217
+msgid "Reference"
+msgstr "Referenz"
+
+#: includes/class-rs-fr-account.php:128 includes/class-rs-fr-account.php:139
+#: includes/class-rs-fr-account.php:172 includes/class-rs-fr-admin.php:159
+msgid "Dato"
+msgstr "Datum"
+
+#: includes/class-rs-fr-account.php:129 includes/class-rs-fr-account.php:140
+#: includes/class-rs-fr-admin.php:161 includes/class-rs-fr-admin.php:225
+msgid "Ordre"
+msgstr "Bestellung"
+
+#: includes/class-rs-fr-account.php:130 includes/class-rs-fr-account.php:141
+#: includes/class-rs-fr-account.php:175 includes/class-rs-fr-admin.php:163
+#: includes/class-rs-fr-admin.php:218 includes/class-rs-fr-admin.php:252
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-rs-fr-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr "Der Widerruf wurde nicht gefunden."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-account.php:165 includes/class-rs-fr-admin.php:209
+#, php-format
+msgid "Fortrydelse %s"
+msgstr "Widerruf %s"
+
+#: includes/class-rs-fr-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr "Zurück zu meinen Widerrufen"
+
+#: includes/class-rs-fr-account.php:173 includes/class-rs-fr-admin.php:224
+#: includes/class-rs-fr-frontend.php:116
+msgid "Ordrenummer"
+msgstr "Bestellnummer"
+
+#: includes/class-rs-fr-account.php:174 includes/class-rs-fr-admin.php:229
+msgid "Fortrydelse"
+msgstr "Widerruf"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-admin.php:230
+msgid "Indsendt indhold"
+msgstr "Übermittelter Inhalt"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-account.php:248
+#: includes/class-rs-fr-admin.php:230 includes/class-rs-fr-admin.php:545
+#: includes/class-rs-fr-frontend.php:124 includes/class-rs-fr-mailer.php:274
+msgid "Hele ordren"
+msgstr "Gesamte Bestellung"
+
+#: includes/class-rs-fr-account.php:228 includes/class-rs-fr-admin.php:481
+msgid "Modtaget"
+msgstr "Eingegangen"
+
+#: includes/class-rs-fr-account.php:229 includes/class-rs-fr-admin.php:482
+msgid "Under behandling"
+msgstr "In Bearbeitung"
+
+#: includes/class-rs-fr-account.php:230 includes/class-rs-fr-admin.php:483
+msgid "Godkendt"
+msgstr "Genehmigt"
+
+#: includes/class-rs-fr-account.php:231 includes/class-rs-fr-admin.php:484
+msgid "Afvist"
+msgstr "Abgelehnt"
+
+#: includes/class-rs-fr-account.php:232 includes/class-rs-fr-admin.php:485
+msgid "Fuldført"
+msgstr "Abgeschlossen"
+
+#: includes/class-rs-fr-account.php:247 includes/class-rs-fr-admin.php:544
+#: includes/class-rs-fr-frontend.php:128 includes/class-rs-fr-mailer.php:271
+msgid "Enkelte produkter"
+msgstr "Einzelne Produkte"
+
+#: includes/class-rs-fr-admin.php:43 includes/class-rs-fr-admin.php:44
+#: includes/class-rs-fr-admin.php:141
+msgid "Fortrydelser"
+msgstr "Widerrufe"
+
+#: includes/class-rs-fr-admin.php:106 includes/class-rs-fr-settings.php:271
+msgid "Du har ikke adgang til denne side."
+msgstr "Sie haben keinen Zugriff auf diese Seite."
+
+#: includes/class-rs-fr-admin.php:147
+msgid "Søg fortrydelser"
+msgstr "Widerrufe suchen"
+
+#: includes/class-rs-fr-admin.php:150
+msgid "Filtrer"
+msgstr "Filtern"
+
+#: includes/class-rs-fr-admin.php:151
+msgid "Eksporter CSV"
+msgstr "CSV exportieren"
+
+#: includes/class-rs-fr-admin.php:160
+msgid "Kunde"
+msgstr "Kunde"
+
+#: includes/class-rs-fr-admin.php:162
+msgid "Type"
+msgstr "Typ"
+
+#: includes/class-rs-fr-admin.php:164 includes/class-rs-fr-admin.php:227
+msgid "Frist"
+msgstr "Frist"
+
+#: includes/class-rs-fr-admin.php:182
+msgid "Ingen fortrydelser fundet."
+msgstr "Keine Widerrufe gefunden."
+
+#: includes/class-rs-fr-admin.php:201
+msgid "Fortrydelse ikke fundet"
+msgstr "Widerruf nicht gefunden"
+
+#: includes/class-rs-fr-admin.php:202 includes/class-rs-fr-admin.php:213
+msgid "Tilbage til oversigten"
+msgstr "Zurück zur Übersicht"
+
+#: includes/class-rs-fr-admin.php:219
+msgid "Indsendt"
+msgstr "Übermittelt"
+
+#: includes/class-rs-fr-admin.php:220 includes/class-rs-fr-frontend.php:106
+msgid "Navn"
+msgstr "Name"
+
+#: includes/class-rs-fr-admin.php:221 includes/class-rs-fr-frontend.php:111
+msgid "Mailadresse"
+msgstr "E-Mail-Adresse"
+
+#: includes/class-rs-fr-admin.php:222
+msgid "Ordre-mailadresse"
+msgstr "E-Mail-Adresse der Bestellung"
+
+#: includes/class-rs-fr-admin.php:222 includes/class-rs-fr-admin.php:457
+#: includes/class-rs-fr-mailer.php:228 includes/class-rs-fr-mailer.php:230
+msgid "Ikke fundet"
+msgstr "Nicht gefunden"
+
+#: includes/class-rs-fr-admin.php:223
+msgid "E-mailafvigelse"
+msgstr "Abweichende E-Mail"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-mailer.php:229
+msgid "Ja"
+msgstr "Ja"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-admin.php:231
+#: includes/class-rs-fr-admin.php:232 includes/class-rs-fr-mailer.php:229
+msgid "Nej"
+msgstr "Nein"
+
+#: includes/class-rs-fr-admin.php:226
+msgid "Ordredato"
+msgstr "Bestelldatum"
+
+#: includes/class-rs-fr-admin.php:226 includes/class-rs-fr-admin.php:227
+#: includes/class-rs-fr-admin.php:531 includes/class-rs-fr-mailer.php:232
+#: includes/class-rs-fr-mailer.php:233
+msgid "Ukendt"
+msgstr "Unbekannt"
+
+#: includes/class-rs-fr-admin.php:228
+msgid "Friststatus"
+msgstr "Fristenstatus"
+
+#: includes/class-rs-fr-admin.php:231
+msgid "Kundekvittering sendt"
+msgstr "Kundenbestätigung gesendet"
+
+#: includes/class-rs-fr-admin.php:232
+msgid "Intern mail sendt"
+msgstr "Interne E-Mail gesendet"
+
+#: includes/class-rs-fr-admin.php:236
+msgid "Behandling"
+msgstr "Bearbeitung"
+
+#: includes/class-rs-fr-admin.php:238
+msgid "Hvad sker der, når status ændres?"
+msgstr "Was passiert, wenn der Status geändert wird?"
+
+#: includes/class-rs-fr-admin.php:239
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr "Wenn Sie den Status ändern und auf „Bearbeitung speichern“ klicken, wird nur der interne Widerrufsvorgang aktualisiert."
+
+#: includes/class-rs-fr-admin.php:241
+msgid "Sagens status bliver gemt."
+msgstr "Der Status des Vorgangs wird gespeichert."
+
+#: includes/class-rs-fr-admin.php:242
+msgid "Den interne note bliver gemt."
+msgstr "Die interne Notiz wird gespeichert."
+
+#: includes/class-rs-fr-admin.php:243
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr "Der Zeitpunkt der letzten Aktualisierung wird gespeichert."
+
+#: includes/class-rs-fr-admin.php:245
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr "Die WooCommerce-Bestellung wird nicht automatisch geändert: Bestellstatus, Erstattung, Lagerbestand und Kunden-E-Mails werden in dieser Version weiterhin manuell verwaltet."
+
+#: includes/class-rs-fr-admin.php:256
+msgid "Intern note"
+msgstr "Interne Notiz"
+
+#: includes/class-rs-fr-admin.php:259
+msgid "Gem behandling"
+msgstr "Bearbeitung speichern"
+
+#: includes/class-rs-fr-admin.php:272 includes/class-rs-fr-admin.php:304
+msgid "Du har ikke adgang til denne handling."
+msgstr "Sie haben keinen Zugriff auf diese Aktion."
+
+#: includes/class-rs-fr-admin.php:379
+msgid "Alle statusser"
+msgstr "Alle Status"
+
+#: includes/class-rs-fr-admin.php:442
+msgid "Sagen blev opdateret."
+msgstr "Der Vorgang wurde aktualisiert."
+
+#: includes/class-rs-fr-admin.php:443
+msgid "Sagen kunne ikke opdateres."
+msgstr "Der Vorgang konnte nicht aktualisiert werden."
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-fr-admin.php:468
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr "Bestellung #%s öffnen"
+
+#: includes/class-rs-fr-admin.php:529
+msgid "Inden for frist"
+msgstr "Innerhalb der Frist"
+
+#: includes/class-rs-fr-admin.php:530
+msgid "Overskredet"
+msgstr "Überschritten"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-frontend.php:73
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr "Ihr Widerruf ist eingegangen. Ihre Referenz lautet %s."
+
+#: includes/class-rs-fr-frontend.php:78
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr "Eine Bestätigung wurde an die von Ihnen angegebene E-Mail-Adresse gesendet."
+
+#: includes/class-rs-fr-frontend.php:93
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse."
+msgstr "Die Bestätigung belegt lediglich, dass wir Ihren Widerruf erhalten haben. Sie hören anschließend von uns mit einer endgültigen Entscheidung."
+
+#: includes/class-rs-fr-frontend.php:101
+msgid "Website"
+msgstr "Website"
+
+#: includes/class-rs-fr-frontend.php:121
+msgid "Hvad vil du fortryde?"
+msgstr "Was möchten Sie widerrufen?"
+
+#: includes/class-rs-fr-frontend.php:133
+msgid "Produkter eller bemærkning"
+msgstr "Produkte oder Anmerkung"
+
+#: includes/class-rs-fr-frontend.php:145
+msgid "Bekræft fortrydelse"
+msgstr "Widerruf bestätigen"
+
+#: includes/class-rs-fr-frontend.php:262
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr "Das Formular konnte nicht validiert werden. Laden Sie die Seite neu und versuchen Sie es erneut."
+
+#: includes/class-rs-fr-frontend.php:266
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr "Der Widerruf konnte nicht gesendet werden."
+
+#: includes/class-rs-fr-frontend.php:270
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr "Von derselben Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut."
+
+#: includes/class-rs-fr-frontend.php:274
+msgid "Indtast dit navn."
+msgstr "Geben Sie Ihren Namen ein."
+
+#: includes/class-rs-fr-frontend.php:278
+msgid "Indtast en gyldig mailadresse."
+msgstr "Geben Sie eine gültige E-Mail-Adresse ein."
+
+#: includes/class-rs-fr-frontend.php:282
+msgid "Indtast ordrenummer."
+msgstr "Geben Sie die Bestellnummer ein."
+
+#: includes/class-rs-fr-frontend.php:288
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr "Wählen Sie, ob Sie die gesamte Bestellung oder einzelne Produkte widerrufen möchten."
+
+#: includes/class-rs-fr-frontend.php:292
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr "Geben Sie an, welche Produkte Sie widerrufen möchten."
+
+#: includes/class-rs-fr-frontend.php:311
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr "Bestellnummer und E-Mail-Adresse passen nicht zusammen. Prüfen Sie Ihre Angaben und versuchen Sie es erneut."
+
+#: includes/class-rs-fr-frontend.php:326
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr "Für die angegebenen Produkte dieser Bestellung existiert bereits ein Widerrufsvorgang. Geben Sie nur dann weitere Bestellpositionen an, wenn Sie einen neuen Teilwiderruf anlegen möchten."
+
+#: includes/class-rs-fr-frontend.php:330
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr "Für diese Bestellung existiert bereits ein Widerrufsvorgang."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr "Bestätigung des Widerrufs - %s"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr "Neuer Widerruf eingegangen - %s"
+
+#: includes/class-rs-fr-mailer.php:256
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr "Der Kunde möchte die gesamte Bestellung widerrufen."
+
+#: includes/class-rs-fr-mailer.php:259
+msgid "Ingen yderligere bemærkning angivet."
+msgstr "Keine weitere Anmerkung angegeben."
+
+#: includes/class-rs-fr-repository.php:101
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr "Der Widerruf konnte nicht gespeichert werden. Bitte versuchen Sie es später erneut."
+
+#: includes/class-rs-fr-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr "Einstellungen für den digitalen Widerruf"
+
+#: includes/class-rs-fr-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr "Widerruf-Einstellungen"
+
+#: includes/class-rs-fr-settings.php:80
+msgid "Generelle indstillinger"
+msgstr "Allgemeine Einstellungen"
+
+#: includes/class-rs-fr-settings.php:87
+msgid "Intern modtager"
+msgstr "Interner Empfänger"
+
+#: includes/class-rs-fr-settings.php:95
+msgid "Sprog"
+msgstr "Sprache"
+
+#: includes/class-rs-fr-settings.php:103
+msgid "Opbevaring"
+msgstr "Aufbewahrung"
+
+#: includes/class-rs-fr-settings.php:111
+msgid "Formulartekst"
+msgstr "Formulartext"
+
+#: includes/class-rs-fr-settings.php:119
+msgid "Tekst før knap"
+msgstr "Text vor der Schaltfläche"
+
+#: includes/class-rs-fr-settings.php:127
+msgid "Kundekvittering"
+msgstr "Kundenbestätigung"
+
+#: includes/class-rs-fr-settings.php:135
+msgid "Intern mail"
+msgstr "Interne E-Mail"
+
+#: includes/class-rs-fr-settings.php:143
+msgid "Afinstallering"
+msgstr "Deinstallation"
+
+#: includes/class-rs-fr-settings.php:151
+msgid "Ordremail (fortrydelsestekst)"
+msgstr "Bestell-E-Mail (Widerrufstext)"
+
+#: includes/class-rs-fr-settings.php:158
+msgid "Link til fortrydelse"
+msgstr "Link zum Widerruf"
+
+#: includes/class-rs-fr-settings.php:166
+msgid "Overskrift"
+msgstr "Überschrift"
+
+#: includes/class-rs-fr-settings.php:174
+msgid "Introtekst"
+msgstr "Einleitungstext"
+
+#: includes/class-rs-fr-settings.php:182
+msgid "Link-tekst"
+msgstr "Linktext"
+
+#: includes/class-rs-fr-settings.php:190
+msgid "PDF-note"
+msgstr "PDF-Hinweis"
+
+#: includes/class-rs-fr-settings.php:199
+msgid "Handelsbetingelser"
+msgstr "Allgemeine Geschäftsbedingungen"
+
+#: includes/class-rs-fr-settings.php:206
+msgid "Handelsbetingelsesside"
+msgstr "AGB-Seite"
+
+#: includes/class-rs-fr-settings.php:214
+msgid "Automatisk indsættelse"
+msgstr "Automatisches Einfügen"
+
+#: includes/class-rs-fr-settings.php:222
+msgid "Tekstafsnit"
+msgstr "Textabschnitt"
+
+#: includes/class-rs-fr-settings.php:277
+msgid "Digital Fortrydelse"
+msgstr "Digitaler Widerruf"
+
+#: includes/class-rs-fr-settings.php:303
+msgid "Brug WooCommerce standardmodtager"
+msgstr "WooCommerce-Standardempfänger verwenden"
+
+#: includes/class-rs-fr-settings.php:305
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr "Leer lassen, um den Empfänger der WooCommerce-E-Mails für neue Bestellungen zu verwenden."
+
+#: includes/class-rs-fr-settings.php:325
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr "Anzahl der Jahre, für die Widerrufsvorgänge aufbewahrt werden. Maximum ist 5 Jahre."
+
+#: includes/class-rs-fr-settings.php:343
+msgid "Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke."
+msgstr "Steuert die Sprache von Formular, E-Mails, AGB-Abschnitt und den Admin-Seiten des Plugins. Unveränderte Standardtexte wechseln beim Speichern automatisch die Sprache. Von Ihnen angepasste Texte werden nicht geändert."
+
+#: includes/class-rs-fr-settings.php:378
+msgid "Valgfri tekst der vises i en infoboks lige før \"Bekræft fortrydelse\"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt."
+msgstr "Optionaler Text, der in einem Infokasten direkt vor der Schaltfläche „Widerruf bestätigen“ angezeigt wird. Verwenden Sie ihn z. B. für Hinweise zu maßgefertigten Waren. Leer lassen, um den Kasten auszublenden. Einfaches HTML wie Links und Fettdruck ist erlaubt."
+
+#: includes/class-rs-fr-settings.php:397
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr "Die Kundenbestätigung darf nur den Eingang der Anfrage bestätigen. Sie darf nicht als endgültige Genehmigung oder Erstattung formuliert sein."
+
+#: includes/class-rs-fr-settings.php:437
+msgid "Slet pluginets data ved afinstallering."
+msgstr "Plugin-Daten bei der Deinstallation löschen."
+
+#: includes/class-rs-fr-settings.php:450
+msgid "Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten."
+msgstr "Hier können Sie den Text anpassen, der in die WooCommerce-Bestell-E-Mails (Bearbeitung/Abgeschlossen) eingefügt wird. Lassen Sie ein Feld leer, um den eingebauten Standardtext des Plugins zu verwenden (der auch automatisch über WPML/Polylang übersetzt wird). Füllen Sie die Felder aus, wenn Sie z. B. auch maßgefertigte Waren verkaufen, für die kein Widerrufsrecht besteht."
+
+#: includes/class-rs-fr-settings.php:451
+msgid "Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen)."
+msgstr "Wenn Sie den Link zum Widerruf unten deaktivieren, wird in der E-Mail nur der PDF-Hinweis angezeigt (z. B. für Shops, in denen der Kunde keinen direkten Link zur Widerrufsfunktion erhalten soll)."
+
+#: includes/class-rs-fr-settings.php:471
+msgid "Vis info-boks med link til digital fortrydelse i kundens ordremails."
+msgstr "Infokasten mit Link zum digitalen Widerruf in den Bestell-E-Mails des Kunden anzeigen."
+
+#: includes/class-rs-fr-settings.php:473
+msgid "Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling."
+msgstr "Ist das Feld nicht aktiviert, wird nur ein kurzer Hinweis angezeigt, dass die AGB als PDF beigefügt sind, ohne Link zur Widerrufsfunktion. Die AGB werden unabhängig von dieser Einstellung immer als PDF angehängt."
+
+#: includes/class-rs-fr-settings.php:493
+msgid "Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Die Überschrift des Infokastens in der Bestell-E-Mail. Wird nur verwendet, wenn der Link oben aktiviert ist. Standard:"
+
+#: includes/class-rs-fr-settings.php:512
+msgid "Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Der Einleitungstext im Infokasten. Verwenden Sie ihn z. B., um darauf hinzuweisen, dass für maßgefertigte Waren kein Widerrufsrecht besteht. Wird nur verwendet, wenn der Link oben aktiviert ist. Standard:"
+
+#: includes/class-rs-fr-settings.php:532
+msgid "Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Der Text des Links zur Widerrufsfunktion. Wird nur verwendet, wenn der Link oben aktiviert ist. Standard:"
+
+#: includes/class-rs-fr-settings.php:551
+msgid "Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:"
+msgstr "Der Hinweis, dass die AGB als PDF beigefügt sind. Wird immer angezeigt, auch wenn der Link oben deaktiviert ist. Standard:"
+
+#: includes/class-rs-fr-settings.php:564
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr "Hier kann der Text für die AGB gepflegt werden. Ist das automatische Einfügen aktiviert, aktualisiert das Plugin bei jedem Speichern der Einstellungen seinen eigenen markierten Abschnitt auf der ausgewählten Seite."
+
+#: includes/class-rs-fr-settings.php:565
+msgid "Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på."
+msgstr "Hinweis: Dieser Text ist nur der Verweis in den AGB. Das Widerrufsformular selbst wird angezeigt, indem Sie den Shortcode [digital_fortrydelse] auf der Seite einfügen, auf die das Token unten verweist."
+
+#: includes/class-rs-fr-settings.php:583
+msgid "Vælg side"
+msgstr "Seite auswählen"
+
+#: includes/class-rs-fr-settings.php:589
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr "Die WooCommerce-AGB-Seite ist als Standard ausgewählt."
+
+#: includes/class-rs-fr-settings.php:591
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr "Wählen Sie die Seite, die für die AGB verwendet wird. Ist in WooCommerce eine AGB-Seite festgelegt, wird diese standardmäßig verwendet."
+
+#: includes/class-rs-fr-settings.php:611
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr "Den Abschnitt in den AGB automatisch aktualisieren, wenn die Einstellungen gespeichert werden."
+
+#: includes/class-rs-fr-settings.php:613
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr "Das Plugin ersetzt nur den Inhalt zwischen seinen eigenen Start- und Endmarkierungen. Sind die Markierungen nicht vorhanden, wird der Abschnitt am Ende der Seite hinzugefügt."
+
+#: includes/class-rs-fr-settings.php:632
+msgid "Tokens:"
+msgstr "Tokens:"
+
+#: includes/class-rs-fr-settings.php:633
+msgid "klikbart link"
+msgstr "anklickbarer Link"
+
+#: includes/class-rs-fr-settings.php:634
+msgid "ren URL"
+msgstr "reine URL"
+
+#: includes/class-rs-fr-settings.php:635
+msgid "De ældre tokens"
+msgstr "Die älteren Tokens"
+
+#: includes/class-rs-fr-settings.php:636
+msgid "og"
+msgstr "und"
+
+#: includes/class-rs-fr-settings.php:637
+msgid "virker stadig som alias."
+msgstr "funktionieren weiterhin als Alias."
+
+#. translators: %s: resolved withdrawal page URL.
+#: includes/class-rs-fr-settings.php:643
+#, php-format
+msgid "Tokenet peger i øjeblikket på: %s"
+msgstr "Das Token verweist derzeit auf: %s"
+
+#: includes/class-rs-fr-settings.php:649
+msgid "Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der."
+msgstr "Wichtig: Das Formular selbst wird durch diesen Text nicht angezeigt. Fügen Sie den Shortcode [digital_fortrydelse] auf der Seite ein, auf die das Token verweist, um dort das Widerrufsformular anzuzeigen."
+
+#: includes/class-rs-fr-settings.php:743
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr "Der Abschnitt zum digitalen Widerruf wurde auf der AGB-Seite aktualisiert."
+
+#: includes/class-rs-fr-settings.php:748
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr "Der Abschnitt konnte nicht eingefügt werden, da keine gültige AGB-Seite ausgewählt ist."
+
+#: includes/class-rs-fr-settings.php:752
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr "Der Abschnitt konnte auf der AGB-Seite nicht aktualisiert werden."
+
+#: includes/class-rs-fr-settings.php:855
+msgid "Tilgængelige tokens:"
+msgstr "Verfügbare Tokens:"
