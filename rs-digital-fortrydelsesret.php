@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RS Digital Fortrydelsesret
  * Description: Digital fortrydelsesret til WooCommerce: fortrydelsesformular (shortcode [digital_fortrydelse]), kvitterings-/notifikationsmails, admin-sagsbehandling, GDPR-retention, Min Konto-visning og handelsbetingelser som PDF. WPML/Polylang-klar.
- * Version:     2.4.0
+ * Version:     2.5.0
 
  * Author:      ReneSejling.dk
 
@@ -30,7 +30,7 @@ if ( file_exists( $rs_fr_autoload ) ) {
  * Plugin-konstanter (bruges af klasserne i includes/)                *
  * ------------------------------------------------------------------ */
 if ( ! defined( 'RS_FR_VERSION' ) ) {
-	define( 'RS_FR_VERSION', '2.4.0' );
+	define( 'RS_FR_VERSION', '2.5.0' );
 
 }
 
@@ -222,9 +222,12 @@ function rs_fr_current_lang() {
 		return strtolower( substr( ICL_LANGUAGE_CODE, 0, 2 ) );
 	}
 
-	// Pluginnets eget sprogvalg: er engelsk valgt i indstillingerne, bruges 'en'.
-	if ( class_exists( 'RS_FR_I18n' ) && 'en_US' === RS_FR_I18n::current_locale() ) {
-		return 'en';
+	// Pluginnets eget sprogvalg: er et andet sprog end dansk valgt i indstillingerne, bruges det (fx 'en', 'sv').
+	if ( class_exists( 'RS_FR_I18n' ) ) {
+		$rs_fr_locale = RS_FR_I18n::current_locale();
+		if ( RS_FR_I18n::DEFAULT_LOCALE !== $rs_fr_locale ) {
+			return strtolower( substr( $rs_fr_locale, 0, 2 ) );
+		}
 	}
 
 	// WordPress-locale (fx 'en_US' → 'en', 'nb_NO' → 'nb').

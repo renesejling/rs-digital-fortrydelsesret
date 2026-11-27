@@ -1,6 +1,6 @@
 <?php
 /**
- * Sprogvalg (dansk/engelsk) og standardtekster pr. sprog.
+ * Sprogvalg (dansk/engelsk/svensk) og standardtekster pr. sprog.
  *
  * @package RS_FR
  */
@@ -27,6 +27,7 @@ final class RS_FR_I18n
         return array(
             'da_DK' => 'Dansk',
             'en_US' => 'English',
+            'sv_SE' => 'Svenska',
         );
     }
 
@@ -298,6 +299,66 @@ final class RS_FR_I18n
                         'Withdrawal: {request_type}',
                         '',
                         'Content of the submission:',
+                        '{submitted_content}',
+                    )
+                ),
+            ),
+            'sv_SE' => array(
+                'form_intro' => 'Fyll i formuläret nedan för att ångra ditt köp. Du får ett kvitto på din begäran via e-post.',
+                'terms_heading' => 'Digital ångerfunktion',
+                'terms_link_text' => 'Ångra avtal',
+                'terms_section_text' => implode(
+                    "\n\n",
+                    array(
+                        'Du kan ångra ditt köp genom att använda vår digitala ångerfunktion i webbutiken.',
+                        'Funktionen finns på sidan {fortrydelse_link}.',
+                        'När du fyller i och skickar formuläret ska du ange namn, e-postadress och ordernummer. Du kan välja om du vill ångra hela beställningen eller enskilda produkter.',
+                        'När formuläret har skickats får du utan onödigt dröjsmål ett kvitto via e-post. Kvittot bekräftar att vi har tagit emot din begäran om att ångra köpet och innehåller det inskickade innehållet samt datum och tid för inskickandet.',
+                        'Kvittot är endast en bekräftelse på att vi har tagit emot din begäran om att ångra köpet. Det är inte ett slutligt avgörande av ärendet.',
+                        'Du anses ha ångrat köpet i tid om du skickar din begäran via den digitala ångerfunktionen innan ångerfristen löper ut.',
+                    )
+                ),
+                'customer_mail_template' => implode(
+                    "\n",
+                    array(
+                        'Vi har tagit emot din begäran om att ångra köpet.',
+                        '',
+                        'Detta kvitto bekräftar endast att vi har tagit emot din begäran. Det är inte ett slutligt avgörande av ärendet.',
+                        '',
+                        'Referens: {reference}',
+                        'Datum och tid: {submitted_at}',
+                        'Namn: {customer_name}',
+                        'E-postadress: {customer_email}',
+                        'Ordernummer: {order_number}',
+                        'Ånger: {request_type}',
+                        '',
+                        'Innehåll i din inskickning:',
+                        '{submitted_content}',
+                        '',
+                        'Med vänliga hälsningar',
+                        '{site_name}',
+                    )
+                ),
+                'internal_mail_template' => implode(
+                    "\n",
+                    array(
+                        'En ny digital ångerbegäran har tagits emot.',
+                        '',
+                        'Referens: {reference}',
+                        'Datum och tid: {submitted_at}',
+                        'Status: {status}',
+                        'Namn: {customer_name}',
+                        'Angiven e-postadress: {customer_email}',
+                        'Orderns e-postadress: {order_email}',
+                        'Avvikande e-post: {email_mismatch}',
+                        'Order-ID: {order_id}',
+                        'Ordernummer: {order_number}',
+                        'Orderdatum: {order_date}',
+                        'Frist: {deadline_at}',
+                        'Friststatus: {deadline_status}',
+                        'Ånger: {request_type}',
+                        '',
+                        'Innehåll i inskickningen:',
                         '{submitted_content}',
                     )
                 ),

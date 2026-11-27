@@ -1,0 +1,633 @@
+# Swedish translation of RS Digital Fortrydelsesret.
+# Copyright (C) ReneSejling.dk
+# This file is distributed under the same license as the RS Digital Fortrydelsesret package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RS Digital Fortrydelsesret\n"
+"Report-Msgid-Bugs-To: https://github.com/renesejling/rs-digital-fortrydelsesret\n"
+"POT-Creation-Date: 2026-11-12 09:02+0100\n"
+"PO-Revision-Date: 2026-11-27 12:00+0100\n"
+"Last-Translator: ReneSejling.dk\n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: rs-digital-fortrydelsesret.php:659
+msgid "Dompdf er ikke installeret (kør \"composer install\")."
+msgstr "Dompdf är inte installerat (kör \"composer install\")."
+
+#: rs-digital-fortrydelsesret.php:667
+msgid "Der er ikke valgt en handelsbetingelses-side i WooCommerce (WooCommerce → Indstillinger → Avanceret → Sidekonfiguration)."
+msgstr "Ingen sida för köpvillkor har valts i WooCommerce (WooCommerce → Inställningar → Avancerat → Sidkonfiguration)."
+
+#: rs-digital-fortrydelsesret.php:672
+msgid "Den valgte handelsbetingelses-side findes ikke længere."
+msgstr "Den valda sidan för köpvillkor finns inte längre."
+
+#: rs-digital-fortrydelsesret.php:685
+msgid "Version pr."
+msgstr "Version per"
+
+#: rs-digital-fortrydelsesret.php:740
+msgid "Test PDF"
+msgstr "Testa PDF"
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Du har ikke rettigheder til at se denne side."
+msgstr "Du har inte behörighet att se den här sidan."
+
+#: rs-digital-fortrydelsesret.php:747
+msgid "Adgang nægtet"
+msgstr "Åtkomst nekad"
+
+#: rs-digital-fortrydelsesret.php:754
+msgid "Kunne ikke generere PDF"
+msgstr "Det gick inte att generera PDF"
+
+#: includes/class-rs-fr-account.php:67 includes/class-rs-fr-account.php:74
+#: includes/class-rs-fr-account.php:116
+msgid "Mine fortrydelser"
+msgstr "Mina ångerbegäranden"
+
+#: includes/class-rs-fr-account.php:88
+msgid "Log ind for at se dine fortrydelser."
+msgstr "Logga in för att se dina ångerbegäranden."
+
+#: includes/class-rs-fr-account.php:119
+msgid "Du har ingen registrerede fortrydelser."
+msgstr "Du har inga registrerade ångerbegäranden."
+
+#: includes/class-rs-fr-account.php:127 includes/class-rs-fr-account.php:136
+#: includes/class-rs-fr-account.php:171 includes/class-rs-fr-admin.php:158
+#: includes/class-rs-fr-admin.php:217
+msgid "Reference"
+msgstr "Referens"
+
+#: includes/class-rs-fr-account.php:128 includes/class-rs-fr-account.php:139
+#: includes/class-rs-fr-account.php:172 includes/class-rs-fr-admin.php:159
+msgid "Dato"
+msgstr "Datum"
+
+#: includes/class-rs-fr-account.php:129 includes/class-rs-fr-account.php:140
+#: includes/class-rs-fr-admin.php:161 includes/class-rs-fr-admin.php:225
+msgid "Ordre"
+msgstr "Order"
+
+#: includes/class-rs-fr-account.php:130 includes/class-rs-fr-account.php:141
+#: includes/class-rs-fr-account.php:175 includes/class-rs-fr-admin.php:163
+#: includes/class-rs-fr-admin.php:218 includes/class-rs-fr-admin.php:252
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-rs-fr-account.php:160
+msgid "Fortrydelsen blev ikke fundet."
+msgstr "Ångerbegäran hittades inte."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-account.php:165 includes/class-rs-fr-admin.php:209
+#, php-format
+msgid "Fortrydelse %s"
+msgstr "Ångerbegäran %s"
+
+#: includes/class-rs-fr-account.php:166
+msgid "Tilbage til mine fortrydelser"
+msgstr "Tillbaka till mina ångerbegäranden"
+
+#: includes/class-rs-fr-account.php:173 includes/class-rs-fr-admin.php:224
+#: includes/class-rs-fr-frontend.php:116
+msgid "Ordrenummer"
+msgstr "Ordernummer"
+
+#: includes/class-rs-fr-account.php:174 includes/class-rs-fr-admin.php:229
+msgid "Fortrydelse"
+msgstr "Ånger"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-admin.php:230
+msgid "Indsendt indhold"
+msgstr "Inskickat innehåll"
+
+#: includes/class-rs-fr-account.php:176 includes/class-rs-fr-account.php:248
+#: includes/class-rs-fr-admin.php:230 includes/class-rs-fr-admin.php:545
+#: includes/class-rs-fr-frontend.php:124 includes/class-rs-fr-mailer.php:274
+msgid "Hele ordren"
+msgstr "Hela ordern"
+
+#: includes/class-rs-fr-account.php:228 includes/class-rs-fr-admin.php:481
+msgid "Modtaget"
+msgstr "Mottagen"
+
+#: includes/class-rs-fr-account.php:229 includes/class-rs-fr-admin.php:482
+msgid "Under behandling"
+msgstr "Under behandling"
+
+#: includes/class-rs-fr-account.php:230 includes/class-rs-fr-admin.php:483
+msgid "Godkendt"
+msgstr "Godkänd"
+
+#: includes/class-rs-fr-account.php:231 includes/class-rs-fr-admin.php:484
+msgid "Afvist"
+msgstr "Avslagen"
+
+#: includes/class-rs-fr-account.php:232 includes/class-rs-fr-admin.php:485
+msgid "Fuldført"
+msgstr "Slutförd"
+
+#: includes/class-rs-fr-account.php:247 includes/class-rs-fr-admin.php:544
+#: includes/class-rs-fr-frontend.php:128 includes/class-rs-fr-mailer.php:271
+msgid "Enkelte produkter"
+msgstr "Enskilda produkter"
+
+#: includes/class-rs-fr-admin.php:43 includes/class-rs-fr-admin.php:44
+#: includes/class-rs-fr-admin.php:141
+msgid "Fortrydelser"
+msgstr "Ångerbegäranden"
+
+#: includes/class-rs-fr-admin.php:106 includes/class-rs-fr-settings.php:271
+msgid "Du har ikke adgang til denne side."
+msgstr "Du har inte åtkomst till den här sidan."
+
+#: includes/class-rs-fr-admin.php:147
+msgid "Søg fortrydelser"
+msgstr "Sök ångerbegäranden"
+
+#: includes/class-rs-fr-admin.php:150
+msgid "Filtrer"
+msgstr "Filtrera"
+
+#: includes/class-rs-fr-admin.php:151
+msgid "Eksporter CSV"
+msgstr "Exportera CSV"
+
+#: includes/class-rs-fr-admin.php:160
+msgid "Kunde"
+msgstr "Kund"
+
+#: includes/class-rs-fr-admin.php:162
+msgid "Type"
+msgstr "Typ"
+
+#: includes/class-rs-fr-admin.php:164 includes/class-rs-fr-admin.php:227
+msgid "Frist"
+msgstr "Frist"
+
+#: includes/class-rs-fr-admin.php:182
+msgid "Ingen fortrydelser fundet."
+msgstr "Inga ångerbegäranden hittades."
+
+#: includes/class-rs-fr-admin.php:201
+msgid "Fortrydelse ikke fundet"
+msgstr "Ångerbegäran hittades inte"
+
+#: includes/class-rs-fr-admin.php:202 includes/class-rs-fr-admin.php:213
+msgid "Tilbage til oversigten"
+msgstr "Tillbaka till översikten"
+
+#: includes/class-rs-fr-admin.php:219
+msgid "Indsendt"
+msgstr "Inskickad"
+
+#: includes/class-rs-fr-admin.php:220 includes/class-rs-fr-frontend.php:106
+msgid "Navn"
+msgstr "Namn"
+
+#: includes/class-rs-fr-admin.php:221 includes/class-rs-fr-frontend.php:111
+msgid "Mailadresse"
+msgstr "E-postadress"
+
+#: includes/class-rs-fr-admin.php:222
+msgid "Ordre-mailadresse"
+msgstr "Orderns e-postadress"
+
+#: includes/class-rs-fr-admin.php:222 includes/class-rs-fr-admin.php:457
+#: includes/class-rs-fr-mailer.php:228 includes/class-rs-fr-mailer.php:230
+msgid "Ikke fundet"
+msgstr "Hittades inte"
+
+#: includes/class-rs-fr-admin.php:223
+msgid "E-mailafvigelse"
+msgstr "Avvikande e-post"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-mailer.php:229
+msgid "Ja"
+msgstr "Ja"
+
+#: includes/class-rs-fr-admin.php:223 includes/class-rs-fr-admin.php:231
+#: includes/class-rs-fr-admin.php:232 includes/class-rs-fr-mailer.php:229
+msgid "Nej"
+msgstr "Nej"
+
+#: includes/class-rs-fr-admin.php:226
+msgid "Ordredato"
+msgstr "Orderdatum"
+
+#: includes/class-rs-fr-admin.php:226 includes/class-rs-fr-admin.php:227
+#: includes/class-rs-fr-admin.php:531 includes/class-rs-fr-mailer.php:232
+#: includes/class-rs-fr-mailer.php:233
+msgid "Ukendt"
+msgstr "Okänd"
+
+#: includes/class-rs-fr-admin.php:228
+msgid "Friststatus"
+msgstr "Friststatus"
+
+#: includes/class-rs-fr-admin.php:231
+msgid "Kundekvittering sendt"
+msgstr "Kundkvitto skickat"
+
+#: includes/class-rs-fr-admin.php:232
+msgid "Intern mail sendt"
+msgstr "Internt e-postmeddelande skickat"
+
+#: includes/class-rs-fr-admin.php:236
+msgid "Behandling"
+msgstr "Hantering"
+
+#: includes/class-rs-fr-admin.php:238
+msgid "Hvad sker der, når status ændres?"
+msgstr "Vad händer när statusen ändras?"
+
+#: includes/class-rs-fr-admin.php:239
+msgid "Når du ændrer status og klikker Gem behandling, opdateres kun den interne fortrydelsessag."
+msgstr "När du ändrar status och klickar på Spara hantering uppdateras endast det interna ångerärendet."
+
+#: includes/class-rs-fr-admin.php:241
+msgid "Sagens status bliver gemt."
+msgstr "Ärendets status sparas."
+
+#: includes/class-rs-fr-admin.php:242
+msgid "Den interne note bliver gemt."
+msgstr "Den interna anteckningen sparas."
+
+#: includes/class-rs-fr-admin.php:243
+msgid "Tidspunktet for seneste opdatering bliver gemt."
+msgstr "Tidpunkten för senaste uppdatering sparas."
+
+#: includes/class-rs-fr-admin.php:245
+msgid "Der ændres ikke automatisk på WooCommerce-ordren: ordrestatus, refundering, lager og kundemails håndteres fortsat manuelt i denne version."
+msgstr "WooCommerce-ordern ändras inte automatiskt: orderstatus, återbetalning, lager och kundmejl hanteras fortfarande manuellt i den här versionen."
+
+#: includes/class-rs-fr-admin.php:256
+msgid "Intern note"
+msgstr "Intern anteckning"
+
+#: includes/class-rs-fr-admin.php:259
+msgid "Gem behandling"
+msgstr "Spara hantering"
+
+#: includes/class-rs-fr-admin.php:272 includes/class-rs-fr-admin.php:304
+msgid "Du har ikke adgang til denne handling."
+msgstr "Du har inte behörighet att utföra den här åtgärden."
+
+#: includes/class-rs-fr-admin.php:379
+msgid "Alle statusser"
+msgstr "Alla statusar"
+
+#: includes/class-rs-fr-admin.php:442
+msgid "Sagen blev opdateret."
+msgstr "Ärendet har uppdaterats."
+
+#: includes/class-rs-fr-admin.php:443
+msgid "Sagen kunne ikke opdateres."
+msgstr "Ärendet kunde inte uppdateras."
+
+#. translators: %s: WooCommerce order number.
+#: includes/class-rs-fr-admin.php:468
+#, php-format
+msgid "Åbn ordre #%s"
+msgstr "Öppna order #%s"
+
+#: includes/class-rs-fr-admin.php:529
+msgid "Inden for frist"
+msgstr "Inom fristen"
+
+#: includes/class-rs-fr-admin.php:530
+msgid "Overskredet"
+msgstr "Överskriden"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-frontend.php:73
+#, php-format
+msgid "Din anmodning om fortrydelse er modtaget. Din reference er %s."
+msgstr "Din begäran om att ångra köpet har tagits emot. Din referens är %s."
+
+#: includes/class-rs-fr-frontend.php:78
+msgid "Der er sendt en kvittering til den mailadresse, du har angivet."
+msgstr "Ett kvitto har skickats till den e-postadress du angav."
+
+#: includes/class-rs-fr-frontend.php:93
+msgid "Kvitteringen bekræfter kun, at vi har modtaget din anmodning om fortrydelse. Du hører fra os med en endelig afgørelse."
+msgstr "Kvittot bekräftar endast att vi har tagit emot din begäran om att ångra köpet. Du får ett slutligt besked från oss."
+
+#: includes/class-rs-fr-frontend.php:101
+msgid "Website"
+msgstr "Webbplats"
+
+#: includes/class-rs-fr-frontend.php:121
+msgid "Hvad vil du fortryde?"
+msgstr "Vad vill du ångra?"
+
+#: includes/class-rs-fr-frontend.php:133
+msgid "Produkter eller bemærkning"
+msgstr "Produkter eller kommentar"
+
+#: includes/class-rs-fr-frontend.php:145
+msgid "Bekræft fortrydelse"
+msgstr "Bekräfta ånger"
+
+#: includes/class-rs-fr-frontend.php:262
+msgid "Formularen kunne ikke valideres. Genindlæs siden og prøv igen."
+msgstr "Formuläret kunde inte valideras. Ladda om sidan och försök igen."
+
+#: includes/class-rs-fr-frontend.php:266
+msgid "Fortrydelsen kunne ikke sendes."
+msgstr "Ångerbegäran kunde inte skickas."
+
+#: includes/class-rs-fr-frontend.php:270
+msgid "Der er sendt for mange anmodninger fra samme forbindelse. Prøv igen senere."
+msgstr "För många begäranden har skickats från samma anslutning. Försök igen senare."
+
+#: includes/class-rs-fr-frontend.php:274
+msgid "Indtast dit navn."
+msgstr "Ange ditt namn."
+
+#: includes/class-rs-fr-frontend.php:278
+msgid "Indtast en gyldig mailadresse."
+msgstr "Ange en giltig e-postadress."
+
+#: includes/class-rs-fr-frontend.php:282
+msgid "Indtast ordrenummer."
+msgstr "Ange ordernummer."
+
+#: includes/class-rs-fr-frontend.php:288
+msgid "Vælg om du vil fortryde hele ordren eller enkelte produkter."
+msgstr "Välj om du vill ångra hela ordern eller enskilda produkter."
+
+#: includes/class-rs-fr-frontend.php:292
+msgid "Skriv hvilke produkter du vil fortryde."
+msgstr "Skriv vilka produkter du vill ångra."
+
+#: includes/class-rs-fr-frontend.php:311
+msgid "Ordrenummer og mailadresse passer ikke sammen. Kontrollér oplysningerne og prøv igen."
+msgstr "Ordernumret och e-postadressen hör inte ihop. Kontrollera uppgifterna och försök igen."
+
+#: includes/class-rs-fr-frontend.php:326
+msgid "Der findes allerede en fortrydelsessag for de angivne produkter på denne ordre. Skriv kun andre ordrelinjer, hvis du vil oprette en ny delvis fortrydelse."
+msgstr "Det finns redan ett ångerärende för de angivna produkterna på den här ordern. Ange endast andra orderrader om du vill skapa en ny delvis ånger."
+
+#: includes/class-rs-fr-frontend.php:330
+msgid "Der findes allerede en fortrydelsessag for denne ordre."
+msgstr "Det finns redan ett ångerärende för den här ordern."
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:67
+#, php-format
+msgid "Kvittering for fortrydelse - %s"
+msgstr "Kvitto för ånger - %s"
+
+#. translators: %s: cancellation request reference.
+#: includes/class-rs-fr-mailer.php:93
+#, php-format
+msgid "Ny fortrydelse modtaget - %s"
+msgstr "Ny ångerbegäran mottagen - %s"
+
+#: includes/class-rs-fr-mailer.php:256
+msgid "Kunden ønsker at fortryde hele ordren."
+msgstr "Kunden vill ångra hela ordern."
+
+#: includes/class-rs-fr-mailer.php:259
+msgid "Ingen yderligere bemærkning angivet."
+msgstr "Ingen ytterligare kommentar angavs."
+
+#: includes/class-rs-fr-repository.php:101
+msgid "Fortrydelsen kunne ikke gemmes. Prøv igen senere."
+msgstr "Ångerbegäran kunde inte sparas. Försök igen senare."
+
+#: includes/class-rs-fr-settings.php:42
+msgid "Digital Fortrydelse indstillinger"
+msgstr "Inställningar för Digital ånger"
+
+#: includes/class-rs-fr-settings.php:43
+msgid "Fortrydelse indstillinger"
+msgstr "Ånger-inställningar"
+
+#: includes/class-rs-fr-settings.php:80
+msgid "Generelle indstillinger"
+msgstr "Allmänna inställningar"
+
+#: includes/class-rs-fr-settings.php:87
+msgid "Intern modtager"
+msgstr "Intern mottagare"
+
+#: includes/class-rs-fr-settings.php:95
+msgid "Sprog"
+msgstr "Språk"
+
+#: includes/class-rs-fr-settings.php:103
+msgid "Opbevaring"
+msgstr "Lagring"
+
+#: includes/class-rs-fr-settings.php:111
+msgid "Formulartekst"
+msgstr "Formulärtext"
+
+#: includes/class-rs-fr-settings.php:119
+msgid "Tekst før knap"
+msgstr "Text före knappen"
+
+#: includes/class-rs-fr-settings.php:127
+msgid "Kundekvittering"
+msgstr "Kundkvitto"
+
+#: includes/class-rs-fr-settings.php:135
+msgid "Intern mail"
+msgstr "Internt e-postmeddelande"
+
+#: includes/class-rs-fr-settings.php:143
+msgid "Afinstallering"
+msgstr "Avinstallation"
+
+#: includes/class-rs-fr-settings.php:151
+msgid "Ordremail (fortrydelsestekst)"
+msgstr "Ordermejl (ångertext)"
+
+#: includes/class-rs-fr-settings.php:158
+msgid "Link til fortrydelse"
+msgstr "Länk till ånger"
+
+#: includes/class-rs-fr-settings.php:166
+msgid "Overskrift"
+msgstr "Rubrik"
+
+#: includes/class-rs-fr-settings.php:174
+msgid "Introtekst"
+msgstr "Introtext"
+
+#: includes/class-rs-fr-settings.php:182
+msgid "Link-tekst"
+msgstr "Länktext"
+
+#: includes/class-rs-fr-settings.php:190
+msgid "PDF-note"
+msgstr "PDF-notis"
+
+#: includes/class-rs-fr-settings.php:199
+msgid "Handelsbetingelser"
+msgstr "Köpvillkor"
+
+#: includes/class-rs-fr-settings.php:206
+msgid "Handelsbetingelsesside"
+msgstr "Sida för köpvillkor"
+
+#: includes/class-rs-fr-settings.php:214
+msgid "Automatisk indsættelse"
+msgstr "Automatisk infogning"
+
+#: includes/class-rs-fr-settings.php:222
+msgid "Tekstafsnit"
+msgstr "Textavsnitt"
+
+#: includes/class-rs-fr-settings.php:277
+msgid "Digital Fortrydelse"
+msgstr "Digital ånger"
+
+#: includes/class-rs-fr-settings.php:303
+msgid "Brug WooCommerce standardmodtager"
+msgstr "Använd WooCommerce standardmottagare"
+
+#: includes/class-rs-fr-settings.php:305
+msgid "Efterlad tom for at bruge modtageren fra WooCommerce nye ordre-mails."
+msgstr "Lämna tomt för att använda mottagaren från WooCommerce mejl om nya ordrar."
+
+#: includes/class-rs-fr-settings.php:325
+msgid "Antal år fortrydelsessager opbevares. Maksimum er 5 år."
+msgstr "Antal år som ångerärenden sparas. Maximalt 5 år."
+
+#: includes/class-rs-fr-settings.php:343
+msgid "Styrer sproget i formular, mails, handelsbetingelsernes afsnit og pluginnets admin-sider. Uændrede standardtekster skifter automatisk sprog, når du gemmer. Tekster du selv har tilpasset, ændres ikke."
+msgstr "Styr språket i formulär, mejl, avsnittet i köpvillkoren och pluginets adminsidor. Oförändrade standardtexter byter automatiskt språk när du sparar. Texter du själv har anpassat ändras inte."
+
+#: includes/class-rs-fr-settings.php:378
+msgid "Valgfri tekst der vises i en infoboks lige før \"Bekræft fortrydelse\"-knappen. Brug fx til information om specialfremstillede varer. Efterlad tom for at skjule boksen. Simpel HTML som links og fed skrift er tilladt."
+msgstr "Valfri text som visas i en inforuta strax före knappen \"Bekräfta ånger\". Använd till exempel för information om specialtillverkade varor. Lämna tomt för att dölja rutan. Enkel HTML som länkar och fet stil är tillåten."
+
+#: includes/class-rs-fr-settings.php:397
+msgid "Kundekvitteringen må kun bekræfte modtagelse af anmodningen. Den må ikke formuleres som en endelig godkendelse eller refundering."
+msgstr "Kundkvittot får endast bekräfta mottagandet av begäran. Det får inte formuleras som ett slutligt godkännande eller en återbetalning."
+
+#: includes/class-rs-fr-settings.php:437
+msgid "Slet pluginets data ved afinstallering."
+msgstr "Radera pluginets data vid avinstallation."
+
+#: includes/class-rs-fr-settings.php:450
+msgid "Her kan du tilpasse teksten, der indsættes i WooCommerce ordremails (behandler-/færdigbehandlet-mails). Efterlad et felt tomt for at bruge pluginets indbyggede standardtekst (som også oversættes automatisk via WPML/Polylang). Udfyld felterne, hvis du fx også sælger specialfremstillede varer, der ikke er omfattet af fortrydelsesretten."
+msgstr "Här kan du anpassa texten som infogas i WooCommerce ordermejl (mejl för pågående/slutförda ordrar). Lämna ett fält tomt för att använda pluginets inbyggda standardtext (som även översätts automatiskt via WPML/Polylang). Fyll i fälten om du till exempel också säljer specialtillverkade varor som inte omfattas av ångerrätten."
+
+#: includes/class-rs-fr-settings.php:451
+msgid "Slår du linket til fortrydelse fra nedenfor, vises kun PDF-noten i mailen (fx til shops, hvor kunden ikke skal have et direkte link til fortrydelsesfunktionen)."
+msgstr "Om du stänger av länken till ånger nedan visas endast PDF-notisen i mejlet (till exempel för butiker där kunden inte ska få en direktlänk till ångerfunktionen)."
+
+#: includes/class-rs-fr-settings.php:471
+msgid "Vis info-boks med link til digital fortrydelse i kundens ordremails."
+msgstr "Visa en inforuta med länk till digital ånger i kundens ordermejl."
+
+#: includes/class-rs-fr-settings.php:473
+msgid "Hvis feltet ikke er markeret, vises kun en kort note om, at handelsbetingelserne er vedhæftet som PDF, uden link til fortrydelsesfunktionen. Handelsbetingelserne vedhæftes altid som PDF, uanset denne indstilling."
+msgstr "Om rutan inte är markerad visas endast en kort notis om att köpvillkoren är bifogade som PDF, utan länk till ångerfunktionen. Köpvillkoren bifogas alltid som PDF, oavsett den här inställningen."
+
+#: includes/class-rs-fr-settings.php:493
+msgid "Overskriften på info-boksen i ordremailen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Rubriken på inforutan i ordermejlet. Används endast när länken ovan är aktiverad. Standard:"
+
+#: includes/class-rs-fr-settings.php:512
+msgid "Introteksten i info-boksen. Brug fx til at oplyse, at specialfremstillede varer ikke er omfattet af fortrydelsesretten. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Introtexten i inforutan. Använd till exempel för att upplysa om att specialtillverkade varor inte omfattas av ångerrätten. Används endast när länken ovan är aktiverad. Standard:"
+
+#: includes/class-rs-fr-settings.php:532
+msgid "Teksten på linket til fortrydelsesfunktionen. Bruges kun når linket ovenfor er slået til. Standard:"
+msgstr "Texten på länken till ångerfunktionen. Används endast när länken ovan är aktiverad. Standard:"
+
+#: includes/class-rs-fr-settings.php:551
+msgid "Noten om, at handelsbetingelserne er vedhæftet som PDF. Vises altid, også når linket ovenfor er slået fra. Standard:"
+msgstr "Notisen om att köpvillkoren är bifogade som PDF. Visas alltid, även när länken ovan är avstängd. Standard:"
+
+#: includes/class-rs-fr-settings.php:564
+msgid "Her kan teksten til handelsbetingelserne vedligeholdes. Når automatisk indsættelse er slået til, opdaterer pluginet sit eget markerede afsnit på den valgte side, hver gang indstillingerne gemmes."
+msgstr "Här kan texten till köpvillkoren underhållas. När automatisk infogning är aktiverad uppdaterar pluginet sitt eget markerade avsnitt på den valda sidan varje gång inställningarna sparas."
+
+#: includes/class-rs-fr-settings.php:565
+msgid "Bemærk: Denne tekst er kun henvisningen i handelsbetingelserne. Selve fortrydelsesformularen vises ved at indsætte shortcoden [digital_fortrydelse] på den side, tokenet nedenfor peger på."
+msgstr "Observera: Den här texten är endast hänvisningen i köpvillkoren. Själva ångerformuläret visas genom att lägga in shortcoden [digital_fortrydelse] på den sida som token nedan pekar på."
+
+#: includes/class-rs-fr-settings.php:583
+msgid "Vælg side"
+msgstr "Välj sida"
+
+#: includes/class-rs-fr-settings.php:589
+msgid "WooCommerce handelsbetingelsessiden er valgt som standard."
+msgstr "WooCommerce sida för köpvillkor är vald som standard."
+
+#: includes/class-rs-fr-settings.php:591
+msgid "Vælg den side, der bruges til handelsbetingelser. Hvis WooCommerce har en handelsbetingelsesside sat, bruges den som standard."
+msgstr "Välj den sida som används för köpvillkor. Om WooCommerce har en sida för köpvillkor angiven används den som standard."
+
+#: includes/class-rs-fr-settings.php:611
+msgid "Opdater automatisk afsnittet i handelsbetingelserne, når indstillingerne gemmes."
+msgstr "Uppdatera automatiskt avsnittet i köpvillkoren när inställningarna sparas."
+
+#: includes/class-rs-fr-settings.php:613
+msgid "Pluginet erstatter kun indhold mellem sine egne start- og slutmarkører. Hvis markørerne ikke findes, tilføjes afsnittet nederst på siden."
+msgstr "Pluginet ersätter endast innehåll mellan sina egna start- och slutmarkörer. Om markörerna inte finns läggs avsnittet till längst ned på sidan."
+
+#: includes/class-rs-fr-settings.php:632
+msgid "Tokens:"
+msgstr "Tokens:"
+
+#: includes/class-rs-fr-settings.php:633
+msgid "klikbart link"
+msgstr "klickbar länk"
+
+#: includes/class-rs-fr-settings.php:634
+msgid "ren URL"
+msgstr "ren URL"
+
+#: includes/class-rs-fr-settings.php:635
+msgid "De ældre tokens"
+msgstr "De äldre tokens"
+
+#: includes/class-rs-fr-settings.php:636
+msgid "og"
+msgstr "och"
+
+#: includes/class-rs-fr-settings.php:637
+msgid "virker stadig som alias."
+msgstr "fungerar fortfarande som alias."
+
+#. translators: %s: resolved withdrawal page URL.
+#: includes/class-rs-fr-settings.php:643
+#, php-format
+msgid "Tokenet peger i øjeblikket på: %s"
+msgstr "Token pekar för närvarande på: %s"
+
+#: includes/class-rs-fr-settings.php:649
+msgid "Vigtigt: Formularen selv vises ikke af denne tekst. Tilføj shortcoden [digital_fortrydelse] på siden, som tokenet peger på, for at vise fortrydelsesformularen der."
+msgstr "Viktigt: Själva formuläret visas inte av den här texten. Lägg till shortcoden [digital_fortrydelse] på sidan som token pekar på för att visa ångerformuläret där."
+
+#: includes/class-rs-fr-settings.php:743
+msgid "Afsnittet om digital fortrydelse blev opdateret på handelsbetingelsessiden."
+msgstr "Avsnittet om digital ånger har uppdaterats på sidan för köpvillkor."
+
+#: includes/class-rs-fr-settings.php:748
+msgid "Afsnittet kunne ikke indsættes, fordi der ikke er valgt en gyldig handelsbetingelsesside."
+msgstr "Avsnittet kunde inte infogas eftersom ingen giltig sida för köpvillkor har valts."
+
+#: includes/class-rs-fr-settings.php:752
+msgid "Afsnittet kunne ikke opdateres på handelsbetingelsessiden."
+msgstr "Avsnittet kunde inte uppdateras på sidan för köpvillkor."
+
+#: includes/class-rs-fr-settings.php:855
+msgid "Tilgængelige tokens:"
+msgstr "Tillgängliga tokens:"
